@@ -27,14 +27,15 @@ interface ViewImageProps {
 }
 
 const ViewImage = ({ image }: ViewImageProps) => {
+    const { src, alt, width, height } = image;
     return (
-        <img {...image} className="ViewImage" />
+        <img src={src} alt={alt} width={width} height={height} className="ViewImage" />
     );
 }
 
 
 export const Tea = ({ tea, viewGlobal }: Props) => {
-    const [view, setView] = useState(ViewState.Wrapper);
+    const [view, setView] = useState(viewGlobal || ViewState.Wrapper);
     useEffect(() => {
         setView(viewGlobal);
     }, [viewGlobal])
