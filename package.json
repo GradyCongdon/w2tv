@@ -1,5 +1,6 @@
 {
   "name": "w2t",
+  "homepage": "http://gradycongdon.github.io/w2t",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
