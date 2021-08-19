@@ -2,6 +2,16 @@
   --sidebar-width: 60px;
 }
 
+html {
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'IBM Plex Mono', monospace;
+  box-sizing: border-box;
+}
+
 main {
   padding: 1rem;
   margin-left: var(--sidebar-width);
@@ -15,11 +25,16 @@ main {
   top: 0;
   border-right: 1px solid black;
   background-color: rgb(243, 252, 255);
-  padding: 1rem .25rem;
+  padding: 1rem .5rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  flex-wrap: wrap;
+}
+
+.button--sort {
+  width: 100%;
+  min-height: 30px;
+  font-size: .75rem;
 }

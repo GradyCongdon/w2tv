@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { TeaProduct } from './TeaProduct'
 import { Teas } from './Tea';
 import { ViewSelector } from './ViewSelector';
 import { ViewState } from './ViewState';
@@ -28,9 +27,9 @@ const SortButton = ({ value, sorting, setSorting }: any) => (
 const SortSelector = (props: any) => {
   const $Buttons = Object.keys(sortFunctions).map(key => <SortButton {...props} value={key} key={key} />);
   return (
-    <div>
+    <>
       {$Buttons}
-    </div>
+    </>
   )
 
 }
@@ -43,7 +42,7 @@ function App() {
   return (
     <main>
       <div className='controls--global'>
-        <ViewSelector view={viewGlobal} setView={setViewGlobal} />
+        <ViewSelector global={true} view={viewGlobal} setView={setViewGlobal} />
         <SortSelector sorting={sorting} setSorting={setSorting} />
       </div>
       <Teas teas={sortedTeas} viewGlobal={viewGlobal} />
