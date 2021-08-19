@@ -1,0 +1,27 @@
+.view-selector {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  appearance: none;
+  background-color: white;
+  margin: .5rem;
+  border: 1px solid #eee;
+}
+
+.button--sort {
+  font-size: .6rem;;
+  border-radius: 2px;
+}
+
+button:disabled {
+  border: 1px solid lightblue;
+  color: black;
+  box-shadow: 1px 1px 3px 1px #e0e0e0;
+}

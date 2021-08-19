@@ -1,25 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useState } from 'react';
+import { TeaProduct } from './TeaProduct'
+import { Teas } from './Tea';
+import { ViewSelector } from './ViewSelector';
+import { ViewState } from './ViewState';
+import { data } from './data';
 import './App.css';
 
-function App() {
+const yearDesc = (a: any, b: any) => b.year - a.year;
+const yearAsc = (a: any, b: any) => a.year - b.year;
+const nameDesc = (a: any, b: any) => b.name.localeCompare(a.name);
+const nameAsc = (a: any, b: any) => a.name.localeCompare(b.name);
+const sortFunctions = {
+  '+year': yearAsc,
+  '-year': yearDesc,
+  '+name': nameAsc,
+  '-name': nameDesc,
+}
+
+const SortButton = ({ value, sorting, setSorting }: any) => (
+  <button
+    className='button--sort'
+    disabled={sorting === value}
+    onClick={() => setSorting(value)}>{value}
+  </button>
+)
+
+const SortSelector = (props: any) => {
+  const $Buttons = Object.keys(sortFunctions).map(key => <SortButton {...props} value={key} key={key} />);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {$Buttons}
     </div>
+  )
+
+}
+
+function App() {
+  const [viewGlobal, setViewGlobal] = useState(ViewState.Wrapper);
+  const [sorting, setSorting] = useState('+year');
+  // @ts-expect-error: dynamic
+  const sortedTeas = data.sort(sortFunctions[sorting]);
+  return (
+    <main>
+      <div className='controls--global'>
+        <ViewSelector view={viewGlobal} setView={setViewGlobal} />
+        <SortSelector sorting={sorting} setSorting={setSorting} />
+      </div>
+      <Teas teas={sortedTeas} viewGlobal={viewGlobal} />
+    </main>
   );
 }
 
