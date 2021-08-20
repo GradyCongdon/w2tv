@@ -1,19 +1,30 @@
 h1,
 h2 {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: normal;
   align-self: flex-start;
   margin: .1rem .25rem;
 }
 
 .year {
-  color: rgb(38, 38, 38); 
   font-weight: 200;
 }
 
+.year--glow {
+  color: rgb(208, 89, 255);
+  text-shadow: 1px 1px 4px #ee00d2;
+}
+
+.name {
+  color: rgb(70, 70, 70);
+}
+
+:root {
+  --image-width: clamp(150px, 45vw, 300px);
+}
 
 .tea {
-  width: 220px;
+  width: calc(1rem + var(--image-width));
   padding: .5rem .1rem;
   margin: 1.2rem;
   display: flex;
@@ -50,14 +61,15 @@ h2 {
 }
 
 .ViewImage {
-  width: 200px;
-  height: auto;
-  background-color: #efefef;
+  width: var(--image-width);
+  height: var(--image-width);
+  object-fit: cover;
   position: relative;
 }
 
 .ViewImage:after {
  content: '×';
+ background-color: #efefef;
  font-size: 2rem;
  display: flex;
  justify-content: center;

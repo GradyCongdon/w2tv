@@ -15,7 +15,6 @@ const price1 = {
   amount: 1,
 }
 
-const capitalize = (str: string) => str[0].toUpperCase() + str.slice(1).toLowerCase();
 
 const makeTea = ({
   slug,
@@ -26,9 +25,8 @@ const makeTea = ({
   s
 }: any) => {
   const size = 600;
-  const [yearString, ...nameString] = slug.split('-');
+  const [yearString] = slug.split('-');
   const year = parseInt(yearString, 10);
-  // const name = nameString.map(capitalize).join(' ').replace(/tea/i, '');
   return {
     slug,
     year,
@@ -113,7 +111,7 @@ export const data = [
     style: TeaStyle.Raw,
     w: '',
     b: '-2',
-    s: 'MISSING'
+    s: '-MISSING'
   }),
   makeTea({
     slug: '2021-Diao-Retro-Puer-Tea',
@@ -201,7 +199,7 @@ export const data = [
     style: TeaStyle.Raw,
     w: '',
     b: '-2',
-    s: 'MISSING'
+    s: '-MISSING'
   }),
   makeTea({
     slug: '2021-Sun-Skate-Hongcha-Tea',
@@ -377,7 +375,7 @@ export const data = [
     style: TeaStyle.Black,
     w: '-88',
     b: '-3',
-    s: 'MISSING'
+    s: '-MISSING'
   }),
   makeTea({
     slug: '2020-Good-Man-in-a-a-Storm',

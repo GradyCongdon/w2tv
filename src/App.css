@@ -1,21 +1,22 @@
 :root {
-  --sidebar-width: 70px;
+  --sidebar-width: 100px;
+}
+* {
+  box-sizing: border-box;
 }
 
 html {
   font-size: 14px;
-  box-sizing: border-box;
 }
 
 button,
 body {
   font-family: 'IBM Plex Mono', monospace;
-  box-sizing: border-box;
 }
 
 main {
-  padding: 1rem;
-  margin-left: calc( 1.1 * var(--sidebar-width));
+  padding: 2rem;
+  margin-left: var(--sidebar-width);
 }
 
 .controls--global {
@@ -25,8 +26,7 @@ main {
   left: 0;
   top: 0;
   border-right: 1px solid rgb(225, 225, 225);
-  box-shadow: rgba(124, 124, 150, 0.25) 0px 30px 60px -12px, rgba(211, 211, 211, 0.3) 0px 18px 36px -18px;
-  padding: 1rem .5rem;
+  padding: 1.5rem .6rem;
 
   display: flex;
   flex-direction: column;
@@ -37,6 +37,13 @@ main {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 
+  user-select: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .controls--global {
+    box-shadow: rgba(124, 124, 150, 0.25) 0px 30px 60px -12px, rgba(211, 211, 211, 0.3) 0px 18px 36px -18px;
+  }
 }
 
 .controls--global::-webkit-scrollbar {
@@ -48,6 +55,10 @@ main {
   font-size: .75rem;
 }
 
+button {
+  color: rgb(70, 70, 70);
+}
+
 .button--sort {
   width: 100%;
 }
@@ -55,14 +66,59 @@ main {
 .button--filter {
   width: 100%;
   border-radius: 90px;
-  background-color: rgb(249, 240, 255);
+}
+
+@keyframes shadow {
+  0% {
+    text-shadow: -3px 1px 5px #d400ba;
+  }
+  50% {
+    text-shadow: -5px 2px 3px #0094d4;
+  }
+  100% {
+    text-shadow: -3px 1px 5px #d400ba;
+  }
 }
 
 .heading {
   width: 100%;
   text-align: center;
   font-size: 2rem;
+  font-weight: 100;
+  text-shadow: -3px 1px 5px #d400ba;
   color: indigo;
   margin: 0;
   margin-bottom: 2rem;
+  animation-name: shadow;
+  animation-duration: 20s;
+  animation-fill-mode: forwards;
+  animation-direction: alternate-reverse;
+  animation-iteration-count: 1;
+}
+
+
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label .icon {
+  font-size: 1.2rem;
+  display: block;
+  margin: 0;
+  margin-right: -.5ch;
+  margin-left: .5ch;
+  height: 100%;
+  line-height: 1;
+}
+
+.label .icon--plain {
+  color: black;
+}
+
+.label .text {
+  display: block;
+  height: 100%;
+  line-height: 2;
 }

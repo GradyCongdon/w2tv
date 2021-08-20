@@ -42,7 +42,7 @@ export const Tea = ({ tea, viewGlobal }: Props) => {
     const image = tea[view];
     return (
         <figure className="tea">
-            <h2 className="year">{tea.year}</h2>
+            <h2 className="year year--glow">{tea.year}</h2>
             <h1 className="name">{tea.name}</h1>
             <ViewImage image={image} />
             <ViewSelector view={view} setView={setView} />

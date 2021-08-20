@@ -4,7 +4,7 @@ import { ViewSelector } from './ViewSelector';
 import { ViewState } from './ViewState';
 import { data } from './data';
 import './App.css';
-import { sortFunctions, SortSelector } from './Sorting';
+import { sortFunctions, SortSelector, useSorting } from './Sorting';
 import { filterFunctions, FilterSelector } from './Filtering';
 
 const Heading = ({ children }: any) => (
@@ -13,7 +13,7 @@ const Heading = ({ children }: any) => (
 
 function App() {
   const [viewGlobal, setViewGlobal] = useState(ViewState.Wrapper);
-  const [sorting, setSorting] = useState('+year');
+  const [sorting, setSorting] = useSorting();
   const [filtering, setFiltering] = useState('all');
   const sortedTeas = data
     // @ts-expect-error: dynamic
@@ -23,7 +23,7 @@ function App() {
   return (
     <main>
       <div className='controls--global'>
-        <Heading>w2t</Heading>
+        <Heading>w2tv</Heading>
         <ViewSelector global={true} view={viewGlobal} setView={setViewGlobal} />
         <br />
         <br />

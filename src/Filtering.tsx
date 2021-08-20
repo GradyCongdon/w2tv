@@ -4,14 +4,14 @@ const isStyle = (s: TeaStyle) => (x: TeaProduct) => x.style === s;
 const identity = (x: TeaProduct) => true;
 export const filterFunctions = {
   'all': identity,
-  'white': isStyle(TeaStyle.White),
-  'black': isStyle(TeaStyle.Black),
-  'green': isStyle(TeaStyle.Green),
+  // 'green': isStyle(TeaStyle.Green),
   'raw': isStyle(TeaStyle.Raw),
   'ripe': isStyle(TeaStyle.Ripe),
+  'white': isStyle(TeaStyle.White),
+  'black': isStyle(TeaStyle.Black),
   'oolong': isStyle(TeaStyle.Oolong),
   'huangpian': isStyle(TeaStyle.Huangpian),
-  'unknown': isStyle(TeaStyle.Unknown),
+  // 'unknown': isStyle(TeaStyle.Unknown),
 };
 
 export const FilterButton = ({ value, filtering, setFiltering }: any) => (
