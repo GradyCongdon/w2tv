@@ -5,8 +5,10 @@
   box-sizing: border-box;
 }
 
-html {
+html,
+body {
   font-size: 14px;
+  width: 100vw;
 }
 
 button,
@@ -15,8 +17,12 @@ body {
 }
 
 main {
-  padding: 2rem;
+  width: calc(100% - var(--sidebar-width));
+  padding: .5rem;
   margin-left: var(--sidebar-width);
+  @media screen and (min-width: 1024px) {
+    padding: 2rem 1rem;
+  }
 }
 
 .controls--global {
@@ -25,6 +31,7 @@ main {
   height: 100%;
   left: 0;
   top: 0;
+  background-color: white;
   border-right: 1px solid rgb(225, 225, 225);
   padding: 1.5rem .6rem;
 
@@ -33,18 +40,18 @@ main {
   align-items: center;
   justify-content: flex-start;
 
+  z-index: 100;
   overflow-x: scroll;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 
   user-select: none;
-}
 
-@media screen and (min-width: 1024px) {
-  .controls--global {
-    box-shadow: rgba(124, 124, 150, 0.25) 0px 30px 60px -12px, rgba(211, 211, 211, 0.3) 0px 18px 36px -18px;
+  @media screen and (min-width: 500px) {
+      box-shadow: rgba(124, 124, 150, 0.25) 0px 30px 60px -12px, rgba(211, 211, 211, 0.3) 0px 18px 36px -18px;
   }
 }
+
 
 .glow {
   color: rgb(208, 89, 255);
@@ -90,6 +97,7 @@ button {
 .toggle {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   &:hover {
     cursor: pointer;
   }

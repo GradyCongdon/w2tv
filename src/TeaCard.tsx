@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ViewSelector } from "./ViewSelector";
+import { ViewSelectorLocal } from "./ViewSelector";
 import { ViewState } from "./ViewState";
 import { TeaProduct } from "./TeaProduct";
 import { TeaImage } from "./TeaImage";
@@ -9,9 +9,10 @@ import './TeaCard.scss';
 interface TeasProps {
     viewGlobal: ViewState,
     teas: TeaProduct[],
+    whiteBalanced: boolean;
 }
-export const TeaCards = ({ teas, viewGlobal }: TeasProps) => {
-    const $Teas = teas.map(tea => <TeaCard key={tea.slug} viewGlobal={viewGlobal} tea={tea} />);
+export const TeaCards = ({ teas, viewGlobal, whiteBalanced }: TeasProps) => {
+    const $Teas = teas.map(tea => <TeaCard key={tea.slug} viewGlobal={viewGlobal} tea={tea} whiteBalanced={whiteBalanced} />);
     return (
         <section className="TeaCards">
             {$Teas}
@@ -21,10 +22,11 @@ export const TeaCards = ({ teas, viewGlobal }: TeasProps) => {
 
 export type Props = {
     tea: TeaProduct;
-    viewGlobal: ViewState
+    viewGlobal: ViewState;
+    whiteBalanced: boolean;
 }
 
-export const TeaCard = ({ tea, viewGlobal }: Props) => {
+export const TeaCard = ({ tea, viewGlobal, whiteBalanced }: Props) => {
     const [view, setView] = useState(viewGlobal || ViewState.Wrapper);
     useEffect(() => {
         setView(viewGlobal);
@@ -34,8 +36,8 @@ export const TeaCard = ({ tea, viewGlobal }: Props) => {
         <figure className="TeaCard">
             <h3 className="year glow">{tea.year}</h3>
             <h2 className="name">{tea.name}</h2>
-            <TeaImage image={image} />
-            <ViewSelector view={view} setView={setView} />
+            <TeaImage image={image} whiteBalanced={whiteBalanced} />
+            <ViewSelectorLocal view={view} setView={setView} />
         </figure>
     );
 }

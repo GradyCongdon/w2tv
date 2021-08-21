@@ -1,10 +1,18 @@
 import { useEffect, useState } from "react";
 import { TeaProduct } from "./TeaProduct";
 import './TeaSlice.scss';
+import { ViewState } from "./ViewState";
 
-const TeaSlice = ({ tea, view }: any) => {
+interface TeaSliceProps {
+  tea: TeaProduct,
+  view: string,
+  whiteBalanced: boolean;
+}
+
+const TeaSlice = ({ tea, view, whiteBalanced }: TeaSliceProps) => {
   const { year, name, size } = tea;
-  const { src, alt, width, height } = tea[view];
+  const { type, src: srcRaw, srcWhiteBalanced, alt, width, height } = tea[view as ViewState];
+  const src = type === 'soup' && whiteBalanced ? srcWhiteBalanced : srcRaw;
   return (
     <span className={`TeaSliceWrapper ${view} ${size}`} >
       <img src={src} alt={alt} width={width} height={height} className="TeaSlice" />
@@ -25,6 +33,7 @@ const TeaSlice = ({ tea, view }: any) => {
 interface SlicesProps {
   teas: TeaProduct[];
   view: string;
+  whiteBalanced: boolean;
 }
 
 const getDefaultFilters = (view: string) => ({
@@ -35,7 +44,7 @@ const getDefaultFilters = (view: string) => ({
   bamboo: view !== 'soup' ? false : true,
 } as any);
 
-export const TeaSlices = ({ teas, view }: SlicesProps) => {
+export const TeaSlices = ({ teas, view, whiteBalanced }: SlicesProps) => {
   const defaultFilters = getDefaultFilters(view);
   const [filteredSizes, setFilteredSizes] = useState(defaultFilters);
   useEffect(() => {
@@ -43,7 +52,7 @@ export const TeaSlices = ({ teas, view }: SlicesProps) => {
   }, [view])
   const TeaSlices = teas
     .filter(t => filteredSizes[t.size])
-    .map(t => <TeaSlice key={t.slug} tea={t} view={view} />)
+    .map(t => <TeaSlice key={t.slug} tea={t} view={view} whiteBalanced={whiteBalanced} />)
   const toggle = (size: any) => ({
     ...filteredSizes,
     [size]: !filteredSizes[size] as boolean

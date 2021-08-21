@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ViewSelector } from './ViewSelector';
+import { ViewSelectorGlobal } from './ViewSelector';
 import { ViewState } from './ViewState';
 import { teas } from './data';
 import { sortFunctions, SortSelector, useSorting } from './Sorting';
@@ -59,12 +59,12 @@ const CardSelector = ({ layout, setLaytout }: any) => (
 
 
 
-
 function App() {
   const [viewGlobal, setViewGlobal] = useState(ViewState.Wrapper);
   const [sorting, setSorting] = useSorting();
   const [filtering, setFiltering] = useState('all');
   const [layout, setLaytout] = useState(Layout.Card);
+  const [whiteBalanced, setWhiteBalanced] = useState(true);
   const sortedTeas = teas
     // @ts-expect-error: dynamic
     .filter(filterFunctions[filtering])
@@ -78,12 +78,12 @@ function App() {
       break;
     }
     case Layout.Slice: {
-      Items = (<TeaSlices teas={sortedTeas} view={viewGlobal} />);
+      Items = (<TeaSlices teas={sortedTeas} view={viewGlobal} whiteBalanced={whiteBalanced} />);
       break;
     }
     default:
     case Layout.Card: {
-      Items = (<TeaCards teas={sortedTeas} viewGlobal={viewGlobal} />);
+      Items = (<TeaCards teas={sortedTeas} viewGlobal={viewGlobal} whiteBalanced={whiteBalanced} />);
       break;
     }
   }
@@ -94,7 +94,7 @@ function App() {
         <Heading>w2tv</Heading>
         <CardSelector layout={layout} setLaytout={setLaytout} />
         <SliceSelector layout={layout} setLaytout={setLaytout} />
-        <ViewSelector global={true} view={viewGlobal} setView={setViewGlobal} />
+        <ViewSelectorGlobal view={viewGlobal} setView={setViewGlobal} whiteBalanced={whiteBalanced} setWhiteBalanced={setWhiteBalanced} />
         <ListSelector layout={layout} setLaytout={setLaytout} />
         <Divider />
         <SortSelector sorting={sorting} setSorting={setSorting} />

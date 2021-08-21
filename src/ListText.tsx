@@ -4,20 +4,21 @@ import './ListText.scss';
 const ListText = ({ tea }: EntryProps) => {
   const { year, name, style } = tea;
   return (
-    <div className="ListText">
-      <span className="year">{year} </span>
-      <span className="name">{name} </span>
-      <span className="dots"></span>
-      <span className="style"> {style}</span>
-    </div>
+    <tr className="ListText">
+      <td className="year">{year} </td>
+      <td className="name">{name} </td>
+      <td className="style"> {style}</td>
+    </tr>
   );
 
 };
 
 export const List = ({ teas }: ArrayProps) => {
   return (
-    <div className="list">
-      {teas.map(t => <ListText key={t.slug} tea={t} />)}
-    </div>
+    <table className="list">
+      <tbody>
+        {teas.map(t => <ListText key={t.slug} tea={t} />)}
+      </tbody>
+    </table>
   );
 };

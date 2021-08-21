@@ -17,10 +17,15 @@
     &.mini .TeaSlice {
       object-position: 35% 0;
     }
+    &.square .TeaSlice {
+      object-position: 32% 0;
+    }
+    &.brick .TeaSlice {
+      object-position: 10% 0;
+    }
   }
 
   .wrapper .TeaSlice {
-    width: 250px;
     object-position: 40% 0;
   }
   .soup .TeaSlice {

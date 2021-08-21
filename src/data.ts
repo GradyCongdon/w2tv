@@ -1,8 +1,10 @@
-import { TeaSize, TeaStyle } from "./TeaProduct";
+import { TeaProduct, TeaSize, TeaStyle, Image, ImageType } from "./TeaProduct";
 
-const makeImage = (type: string, slug: string, size: number, view: string) => {
+const makeImage = (type: ImageType, slug: string, size: number, view: string): Image => {
   return {
+    type,
     src: `${slug}${view}_${size}x.jpg`,
+    srcWhiteBalanced: `${slug}${view}w_${size}x.jpg`,
     alt: type,
     width: size,
     height: size,
@@ -39,7 +41,7 @@ const makeTea = ({
     soup: makeImage('soup', slug, imageSize, s),
     description: slug,
     prices: [price1],
-  }
+  } as TeaProduct
 }
 
 export const data = [
@@ -723,13 +725,13 @@ export const data = [
   // '2020TiltshiftMinimoonlightwhitetea', '', '-2', '-4',
 ];
 export const teas = data.map(makeTea);
-const whites = data
-  .map(t => {
-    const tea = makeTea(t);
-    const source = tea.soup.src;
-    const dest = makeImage('soup', tea.slug, 600, t.s + 'w').src;
-    return `./whitebalance 0,599 -r "rgb(254,254,254)" public/${source} public/${dest}`;
-  })
-  .join(' \n');
+// const whites = data
+//   .map(t => {
+//     const tea = makeTea(t);
+//     const source = tea.soup.src;
+//     const dest = makeImage('soup', tea.slug, 600, t.s + 'w').src;
+//     return `./whitebalance 0,599 -r "rgb(254,254,254)" public/${source} public/${dest}`;
+//   })
+//   .join(' \n');
 
-console.log(whites);
+// console.log(whites);

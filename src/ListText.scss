@@ -1,20 +1,28 @@
+.list {
+  width: 99%; // FIXME
+  border-spacing: 0;
+  margin-right: auto;
+
+}
+
 .ListText {
-  display: grid;
-  grid-template-columns: max-content max-content 1fr min-content;
-  grid-gap: .5rem;
+  .name,
+  .style {
+    background-image: linear-gradient(to right, black 16%, rgba(255, 255, 255, 0) 0%);
+    background-repeat: repeat-x;
+    background-size: 6px 1px;
+    background-position: bottom;
+  }
+
 
   .year {
     font-weight: 200;
+    text-align: center;
+    width: 50px;
   }
 
   .style{
     font-weight: 200;
-  }
-
-  .dots {
-    background-image: linear-gradient(to right, black 16%, rgba(255,255,255,0) 0%);
-    background-repeat: repeat-x;
-    background-size: 6px 1px;
-    background-position: bottom;
+    text-align: end;
   }
 }

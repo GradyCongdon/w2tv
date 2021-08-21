@@ -14,7 +14,6 @@
   min-height: calc(var(--ratio) * var(--size));
   padding: 0;
   border-radius: 100%;
-  background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,4 +51,23 @@
   font-size: 1.05rem;
   margin-top: .75rem;
   margin-bottom: .75rem;
+}
+
+
+.view--white-balanced {
+  --size: 22px;
+  position: relative;
+  padding: 0;
+  margin-bottom: 4px;
+  .WhiteBalance {
+    position: absolute;
+    bottom: calc(-1 * var(--size) / 4);
+    right: calc(-1 * var(--size) / 4);
+    padding: 0;
+    min-width: var(--size);
+    width: var(--size);
+    min-height: var(--size);
+    height: var(--size);
+  }
+
 }
