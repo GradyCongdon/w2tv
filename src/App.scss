@@ -46,25 +46,62 @@ main {
   }
 }
 
+.glow {
+  color: rgb(208, 89, 255);
+  text-shadow: 1px 1px 4px #ee00d2;
+}
+
+
+
 .controls--global::-webkit-scrollbar {
   display: none;
 }
 
 .controls--global button {
+  width: 100%;
+}
+
+.button,
+button {
+  appearance: none;
+  color: rgb(70, 70, 70);
   min-height: 30px;
   font-size: .75rem;
+  background-color: white;
+  border: 1px solid lightgray;
+  margin: .5rem;
+  outline: none;
+  transition: background-color 120ms ease;
+  &:hover {
+    background-color: rgb(239, 250, 255);
+  }
+
+  &:enabled:hover {
+    cursor: pointer;
+  }
 }
 
-button {
-  color: rgb(70, 70, 70);
+.radio:disabled {
+  border-color: rgb(173, 82, 238);
+  background-color: rgb(248, 239, 255);
+  box-shadow: 1px 1px 3px 1px #e0e0e0;
 }
 
-.button--sort {
-  width: 100%;
-}
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  &:hover {
+    cursor: pointer;
+  }
 
+  &.checked {
+    border-color: rgb(173, 82, 238);
+    background-color: rgb(248, 239, 255);
+  }
+}
+.toggle, 
 .button--filter {
-  width: 100%;
+  padding: 0 15px;
   border-radius: 90px;
 }
 
@@ -121,4 +158,8 @@ button {
   display: block;
   height: 100%;
   line-height: 2;
+}
+
+.button--sort {
+  border-radius: 2px;
 }

@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { TeaProduct } from "./TeaProduct";
 
-const yearDesc = (a: any, b: any) => b.year - a.year;
-const yearAsc = (a: any, b: any) => a.year - b.year;
-const nameDesc = (a: any, b: any) => b.name.localeCompare(a.name);
-const nameAsc = (a: any, b: any) => a.name.localeCompare(b.name);
+const getName = (x: TeaProduct) => x.name.replace('The ', '')
+
+const yearDesc = (a: TeaProduct, b: TeaProduct) => b.year - a.year;
+const yearAsc = (a: TeaProduct, b: TeaProduct) => a.year - b.year;
+const nameDesc = (a: TeaProduct, b: TeaProduct) => getName(b).localeCompare(getName(a));
+const nameAsc = (a: TeaProduct, b: TeaProduct) => getName(a).localeCompare(getName(b));
 
 export const useSorting = (defaultSorting = '-year') => {
   return useState(defaultSorting);
@@ -44,7 +47,7 @@ const Label = ({ value }: any) => {
 
 export const SortButton = ({ value, sorting, setSorting }: any) => (
   <button
-    className='button--sort'
+    className='button radio button--sort'
     disabled={sorting === value}
     onClick={() => setSorting(value)}>
     <Label value={value} />

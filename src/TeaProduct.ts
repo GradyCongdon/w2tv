@@ -21,14 +21,32 @@ export enum TeaStyle {
     Unknown = 'unknown'
 }
 
+export enum TeaSize {
+    Cake = 'cake',
+    Mini = 'mini',
+    Bamboo = 'bamboo',
+    Square = 'square',
+    Brick = 'brick',
+}
+
 export interface TeaProduct {
     slug: string;
     year: number;
     style: TeaStyle;
     name: string;
+    size: TeaSize;
     wrapper: Image;
     bing: Image;
     soup: Image;
     description: string;
     prices: Price[];
+}
+
+
+export interface EntryProps {
+    tea: TeaProduct,
+}
+
+export interface ArrayProps {
+    teas: TeaProduct[];
 }

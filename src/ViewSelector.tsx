@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import { ViewState } from "./ViewState";
-import './ViewSelector.css';
+import './ViewSelector.scss';
 
 interface Props {
     view: ViewState;
@@ -14,13 +14,13 @@ export const ViewSelector = ({ view, setView, global = false }: Props) => {
     return (
         <nav className={`view-selector ${fade} ${g}`}>
 
-            <button className="button--view"
+            <button className="button radio button--view"
                 onClick={() => setView(ViewState.Wrapper)}
                 disabled={view === ViewState.Wrapper}>W</button>
-            <button className="button--view"
+            <button className="button radio button--view"
                 onClick={() => setView(ViewState.Bing)}
                 disabled={view === ViewState.Bing}>B</button>
-            <button className="button--view"
+            <button className="button radio button--view"
                 onClick={() => setView(ViewState.Soup)}
                 disabled={view === ViewState.Soup}>S</button>
         </nav >);

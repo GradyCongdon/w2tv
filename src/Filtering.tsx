@@ -16,7 +16,7 @@ export const filterFunctions = {
 
 export const FilterButton = ({ value, filtering, setFiltering }: any) => (
   <button
-    className='button--filter'
+    className='button radio button--filter'
     disabled={filtering === value}
     onClick={() => setFiltering(value)}>{value}
   </button>
