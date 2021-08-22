@@ -54,7 +54,7 @@ export const ViewSelectorGlobal = ({ view, setView, whiteBalanced, setWhiteBalan
     <nav className={`view-selector global`}>
         <WrapperButton view={view} setView={setView} />
         <BingButton view={view} setView={setView} />
-        <div className="view--white-balanced">
+        <div className={`view--white-balanced ${view}`} >
             <WhiteBalance whiteBalanced={whiteBalanced} setWhiteBalanced={setWhiteBalanced} />
             <SoupButton view={view} setView={setView} />
         </div>

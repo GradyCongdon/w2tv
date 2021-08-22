@@ -5,6 +5,10 @@
   justify-content: center;
 }
 
+.view-selector.global {
+  margin-bottom: 2rem;
+}
+
 
 .button.button--view {
   --size: .6rem;
@@ -68,6 +72,14 @@
     width: var(--size);
     min-height: var(--size);
     height: var(--size);
+    &.toggle {
+      background-color: white;
+      border-color: lightgrey;
+    }
+  }
+  &.soup .WhiteBalance.toggle.checked {
+    background-color: #f8efff;
+    border-color: #ad52ee;
   }
 
 }

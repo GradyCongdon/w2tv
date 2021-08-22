@@ -92,9 +92,9 @@ function App() {
     <>
       <aside className='controls--global'>
         <Heading>w2tv</Heading>
+        <ViewSelectorGlobal view={viewGlobal} setView={setViewGlobal} whiteBalanced={whiteBalanced} setWhiteBalanced={setWhiteBalanced} />
         <CardSelector layout={layout} setLaytout={setLaytout} />
         <SliceSelector layout={layout} setLaytout={setLaytout} />
-        <ViewSelectorGlobal view={viewGlobal} setView={setViewGlobal} whiteBalanced={whiteBalanced} setWhiteBalanced={setWhiteBalanced} />
         <ListSelector layout={layout} setLaytout={setLaytout} />
         <Divider />
         <SortSelector sorting={sorting} setSorting={setSorting} />
