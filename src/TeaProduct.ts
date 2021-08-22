@@ -31,6 +31,7 @@ export enum TeaSize {
     Bamboo = 'bamboo',
     Square = 'square',
     Brick = 'brick',
+    Ball = 'ball',
 }
 
 export interface TeaProduct {

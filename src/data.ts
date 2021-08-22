@@ -113,7 +113,7 @@ export const data = [
   {
     slug: '2021-Coyote-Mini-Puerh-Tea',
     name: 'Hotline Space Coyote Mini',
-    size: TeaSize.Mini,
+    size: TeaSize.Ball,
     style: TeaStyle.Raw,
     w: '',
     b: '-2',
@@ -327,7 +327,7 @@ export const data = [
   {
     slug: '2020-Camphornought-Puer-Mini',
     name: 'Camphornought Mini',
-    size: TeaSize.Mini,
+    size: TeaSize.Ball,
     style: TeaStyle.Ripe,
     w: '',
     b: '-2',
@@ -427,7 +427,7 @@ export const data = [
   {
     slug: '2020-Hot-Brandy-Mini',
     name: 'Hot Brandy Mini',
-    size: TeaSize.Mini,
+    size: TeaSize.Ball,
     style: TeaStyle.White, // Mixed
     w: '',
     b: '-2',
@@ -548,7 +548,7 @@ export const data = [
   {
     slug: '2020-Nightlife-Minis-white-Tea',
     name: 'Nightlife Mini',
-    size: TeaSize.Mini,
+    size: TeaSize.Ball,
     style: TeaStyle.White,
     w: '',
     b: '-3',
@@ -573,7 +573,7 @@ export const data = [
   {
     slug: '2020-Planetary-Shark-Feed-Mini',
     name: 'Planetary Shark Feed Mini',
-    size: TeaSize.Mini,
+    size: TeaSize.Ball,
     style: TeaStyle.Ripe,
     w: '',
     b: '-2',
@@ -590,7 +590,7 @@ export const data = [
   {
     slug: '2020-Prosbloom-Puer-Mini',
     name: 'Prosbloom Mini',
-    size: TeaSize.Mini,
+    size: TeaSize.Ball,
     style: TeaStyle.Ripe,
     w: '-2',
     b: '-3',

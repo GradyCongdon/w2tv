@@ -38,9 +38,10 @@ interface SlicesProps {
 
 const getDefaultFilters = (view: string) => ({
   cake: true,
-  brick: true,
+  brick: view === 'wrapper' ? false : true,
   square: view === 'wrapper' ? false : true,
   mini: view === 'wrapper' ? false : true,
+  ball: view === 'wrapper' ? false : true,
   bamboo: view !== 'soup' ? false : true,
 } as any);
 
