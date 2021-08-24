@@ -26,7 +26,7 @@ const WrapperButton = ({ view, setView }: ViewProps) => (
 const BingButton = ({ view, setView }: ViewProps) => (
     <button className="button radio button--view"
         onClick={() => setView(ViewState.Bing)}
-        disabled={view === ViewState.Bing}>B</button>
+        disabled={view === ViewState.Bing}>T</button>
 );
 
 const SoupButton = ({ view, setView }: ViewProps) => (

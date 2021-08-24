@@ -119,6 +119,7 @@ button {
   }
   50% {
     text-shadow: -5px 2px 3px #0094d4;
+    // text-shadow: -5px 2px 3px #00d43c;
   }
   100% {
     text-shadow: -3px 1px 5px #d400ba;
@@ -135,6 +136,7 @@ button {
   margin: 0;
   margin-bottom: 2rem;
   animation-name: shadow;
+  // animation-duration: 5s;
   animation-duration: 20s;
   animation-fill-mode: forwards;
   animation-direction: alternate-reverse;

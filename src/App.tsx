@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ViewSelectorGlobal } from './ViewSelector';
 import { ViewState } from './ViewState';
 import { teas } from './data';
@@ -57,14 +57,45 @@ const CardSelector = ({ layout, setLaytout }: any) => (
   </button>
 );
 
+interface AppState {
+  viewGlobal: ViewState;
+  sorting: string;
+  filtering: string;
+  layout: Layout;
+  whiteBalanced: boolean;
+}
+
+const stateDefaults = {
+  viewGlobal: ViewState.Wrapper,
+  sorting: '-year',
+  filtering: 'all',
+  layout: Layout.Card,
+  whiteBalanced: true,
+}
+
 
 
 function App() {
-  const [viewGlobal, setViewGlobal] = useState(ViewState.Wrapper);
-  const [sorting, setSorting] = useSorting();
-  const [filtering, setFiltering] = useState('all');
-  const [layout, setLaytout] = useState(Layout.Card);
-  const [whiteBalanced, setWhiteBalanced] = useState(true);
+  const localStoreState = localStorage.getItem('state');
+  const state: AppState = localStoreState ? JSON.parse(localStoreState) : stateDefaults;
+  const [viewGlobal, setViewGlobal] = useState(state.viewGlobal);
+  const [sorting, setSorting] = useSorting(state.sorting);
+  const [filtering, setFiltering] = useState(state.filtering);
+  const [layout, setLaytout] = useState(state.layout);
+  const [whiteBalanced, setWhiteBalanced] = useState(state.whiteBalanced);
+
+  useEffect(() => {
+    const state = {
+      viewGlobal,
+      sorting,
+      filtering,
+      layout,
+      whiteBalanced
+    };
+    const json = JSON.stringify(state);
+    localStorage.setItem('state', json);
+  }, [viewGlobal, sorting, filtering, layout, whiteBalanced]);
+
   const sortedTeas = teas
     // @ts-expect-error: dynamic
     .filter(filterFunctions[filtering])

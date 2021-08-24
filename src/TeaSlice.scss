@@ -4,7 +4,7 @@
   justify-content: center;
 
   .TeaSlice {
-    width: 50vw;
+    width: 65vw;
     height: 500px;
     object-fit: cover;
     @media screen and (min-width: 425px) {
@@ -29,12 +29,31 @@
     }
   }
 
-  .wrapper .TeaSlice {
-    object-position: 40% 0;
-  }
-  .soup .TeaSlice {
-    width: 100px;
-    object-position: 40% 0;
+  // .wrapper .TeaSlice {
+  //   object-position: 40% 0;
+  // }
+  .soup {
+    &.TeaSliceWrapper:first-of-type {
+      margin-top: 4rem;
+      @media screen and (min-width: 768px) {
+        margin-top: 0;
+      }
+    }
+    .TeaSlice {
+      height: 75px;
+      object-position: 0 55%;
+      @media screen and (min-width: 768px) {
+        height: 500px;
+        width: 150px;
+        object-position: 40% 0;
+      }
+    }
+    .TeaSliceInfo {
+      margin-top: 50%;
+      @media screen and (min-width: 768px) {
+        margin-top: 85%;
+      }
+    }
   }
 
   .TeaSliceInfoWrapper {
