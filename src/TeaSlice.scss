@@ -33,14 +33,9 @@
   //   object-position: 40% 0;
   // }
   .soup {
-    &.TeaSliceWrapper:first-of-type {
-      margin-top: 4rem;
-      @media screen and (min-width: 768px) {
-        margin-top: 0;
-      }
-    }
     .TeaSlice {
       height: 75px;
+      width: 100%;
       object-position: 0 55%;
       @media screen and (min-width: 768px) {
         height: 500px;
@@ -99,4 +94,15 @@
     }
   }
 
+}
+
+
+.TeaSliceFilters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2rem;
+  @media screen and (min-width: 768px) {
+    margin-bottom: .5rem;
+  }
 }

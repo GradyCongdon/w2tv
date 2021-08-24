@@ -69,7 +69,7 @@ export const TeaSlices = ({ teas, view, whiteBalanced }: SlicesProps) => {
   ));
   return (
     <>
-      <nav>
+      <nav className="TeaSliceFilters">
         {Filters}
       </nav>
       <div className="TeaSlices">
