@@ -1,0 +1,29 @@
+{
+  "product_id": "200x-failcorp-shou",
+  "title": "200X Failcorp Shou",
+  "description": "An aged shou Puer tea with clean south China storage perfect for a daily cup. A lovely soup that looks likes an aged red wine with woody character over a layer of subtle sweetness. A little too easy to drink, if you ask me.\u003cbr\u003e\n\u003cp\u003e\u003cbr\u003eEach cake is 357g.\u003cbr\u003e\u003cbr\u003eThe true date of this tea is unknown, though mid-2000's is our best guess. This inner ticket is also unknown to us, but a bit of research shows that this company was disbanded for reasons of fraudulent activity in the mid 2010's.  If you're looking for a tea with a clear origin, this ain't it. If you'd like a nice shou Puer to drink that has settled into middle age, it's an excellent choice.\u003cbr\u003e\u003c\/p\u003e",
+  "brand": "white2tea",
+  "offers": [
+    {
+      "title": "357g",
+      "offer_id": 39349979676863,
+      "sku": "10401A",
+      "price": 68.0,
+      "currency_code": "USD",
+      "in_stock": true
+    },
+    {
+      "title": "25g",
+      "offer_id": 39349979709631,
+      "sku": "10401B",
+      "price": 6.0,
+      "currency_code": "USD",
+      "in_stock": true
+    }
+  ],
+  "thumbnail_url": "\/\/cdn.shopify.com\/s\/files\/1\/0313\/6064\/7305\/products\/2004-Failcorp-Warehouse-Shou.jpg?v=1615471799",
+  "url": "https:\/\/white2tea.com\/products\/200x-failcorp-shou",
+  "provider": "white2tea",
+  "version": "1.0",
+  "type": "link"
+}
