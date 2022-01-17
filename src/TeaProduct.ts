@@ -36,6 +36,7 @@ export enum TeaSize {
 
 export interface TeaProduct {
     slug: string;
+    oSlug: string;
     year: number;
     style: TeaStyle;
     name: string;

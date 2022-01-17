@@ -5,6 +5,8 @@ import { TeaProduct } from "./TeaProduct";
 import { TeaImage } from "./TeaImage";
 
 import './TeaCard.scss';
+import { useRecoilState } from "recoil";
+import { selectedSlugState } from "./selectedSlugState";
 
 interface TeasProps {
     viewGlobal: ViewState,
@@ -27,13 +29,20 @@ export type Props = {
 }
 
 export const TeaCard = ({ tea, viewGlobal, whiteBalanced }: Props) => {
+    const [selectedSlug, setSelectedSlug] = useRecoilState(selectedSlugState);
+    // const isSelected = selectedSlug === tea.oSlug;
+    const style = {
+        //     boxShadow: isSelected ? 'var(--selected-shadow)' : '',
+    }
+    const onClick = () => setSelectedSlug(tea.oSlug);
+
     const [view, setView] = useState(viewGlobal || ViewState.Wrapper);
     useEffect(() => {
         setView(viewGlobal);
     }, [viewGlobal])
     const image = tea[view];
     return (
-        <figure className="TeaCard">
+        <figure className="TeaCard" style={style} onClick={onClick}>
             <h3 className="year glow">{tea.year}</h3>
             <h2 className="name">{tea.name}</h2>
             <TeaImage image={image} whiteBalanced={whiteBalanced} />

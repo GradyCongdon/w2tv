@@ -30,8 +30,10 @@ const makeTea = ({
   const imageSize = 600;
   const [yearString] = slug.split('-');
   const year = parseInt(yearString, 10);
+  const oSlug = [year, ...name.split(' ')].join('-').toLowerCase();
   return {
     slug,
+    oSlug,
     year,
     name,
     style,
@@ -687,7 +689,7 @@ export const data = [
   },
   {
     slug: '2020-Waffles-Puerh',
-    name: 'Waffles Puerh',
+    name: 'Waffles',
     style: TeaStyle.Ripe,
     w: '',
     b: '-2',

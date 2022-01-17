@@ -1,13 +1,15 @@
 .TeaCard {
   width: 100%;
-  max-width: 255px;
   padding: .5rem .1rem;
-  margin: .75rem;
+  margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   position: relative;
+  border-radius: 8px;
+
+  --selected-shadow: 1px 1px 5px 5px pink;
 
   &:before {
     --size: 8px;
@@ -39,10 +41,14 @@
   .name {
     color: rgb(70, 70, 70);
   }
+
 }
 
 .TeaCards {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  // grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+  grid-template-columns: repeat(auto-fill, 320px);
   justify-content: center;
+  grid-auto-rows: auto;
+  gap: 1rem;
 }

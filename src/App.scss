@@ -1,6 +1,17 @@
 :root {
   --sidebar-width: 100px;
+  --detail-width: 350px;
+  --main-padding: 1.5rem 0.6rem;
+  --main-padding-plus: 1.5rem 1rem;
+  --main-padding-top: 1.5rem;
+  --main-padding-side: 0.6rem;
+  --text-color: #464646;
+  --border: 1px solid rgb(225, 225, 225);
+  --light: rgb(225, 225, 225);
+  --grey-medium: rgb(218, 218, 218);
+  --main-shadow: rgba(124, 124, 150, 0.25) 0px 30px 60px -12px, rgba(211, 211, 211, 0.3) 0px 18px 36px -18px;
 }
+
 * {
   box-sizing: border-box;
 }
@@ -16,12 +27,25 @@ body {
   font-family: 'IBM Plex Mono', monospace;
 }
 
+.appxxx {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  @media screen and (min-width: 768px) {
+    &.detail--open {
+      grid-template-columns: var(--sidebar-width) 1fr var(--detail-width);
+    }
+  }
+}
+
+
 main {
-  width: calc(100% - var(--sidebar-width));
-  padding: .5rem;
+  padding: 1rem;
   margin-left: var(--sidebar-width);
   @media screen and (min-width: 1024px) {
-    padding: 1.5rem 1rem;
+    padding: 1.5rem 2rem;
+    &.detail--open {
+      margin-right: var(--detail-width);
+    }
   }
 }
 
@@ -48,7 +72,7 @@ main {
   user-select: none;
 
   @media screen and (min-width: 500px) {
-      box-shadow: rgba(124, 124, 150, 0.25) 0px 30px 60px -12px, rgba(211, 211, 211, 0.3) 0px 18px 36px -18px;
+      box-shadow: var(--main-shadow); 
   }
 }
 
@@ -56,6 +80,7 @@ main {
 .glow {
   color: rgb(208, 89, 255);
   text-shadow: 1px 1px 4px #ee00d2;
+  font-weight: 200;
 }
 
 
@@ -172,4 +197,58 @@ button {
 
 .button--sort {
   border-radius: 2px;
+}
+.drawer {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: white;
+  padding: var(--main-padding-plus);
+  border-left: 1px solid rgb(225, 225, 225);
+  color: var(--text-color);
+  overflow: auto;
+  box-shadow: var(--main-shadow); 
+  width: 100vw;
+  z-index: 100;
+
+  @media screen and (min-width: 768px) {
+    width: 350px;
+  }
+}
+
+.Close {
+  --size: 36px;
+  --size--half: calc(var(--size) / 2);
+  appearance: none;
+  border: var(--border);
+  background-color: white;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size);
+  height: var(--size);
+  position: absolute;
+  // top: calc(-1 * var(--size--half));
+  // right: calc(-1 * var(--size--half));
+  // top: calc(var(--main-padding-top) - var(--size--half));
+  // right: calc(var(--main-padding-side) - var(--size--half));
+  top: 18px;
+  right: 4px;
+  margin: 0;
+  .value {
+    display: inline-block;
+    font-size: 2rem;
+    position: relative;
+    bottom: 2px;
+    height: 36px;
+    color: var(--grey-medium);
+  }
+}
+
+
+.responsive {
+  width: 100%;
+  height: auto;
 }

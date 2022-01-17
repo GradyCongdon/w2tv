@@ -1,4 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
+import {
+  useRecoilState,
+} from 'recoil';
+
 import { ViewSelectorGlobal } from './ViewSelector';
 import { ViewState } from './ViewState';
 import { teas } from './data';
@@ -7,8 +11,10 @@ import { filterFunctions, FilterSelector } from './Filtering';
 import { TeaCards } from './TeaCard';
 import { TeaSlices } from './TeaSlice';
 import { List } from './ListText';
+import { TeaDetail } from './TeaDetail';
 
 import './App.scss';
+import { selectedSlugState } from './selectedSlugState';
 
 const Heading = ({ children }: any) => (
   <h1 className="heading" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>{children}</h1>
@@ -73,8 +79,6 @@ const stateDefaults = {
   whiteBalanced: true,
 }
 
-
-
 function App() {
   const localStoreState = localStorage.getItem('state');
   const state: AppState = localStoreState ? JSON.parse(localStoreState) : stateDefaults;
@@ -83,6 +87,9 @@ function App() {
   const [filtering, setFiltering] = useState(state.filtering);
   const [layout, setLaytout] = useState(state.layout);
   const [whiteBalanced, setWhiteBalanced] = useState(state.whiteBalanced);
+  const [selectedSlug, setSelectedSlug] = useRecoilState(selectedSlugState);
+
+  const resetSelected = () => setSelectedSlug('');
 
   useEffect(() => {
     const state = {
@@ -120,7 +127,7 @@ function App() {
   }
 
   return (
-    <>
+    <div className='app'>
       <aside className='controls--global'>
         <Heading>w2tv</Heading>
         <ViewSelectorGlobal view={viewGlobal} setView={setViewGlobal} whiteBalanced={whiteBalanced} setWhiteBalanced={setWhiteBalanced} />
@@ -133,10 +140,16 @@ function App() {
         <FilterSelector filtering={filtering} setFiltering={setFiltering} />
         <Divider />
       </aside>
-      <main>
+      <main className={selectedSlug ? 'detail--open' : ''}>
         {Items}
       </main>
-    </>
+      {selectedSlug && (
+        <aside className='drawer'>
+          <button className='Close' onClick={resetSelected}><span className='value'>&times;</span></button>
+          <TeaDetail slug={selectedSlug} />
+        </aside>
+      )}
+    </div>
   );
 }
 
