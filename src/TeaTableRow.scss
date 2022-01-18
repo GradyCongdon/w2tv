@@ -2,18 +2,23 @@
   width: 99%; // FIXME
   border-spacing: 0;
   margin-right: auto;
-
 }
 
 .ListText {
+  &:hover {
+    cursor: pointer;
+  }
   .name,
   .style {
-    background-image: linear-gradient(to right, black 16%, rgba(255, 255, 255, 0) 0%);
+    background-image: linear-gradient(
+      to right,
+      black 16%,
+      rgba(255, 255, 255, 0) 0%
+    );
     background-repeat: repeat-x;
     background-size: 6px 1px;
     background-position: bottom;
   }
-
 
   .year {
     font-weight: 200;
@@ -21,7 +26,7 @@
     width: 50px;
   }
 
-  .style{
+  .style {
     font-weight: 200;
     text-align: end;
   }

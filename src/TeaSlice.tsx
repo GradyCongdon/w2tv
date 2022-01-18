@@ -12,17 +12,17 @@ interface TeaSliceProps {
 }
 
 const TeaSlice = ({ tea, view, whiteBalanced }: TeaSliceProps) => {
-  const { year, name, size } = tea;
+  const { year, name, size, oSlug } = tea;
   const { type, src: srcRaw, srcWhiteBalanced, alt, width, height } = tea[view as ViewState];
   const src = type === 'soup' && whiteBalanced ? srcWhiteBalanced : srcRaw;
 
   const [selectedSlug, setSelectedSlug] = useRecoilState(selectedSlugState);
-  const onClick = () => setSelectedSlug(tea.oSlug);
-  const isSelected = selectedSlug === tea.oSlug;
+  const onClick = () => setSelectedSlug(oSlug);
+  const isSelected = selectedSlug === oSlug;
   const classes = `TeaSliceWrapper ${isSelected ? 'selected' : ''} ${view} ${size}`
 
   return (
-    <span className={classes} onClick={onClick}>
+    <span className={classes} onClick={onClick} id={oSlug}>
       <img src={src} alt={alt} width={width} height={height} className="TeaSlice" />
       <div className="TeaSliceInfoWrapper">
         <div className="TeaSliceInfo glow">

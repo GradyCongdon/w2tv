@@ -10,7 +10,7 @@ import { sortFunctions, SortSelector, useSorting } from './Sorting';
 import { filterFunctions, FilterSelector } from './Filtering';
 import { TeaCards } from './TeaCard';
 import { TeaSlices } from './TeaSlice';
-import { List } from './ListText';
+import { List } from './TeaTableRow';
 import { TeaDetail } from './TeaDetail';
 
 import './App.scss';
@@ -91,9 +91,11 @@ function App() {
   const [selectedSlug, setSelectedSlug] = useRecoilState(selectedSlugState);
 
   const resetSelected = () => {
-    scrollToId(selectedSlug)
     setSelectedSlug('');
   }
+  useEffect(() => {
+    scrollToId(selectedSlug, 300)
+  }, [sorting, filtering, layout, selectedSlug]);
 
   useEffect(() => {
     const state = {
