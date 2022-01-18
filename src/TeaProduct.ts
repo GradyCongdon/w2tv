@@ -18,6 +18,7 @@ export enum TeaStyle {
     White = 'white',
     Green = 'green',
     Black = 'black',
+    Hongcha = 'hongcha',
     Raw = 'raw',
     Ripe = 'ripe',
     Oolong = 'oolong',

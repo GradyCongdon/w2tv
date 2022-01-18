@@ -1,28 +1,38 @@
 .TeaCard {
-  width: 100%;
-  padding: .5rem .1rem;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
   position: relative;
   border-radius: 8px;
+  --icon-size: 8px;
+  padding-left: 12px;
+  padding-top: 14px;
+  margin: 0;
+  transition: box-shadow 150ms ease;
+  :hover {
+    cursor: pointer;
+  }
 
-  --selected-shadow: 1px 1px 5px 5px pink;
+  &.selected {
+    box-shadow: 2px 4px 8px 4px rgb(248, 239, 255);
+  }
 
-  &:before {
-    --size: 8px;
-    --color: rgb(222,222,222);
-    content: ' ';
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .icon {
+    --color: rgb(222, 222, 222);
+    content: " ";
     display: block;
-    border-bottom: 1px solid  var(--color);
+    border-bottom: 1px solid var(--color);
     border-right: 1px solid var(--color);
     position: absolute;
-    top: calc(-.5 * var(--size));
-    left: calc(-.75 * var(--size));
-    height: var(--size);
-    width: var(--size);
+    top: calc(-1 * var(--icon-size));
+    left: calc(-1 * var(--icon-size));
+    height: var(--icon-size);
+    width: var(--icon-size);
   }
 
   h2,
@@ -30,25 +40,26 @@
     font-size: 1.1rem;
     font-weight: normal;
     align-self: flex-start;
-    margin: .1rem .25rem;
+    margin: 0.1rem 0;
   }
 
   .year {
     font-weight: 200;
   }
 
-
   .name {
     color: rgb(70, 70, 70);
   }
-
 }
 
 .TeaCards {
   display: grid;
-  // grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
-  grid-template-columns: repeat(auto-fill, 320px);
   justify-content: center;
   grid-auto-rows: auto;
-  gap: 1rem;
+  gap: var(--main-grid-gap);
+  grid-template-columns: repeat(auto-fill, 1fr);
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(var(--card-width), 1fr));
+    // grid-template-columns: repeat(auto-fill, var(--card-width));
+  }
 }

@@ -20,6 +20,7 @@ const price1 = {
 
 const makeTea = ({
   slug,
+  oSlug,
   style,
   name,
   w,
@@ -30,10 +31,11 @@ const makeTea = ({
   const imageSize = 600;
   const [yearString] = slug.split('-');
   const year = parseInt(yearString, 10);
-  const oSlug = [year, ...name.split(' ')].join('-').toLowerCase();
+  const nameWords = name.replace('Mini', '').trim().split(' ');
+  const _oSlug = [year, ...nameWords].join('-').toLowerCase();
   return {
     slug,
-    oSlug,
+    oSlug: oSlug || _oSlug,
     year,
     name,
     style,
@@ -139,6 +141,7 @@ export const data = [
   },
   {
     slug: '2021-Gas-Bitter-Puerh-Tea',
+    oSlug: '2021-gas-bitter-tea',
     name: 'Gas',
     style: TeaStyle.Raw,
     w: '',
@@ -212,14 +215,16 @@ export const data = [
   },
   {
     slug: '2021-Sun-Skate-Hongcha-Tea',
+    oSlug: '2021-sunskate',
     name: 'Sun Skate',
-    style: TeaStyle.Black,
+    style: TeaStyle.Hongcha,
     w: '',
     b: '-2',
     s: '-4'
   },
   {
     slug: '2021-The-Thing-Is-Goo-Shoo-Puerh-Tea',
+    oSlug: '2020-the-thing-is',
     name: 'The Thing Is',
     style: TeaStyle.Raw,
     w: '',
@@ -285,6 +290,7 @@ export const data = [
   },
   {
     slug: '2020-Astro-Red-Kittens-Black-Tea',
+    oSlug: '2020-astro-red',
     name: 'Astro Red Kittens',
     style: TeaStyle.Black,
     w: '',
@@ -345,6 +351,7 @@ export const data = [
   },
   {
     slug: '2020-Conversation-Part-2-white-tea',
+    oSlug: '2020-conversation-pt-2',
     name: 'Conversation Part 2',
     style: TeaStyle.White,
     w: '',
@@ -361,7 +368,7 @@ export const data = [
   },
   {
     slug: '2020-Demon-Slayer-Minis-Huangpian-tea',
-    name: 'Demon Slayer Minis',
+    name: 'Demon Slayer Mini',
     size: TeaSize.Mini,
     style: TeaStyle.Huangpian,
     w: '',
@@ -428,6 +435,7 @@ export const data = [
   },
   {
     slug: '2020-Hot-Brandy-Mini',
+    oSlug: '2020-hot-brandy-mini',
     name: 'Hot Brandy Mini',
     size: TeaSize.Ball,
     style: TeaStyle.White, // Mixed
@@ -445,7 +453,7 @@ export const data = [
   },
   {
     slug: '2020-I-Am-Puer-tea',
-    name: 'I Am Puer',
+    name: 'I Am',
     style: TeaStyle.Raw,
     w: '',
     b: '-2',

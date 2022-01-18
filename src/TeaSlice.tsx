@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+import { selectedSlugState } from "./selectedSlugState";
 import { TeaProduct } from "./TeaProduct";
 import './TeaSlice.scss';
 import { ViewState } from "./ViewState";
@@ -13,8 +15,14 @@ const TeaSlice = ({ tea, view, whiteBalanced }: TeaSliceProps) => {
   const { year, name, size } = tea;
   const { type, src: srcRaw, srcWhiteBalanced, alt, width, height } = tea[view as ViewState];
   const src = type === 'soup' && whiteBalanced ? srcWhiteBalanced : srcRaw;
+
+  const [selectedSlug, setSelectedSlug] = useRecoilState(selectedSlugState);
+  const onClick = () => setSelectedSlug(tea.oSlug);
+  const isSelected = selectedSlug === tea.oSlug;
+  const classes = `TeaSliceWrapper ${isSelected ? 'selected' : ''} ${view} ${size}`
+
   return (
-    <span className={`TeaSliceWrapper ${view} ${size}`} >
+    <span className={classes} onClick={onClick}>
       <img src={src} alt={alt} width={width} height={height} className="TeaSlice" />
       <div className="TeaSliceInfoWrapper">
         <div className="TeaSliceInfo glow">

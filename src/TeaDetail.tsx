@@ -3,6 +3,10 @@ import { OfferOembed, TeaOembed } from "./Oembed";
 
 import './TeaDetail.scss';
 
+const WIDTH = 800;
+const HEIGHT = 800;
+const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
+
 export const useDetail = (slug: string): [TeaOembed | null, string] => {
   const [status, setStatus] = useState('start');
   const [detail, setDetail] = useState<TeaOembed | null>(null);
@@ -14,6 +18,7 @@ export const useDetail = (slug: string): [TeaOembed | null, string] => {
         setStatus('loading');
         const res = await fetch(url);
         const oembed = (await res.json()) as TeaOembed;
+        // await delay(4000);
         setDetail(oembed);
         setStatus('resolved');
       } catch (e) {
@@ -96,7 +101,7 @@ export const Offer = ({ offer }: OfferProps) => {
   return (
     <div style={style} className="Offer table">
       <h2>{tilde}{mass}g</h2>
-      <h3>${price}</h3>
+      <h3>${price.toFixed(2)}</h3>
       <h4>${ppg.toFixed(2)}</h4>
     </div>
   );
@@ -120,10 +125,14 @@ export const Detail = ({ detail }: DetailProps) => {
   const titleRegExp = new RegExp(title, 'g');
   const glowTitle = `<span class="glow">${title}</span>`;
   const descriptionGlow = description.replace(titleRegExp, glowTitle)
+  const image = thumbnail_url 
+    ? <img className="thumbnail responsive" src={thumbnail_url} alt={title} width={WIDTH} height={HEIGHT} />
+    : <div className="placeholder"><div className="circle"></div></div>
+
   return (
     <article className="TeaDetail">
       <h1 className="title glow">{title}</h1>
-      <img className="thumbnail responsive" src={thumbnail_url} alt={thumbnail_url ? title : ''} width="306" height="306" />
+      {image}
       <OfferHeading />
       {offers.map(o => <Offer key={o.sku} offer={o} />)}
       <div className="description" dangerouslySetInnerHTML={{ __html: descriptionGlow }} />
@@ -141,12 +150,13 @@ export const Skeleton = () => {
 
 export const TeaDetail = ({ slug }: any) => {
   const [detail, status] = useDetail(slug);
+  if (detail) return <Detail detail={detail as TeaOembed} />;
 
   switch (status) {
     case 'start': return <Skeleton />;
     case 'loading': return <Skeleton />;
     // case 'resolved': return <Skeleton />;
-    case 'resolved': return <Detail detail={detail as TeaOembed} />;
+    // case 'resolved': return <Detail detail={detail as TeaOembed} />;
     default: return <Error slug={slug} />;
   }
 }

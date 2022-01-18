@@ -15,6 +15,7 @@ import { TeaDetail } from './TeaDetail';
 
 import './App.scss';
 import { selectedSlugState } from './selectedSlugState';
+import { scrollToId } from './scrollTo';
 
 const Heading = ({ children }: any) => (
   <h1 className="heading" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>{children}</h1>
@@ -89,7 +90,10 @@ function App() {
   const [whiteBalanced, setWhiteBalanced] = useState(state.whiteBalanced);
   const [selectedSlug, setSelectedSlug] = useRecoilState(selectedSlugState);
 
-  const resetSelected = () => setSelectedSlug('');
+  const resetSelected = () => {
+    scrollToId(selectedSlug)
+    setSelectedSlug('');
+  }
 
   useEffect(() => {
     const state = {

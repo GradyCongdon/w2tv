@@ -18,7 +18,13 @@
   .title {
     margin-top: 0;
     margin-bottom: 0;
+    margin-right: 42px;
     font-size: 1.5rem;
+    position: sticky;
+    top: 0rem;
+    background-color: rgba(255, 255, 255, 0.85);
+    width: fit-content;
+    padding: 0 4px;
   }
   .OfferHeading {
     border-bottom: var(--border);
@@ -26,18 +32,19 @@
   .description {
     margin-top: 2rem;
   }
-  .thumbnail {
-    &:before{
-      content: '';
-      opacity: 1;
+  .placeholder {
+    --image-size: 415px;
+    width: var(--image-size);
+    height: var(--image-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .circle {
+      --size: 340px;
       border-radius: 100%;
-      background-color: var(--light); 
-      width: 306px;
-      height: 306px;
-      border: solid 36px white;
-      margin: auto;
-      display: block;
-      box-sizing: border-box;
+      background-color: rgb(242, 242, 242);
+      width: var(--size);
+      height: var(--size);
       filter: blur(3px);
     }
   }
@@ -51,8 +58,5 @@
   }
   .description {
     opacity: 0;
-  }
-  .thumbnail {
-    color: transparent;
   }
 }

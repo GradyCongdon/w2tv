@@ -1,15 +1,22 @@
 :root {
+  --card-width: 350px;
   --sidebar-width: 100px;
-  --detail-width: 350px;
+
   --main-padding: 1.5rem 0.6rem;
   --main-padding-plus: 1.5rem 1rem;
   --main-padding-top: 1.5rem;
   --main-padding-side: 0.6rem;
+  --main-grid-gap: 1rem;
+
+  // --detail-width: calc(var(--main-grid-gap) + var(--card-width));
+  --detail-width: calc(430px + 14px);
+
   --text-color: #464646;
   --border: 1px solid rgb(225, 225, 225);
   --light: rgb(225, 225, 225);
   --grey-medium: rgb(218, 218, 218);
-  --main-shadow: rgba(124, 124, 150, 0.25) 0px 30px 60px -12px, rgba(211, 211, 211, 0.3) 0px 18px 36px -18px;
+  --main-shadow: rgba(124, 124, 150, 0.25) 0px 30px 60px -12px,
+    rgba(211, 211, 211, 0.3) 0px 18px 36px -18px;
 }
 
 * {
@@ -20,31 +27,36 @@ html,
 body {
   font-size: 14px;
   width: 100vw;
+  overflow-x: hidden;
 }
 
 button,
 body {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: "IBM Plex Mono", monospace;
 }
 
 .appxxx {
   display: grid;
   grid-template-columns: var(--sidebar-width) 1fr;
-  @media screen and (min-width: 768px) {
-    &.detail--open {
-      grid-template-columns: var(--sidebar-width) 1fr var(--detail-width);
-    }
+  &.detail--open {
+    grid-template-columns: var(--sidebar-width) 1fr var(--detail-width);
   }
 }
-
 
 main {
   padding: 1rem;
   margin-left: var(--sidebar-width);
+  // transition: margin-right 16ms ease;
+  &.detail--open {
+    margin-right: var(--detail-width);
+    overflow-y: hidden;
+    max-height: 100vh;
+  }
   @media screen and (min-width: 1024px) {
     padding: 1.5rem 2rem;
     &.detail--open {
-      margin-right: var(--detail-width);
+      overflow-y: unset;
+      max-height: unset;
     }
   }
 }
@@ -57,7 +69,7 @@ main {
   top: 0;
   background-color: white;
   border-right: 1px solid rgb(225, 225, 225);
-  padding: 1.5rem .6rem;
+  padding: 1.5rem 0.6rem;
 
   display: flex;
   flex-direction: column;
@@ -66,24 +78,21 @@ main {
 
   z-index: 100;
   overflow-x: scroll;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 
   user-select: none;
 
   @media screen and (min-width: 500px) {
-      box-shadow: var(--main-shadow); 
+    box-shadow: var(--main-shadow);
   }
 }
-
 
 .glow {
   color: rgb(208, 89, 255);
   text-shadow: 1px 1px 4px #ee00d2;
   font-weight: 200;
 }
-
-
 
 .controls--global::-webkit-scrollbar {
   display: none;
@@ -98,10 +107,10 @@ button {
   appearance: none;
   color: rgb(70, 70, 70);
   min-height: 30px;
-  font-size: .75rem;
+  font-size: 0.75rem;
   background-color: white;
   border: 1px solid lightgray;
-  margin: .5rem;
+  margin: 0.5rem;
   outline: none;
   transition: background-color 120ms ease;
   &:hover {
@@ -132,7 +141,7 @@ button {
     background-color: rgb(248, 239, 255);
   }
 }
-.toggle, 
+.toggle,
 .button--filter {
   padding: 0 15px;
   border-radius: 90px;
@@ -168,7 +177,6 @@ button {
   animation-iteration-count: 1;
 }
 
-
 .label {
   display: flex;
   align-items: center;
@@ -179,8 +187,8 @@ button {
   font-size: 1.2rem;
   display: block;
   margin: 0;
-  margin-right: -.5ch;
-  margin-left: .5ch;
+  margin-right: -0.5ch;
+  margin-left: 0.5ch;
   height: 100%;
   line-height: 1;
 }
@@ -207,13 +215,14 @@ button {
   padding: var(--main-padding-plus);
   border-left: 1px solid rgb(225, 225, 225);
   color: var(--text-color);
-  overflow: auto;
-  box-shadow: var(--main-shadow); 
+  overflow-y: auto;
+  overflow-y: overlay;
+  box-shadow: var(--main-shadow);
   width: 100vw;
   z-index: 100;
 
   @media screen and (min-width: 768px) {
-    width: 350px;
+    width: var(--detail-width);
   }
 }
 
@@ -229,14 +238,17 @@ button {
   justify-content: center;
   width: var(--size);
   height: var(--size);
-  position: absolute;
+  position: fixed;
   // top: calc(-1 * var(--size--half));
   // right: calc(-1 * var(--size--half));
   // top: calc(var(--main-padding-top) - var(--size--half));
   // right: calc(var(--main-padding-side) - var(--size--half));
   top: 18px;
-  right: 4px;
+  right: 18px;
   margin: 0;
+  @media screen and (min-width: 768px) {
+    right: 8px;
+  }
   .value {
     display: inline-block;
     font-size: 2rem;
@@ -246,7 +258,6 @@ button {
     color: var(--grey-medium);
   }
 }
-
 
 .responsive {
   width: 100%;
