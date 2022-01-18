@@ -124,7 +124,7 @@ export const Detail = ({ detail }: DetailProps) => {
   const { title, description, thumbnail_url, offers } = detail;
   const titleRegExp = new RegExp(title, 'g');
   const glowTitle = `<span class="glow">${title}</span>`;
-  const descriptionGlow = description.replace(titleRegExp, glowTitle)
+  const descriptionGlow = description.replace(/style="(.*?)"/g, '').replace(titleRegExp, glowTitle)
   const image = thumbnail_url 
     ? <img className="thumbnail responsive" src={thumbnail_url} alt={title} width={WIDTH} height={HEIGHT} />
     : <div className="placeholder"><div className="circle"></div></div>
