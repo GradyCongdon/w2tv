@@ -247,15 +247,16 @@ button {
   right: 18px;
   margin: 0;
   @media screen and (min-width: 768px) {
-    right: 8px;
+    right: 425px;
   }
   .value {
     display: inline-block;
     font-size: 2rem;
     position: relative;
-    bottom: 2px;
+    bottom: 2.5px;
     height: 36px;
     color: var(--grey-medium);
+    user-select: none;
   }
 }
 
