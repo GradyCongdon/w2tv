@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/w2tv/static/css/main.3a173235.chunk.css",
+    "main.css": "/w2tv/static/css/main.c1470b21.chunk.css",
     "main.js": "/w2tv/static/js/main.7a72aae9.chunk.js",
     "main.js.map": "/w2tv/static/js/main.7a72aae9.chunk.js.map",
     "runtime-main.js": "/w2tv/static/js/runtime-main.583e2542.js",
@@ -10,13 +10,13 @@
     "static/js/3.4873f9c7.chunk.js": "/w2tv/static/js/3.4873f9c7.chunk.js",
     "static/js/3.4873f9c7.chunk.js.map": "/w2tv/static/js/3.4873f9c7.chunk.js.map",
     "index.html": "/w2tv/index.html",
-    "static/css/main.3a173235.chunk.css.map": "/w2tv/static/css/main.3a173235.chunk.css.map",
+    "static/css/main.c1470b21.chunk.css.map": "/w2tv/static/css/main.c1470b21.chunk.css.map",
     "static/js/2.3b3df3d9.chunk.js.LICENSE.txt": "/w2tv/static/js/2.3b3df3d9.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.583e2542.js",
     "static/js/2.3b3df3d9.chunk.js",
-    "static/css/main.3a173235.chunk.css",
+    "static/css/main.c1470b21.chunk.css",
     "static/js/main.7a72aae9.chunk.js"
   ]
 }
