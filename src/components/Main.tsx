@@ -8,8 +8,11 @@ import { Slices } from "components/TeaProduct/Slice";
 import { List } from "components/TeaProduct/List";
 import { TeaProduct } from "types/TeaProduct";
 import { layoutState } from "states/layout";
-import { sortingState } from "states/sorting";
-import { teaStyleFilteringState } from "states/teaStyleFiltering";
+import { sortingState, sortingFunctions } from "states/sorting";
+import {
+  teaStyleFilteringState,
+  filteringFunctions,
+} from "states/teaStyleFiltering";
 import { selectedSlugState } from "states/selectedSlug";
 
 const LayoutView = ({ teas }: { teas: TeaProduct[] }) => {
@@ -36,9 +39,8 @@ export const Main = () => {
 
   const teas = _teas
     // @ts-expect-error: dynamic
-    .filter(filterFunctions[filtering])
-    // @ts-expect-error: dynamic
-    .sort(sortFunctions[sorting]);
+    .filter(filteringFunctions[filtering])
+    .sort(sortingFunctions[sorting]);
 
   useEffect(() => {
     scrollToId(selectedSlug, 200);

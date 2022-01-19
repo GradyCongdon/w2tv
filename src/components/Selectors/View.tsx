@@ -24,7 +24,7 @@ const Button = ({ view }: { view: View }) => {
   const [currentView, setView] = useRecoilState(viewState);
   return (
     <button
-      className={`button radio button--${view}`}
+      className={`button radio button--view`}
       onClick={() => setView(view)}
       disabled={currentView === view}
     >
