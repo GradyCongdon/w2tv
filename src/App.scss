@@ -206,59 +206,6 @@ button {
 .button--sort {
   border-radius: 2px;
 }
-.drawer {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  background-color: white;
-  padding: var(--main-padding-plus);
-  border-left: 1px solid rgb(225, 225, 225);
-  color: var(--text-color);
-  overflow-y: auto;
-  overflow-y: overlay;
-  box-shadow: var(--main-shadow);
-  width: 100vw;
-  z-index: 100;
-
-  @media screen and (min-width: 768px) {
-    width: var(--detail-width);
-  }
-}
-
-.Close {
-  --size: 36px;
-  --size--half: calc(var(--size) / 2);
-  appearance: none;
-  border: var(--border);
-  background-color: white;
-  border-radius: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--size);
-  height: var(--size);
-  position: fixed;
-  // top: calc(-1 * var(--size--half));
-  // right: calc(-1 * var(--size--half));
-  // top: calc(var(--main-padding-top) - var(--size--half));
-  // right: calc(var(--main-padding-side) - var(--size--half));
-  top: 18px;
-  right: 18px;
-  margin: 0;
-  @media screen and (min-width: 768px) {
-    right: 425px;
-  }
-  .value {
-    display: inline-block;
-    font-size: 2rem;
-    position: relative;
-    bottom: 2.5px;
-    height: 36px;
-    color: var(--grey-medium);
-    user-select: none;
-  }
-}
 
 .responsive {
   width: 100%;

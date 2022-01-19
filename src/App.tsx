@@ -11,11 +11,25 @@ import { filterFunctions, FilterSelector } from './Filtering';
 import { TeaCards } from './TeaCard';
 import { TeaSlices } from './TeaSlice';
 import { List } from './TeaTableRow';
-import { TeaDetail } from './TeaDetail';
+import { TeaDetailDrawer } from './TeaDetailDrawer';
 
 import './App.scss';
 import { selectedSlugState } from './selectedSlugState';
 import { scrollToId } from './scrollTo';
+import { TeaProduct } from './TeaProduct';
+import { useHotkeys } from 'react-hotkeys-hook';
+
+  const getDirection = (direction: string, oSlug: string, teas: TeaProduct[]): string => {
+    if (!oSlug) return teas[0].oSlug;
+    const i = teas.findIndex(t => t.oSlug === oSlug);
+    switch (direction) {
+        case 'left': return teas[i - 1]?.oSlug || teas[teas.length - 1].oSlug;
+        case 'right': return teas[i + 1]?.oSlug || teas[0].oSlug;
+        case 'up': return teas[i - 3]?.oSlug || teas[teas.length - 1].oSlug;
+        case 'down': return teas[i + 3]?.oSlug || teas[0].oSlug;
+        default: return oSlug;
+    }
+}
 
 const Heading = ({ children }: any) => (
   <h1 className="heading" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>{children}</h1>
@@ -90,11 +104,8 @@ function App() {
   const [whiteBalanced, setWhiteBalanced] = useState(state.whiteBalanced);
   const [selectedSlug, setSelectedSlug] = useRecoilState(selectedSlugState);
 
-  const resetSelected = () => {
-    setSelectedSlug('');
-  }
   useEffect(() => {
-    scrollToId(selectedSlug, 300)
+    scrollToId(selectedSlug, 200)
   }, [sorting, filtering, layout, selectedSlug]);
 
   useEffect(() => {
@@ -132,6 +143,11 @@ function App() {
     }
   }
 
+  useHotkeys('left', () => setSelectedSlug(getDirection('left', selectedSlug, sortedTeas)), [selectedSlug, teas]);
+  useHotkeys('right', () => setSelectedSlug(getDirection('right', selectedSlug, sortedTeas)), [selectedSlug, teas]);
+  useHotkeys('up', () => setSelectedSlug(getDirection('up', selectedSlug, sortedTeas)), [selectedSlug, teas]);
+  useHotkeys('down', () => setSelectedSlug(getDirection('down', selectedSlug, sortedTeas)), [selectedSlug, teas]);
+
   return (
     <div className='app'>
       <aside className='controls--global'>
@@ -149,12 +165,7 @@ function App() {
       <main className={selectedSlug ? 'detail--open' : ''}>
         {Items}
       </main>
-      {selectedSlug && (
-        <aside className='drawer'>
-          <button className='Close' onClick={resetSelected}><span className='value'>&times;</span></button>
-          <TeaDetail slug={selectedSlug} />
-        </aside>
-      )}
+      <TeaDetailDrawer />
     </div>
   );
 }

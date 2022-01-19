@@ -5,8 +5,8 @@ import { ViewState } from "./ViewState";
 import { TeaProduct } from "./TeaProduct";
 import { TeaImage } from "./TeaImage";
 import { selectedSlugState } from "./selectedSlugState";
-import { scrollToId } from "./scrollTo";
 import './TeaCard.scss';
+
 
 interface TeasProps {
     viewGlobal: ViewState,
@@ -31,10 +31,7 @@ export type Props = {
 export const TeaCard = ({ tea, viewGlobal, whiteBalanced }: Props) => {
     const [selectedSlug, setSelectedSlug] = useRecoilState(selectedSlugState);
     const isSelected = selectedSlug === tea.oSlug;
-    const onClick = () => {
-        setSelectedSlug(tea.oSlug);
-        scrollToId(tea.oSlug); //FIXME: oSlug not unique with mini 
-    }
+    const onClick = () => setSelectedSlug(tea.oSlug);
     const classes = `TeaCard ${isSelected ? 'selected' : ''}`
 
     const [view, setView] = useState(viewGlobal || ViewState.Wrapper);

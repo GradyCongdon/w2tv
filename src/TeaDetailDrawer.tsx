@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
 import { OfferOembed, TeaOembed } from "./Oembed";
+import { selectedSlugState } from "./selectedSlugState";
 
 import './TeaDetail.scss';
 
 const WIDTH = 800;
 const HEIGHT = 800;
-const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
+// const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
 export const useDetail = (slug: string): [TeaOembed | null, string] => {
   const [status, setStatus] = useState('start');
@@ -121,7 +123,7 @@ const OfferHeading = () => (
   </div>);
 
 export const Detail = ({ detail }: DetailProps) => {
-  const { title, description, thumbnail_url, offers } = detail;
+  const { title, description, thumbnail_url, offers, url } = detail;
   const titleRegExp = new RegExp(title, 'g');
   const glowTitle = `<span class="glow">${title}</span>`;
   const descriptionGlow = description.replace(/style="(.*?)"/g, '').replace(titleRegExp, glowTitle)
@@ -136,6 +138,7 @@ export const Detail = ({ detail }: DetailProps) => {
       <OfferHeading />
       {offers.map(o => <Offer key={o.sku} offer={o} />)}
       <div className="description" dangerouslySetInnerHTML={{ __html: descriptionGlow }} />
+      <a className='DetailButton Link' href={url}><span className='value'>🔗</span></a>
     </article>
   );
 }
@@ -150,15 +153,27 @@ export const Skeleton = () => {
 
 export const TeaDetail = ({ slug }: any) => {
   const [detail, status] = useDetail(slug);
-  if (detail) return <Detail detail={detail as TeaOembed} />;
 
   switch (status) {
     case 'start': return <Skeleton />;
     case 'loading': return <Skeleton />;
     // case 'resolved': return <Skeleton />;
-    // case 'resolved': return <Detail detail={detail as TeaOembed} />;
+    case 'resolved': return <Detail detail={detail as TeaOembed} />;
     default: return <Error slug={slug} />;
   }
+}
+export const TeaDetailDrawer = () => {
+  const [selectedSlug, setSelectedSlug] = useRecoilState(selectedSlugState);
+  const classes = `drawer ${selectedSlug ? 'open' : 'closed'}`
+
+  const resetSelected = () => setSelectedSlug('');
+
+  return (
+    <aside className={classes}>
+      <button className='DetailButton Close' onClick={resetSelected}><span className='value'>&times;</span></button>
+      {selectedSlug && <TeaDetail slug={selectedSlug} />}
+    </aside>
+  );
 }
 
 function reslug(slug: string) {
