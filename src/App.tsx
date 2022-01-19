@@ -10,6 +10,8 @@ import { viewState } from "states/view";
 import { whiteBalancedState } from "states/whiteBalanced";
 import "./App.scss";
 
+console.log("v: recoil");
+
 function App() {
   // const localStoreState = localStorage.getItem("state");
   // const state: AppState = localStoreState
