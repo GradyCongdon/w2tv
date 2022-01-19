@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-import { selectedSlugState } from "./selectedSlugState";
-import { TeaProduct } from "./TeaProduct";
-import './TeaSlice.scss';
-import { ViewState } from "./ViewState";
+import { selectedSlugState } from "states/selectedSlug";
+import { TeaProduct } from "types/TeaProduct";
+import { ViewState } from "states/view";
+import './Slice.scss';
 
 interface TeaSliceProps {
   tea: TeaProduct,
@@ -11,7 +11,7 @@ interface TeaSliceProps {
   whiteBalanced: boolean;
 }
 
-const TeaSlice = ({ tea, view, whiteBalanced }: TeaSliceProps) => {
+const Slice = ({ tea, view, whiteBalanced }: TeaSliceProps) => {
   const { year, name, size, oSlug } = tea;
   const { type, src: srcRaw, srcWhiteBalanced, alt, width, height } = tea[view as ViewState];
   const src = type === 'soup' && whiteBalanced ? srcWhiteBalanced : srcRaw;
@@ -61,7 +61,7 @@ export const TeaSlices = ({ teas, view, whiteBalanced }: SlicesProps) => {
   }, [view])
   const TeaSlices = teas
     .filter(t => filteredSizes[t.size])
-    .map(t => <TeaSlice key={t.slug} tea={t} view={view} whiteBalanced={whiteBalanced} />)
+    .map(t => <Slice key={t.slug} tea={t} view={view} whiteBalanced={whiteBalanced} />)
   const toggle = (size: any) => ({
     ...filteredSizes,
     [size]: !filteredSizes[size] as boolean

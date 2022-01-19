@@ -1,7 +1,7 @@
-import { ArrayProps, EntryProps } from './TeaProduct';
-import './TeaTableRow.scss';
 import { useRecoilState } from 'recoil';
-import { selectedSlugState } from './selectedSlugState';
+import { selectedSlugState } from 'states/selectedSlug';
+import { ArrayProps, EntryProps } from 'types/TeaProduct';
+import './List.scss';
 
 const TeaTableRow = ({ tea }: EntryProps) => {
   const { year, name, style, oSlug } = tea;

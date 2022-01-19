@@ -1,11 +1,11 @@
-import { Image } from "./TeaProduct";
-import './TeaImage.scss';
+import { Image as ImageType } from "types/TeaProduct";
+import './.scss';
 
 interface Props {
-    image: Image;
+    image: ImageType;
     whiteBalanced: boolean
 }
-export const TeaImage = ({ image, whiteBalanced }: Props) => {
+export const Image = ({ image, whiteBalanced }: Props) => {
     const { type, src: srcOriginal, srcWhiteBalanced, alt, width, height } = image;
     const src = type === 'soup' && whiteBalanced ? srcWhiteBalanced : srcOriginal;
     return (

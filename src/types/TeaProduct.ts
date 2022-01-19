@@ -1,7 +1,7 @@
 export type ImageType = 'wrapper' | 'bing' | 'soup';
 
 export interface Image {
-    type: ImageType
+    type: ImageType;
     src: string;
     srcWhiteBalanced: string;
     alt: string;

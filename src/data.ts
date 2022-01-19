@@ -1,4 +1,4 @@
-import { TeaProduct, TeaSize, TeaStyle, Image, ImageType } from "./TeaProduct";
+import { TeaProduct, TeaSize, TeaStyle, Image, ImageType } from "./types/TeaProduct";
 
 const makeImage = (type: ImageType, slug: string, size: number, view: string): Image => {
   return {
