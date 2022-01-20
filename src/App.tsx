@@ -10,7 +10,7 @@ import { viewState } from "states/view";
 import { whiteBalancedState } from "states/whiteBalanced";
 import "./App.scss";
 
-console.log("v: recoil");
+console.log(`msg: ${process.env.REACT_APP_GIT_MSG}`);
 
 function App() {
   // const localStoreState = localStorage.getItem("state");
