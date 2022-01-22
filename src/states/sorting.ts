@@ -1,14 +1,13 @@
-import { atom } from 'recoil';
+import { atom } from "recoil";
 import { TeaProduct } from "types/TeaProduct";
 
-export type Sorting = '-year' | '+year' | '+name' | '-name';
-export const sortings: Sorting[] = ['-year' , '+year' , '+name' , '-name'];
+export type Sorting = "-year" | "+year" | "+name" | "-name";
+export const sortings: Sorting[] = ["-year", "+year", "+name", "-name"];
 
 export const sortingState = atom({
-  key: 'sorting',
-  default: '-year' as Sorting,
+  key: "sorting",
+  default: "-year" as Sorting,
 });
-
 
 const getName = (x: TeaProduct) => x.name.replace("The ", "");
 
