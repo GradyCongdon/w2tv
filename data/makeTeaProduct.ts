@@ -184,7 +184,7 @@ const teaProducts: TeaProduct[] = validTeas.map((t) => {
     oSlug: t.key,
     year: t.year,
     style: getStyle(t),
-    name: t.name,
+    name: t.name.replace(t.year.toString(), "").trim(),
     size: t.forms[0]?.size || "unknown",
     wrapper: getImage(t, "wrapper"),
     bing: getImage(t, "tea"),
@@ -192,4 +192,4 @@ const teaProducts: TeaProduct[] = validTeas.map((t) => {
     description: t.description?.replace(/<\/?[^>]+(>|$)/g, "") || "",
   };
 });
-await Deno.writeTextFile("../teaProducts2.json", fmtJSON(teaProducts));
+await Deno.writeTextFile("../src/teaProducts.json", fmtJSON(teaProducts));

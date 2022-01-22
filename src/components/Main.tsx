@@ -37,8 +37,7 @@ export const Main = () => {
   const layout = useRecoilValue(layoutState);
   const selectedSlug = useRecoilValue(selectedSlugState);
 
-  const teas: TeaProduct[] = _teas
-    .slice(0, 0)
+  const teas = (_teas as TeaProduct[])
     // @ts-expect-error: dynamic
     .filter(filteringFunctions[filtering])
     .sort(sortingFunctions[sorting]);
