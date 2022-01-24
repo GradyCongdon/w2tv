@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useRecoilValue } from "recoil";
-import _teas from "teaProducts.json";
+import teaProducts from "teaProducts.json";
 import { useKeyboardNavigation } from "hooks/useKeyboardNavigation";
 import { scrollToId } from "utils/scrollTo";
 import { Cards } from "components/TeaProduct/Card";
@@ -37,7 +37,7 @@ export const Main = () => {
   const layout = useRecoilValue(layoutState);
   const selectedSlug = useRecoilValue(selectedSlugState);
 
-  const teas = (_teas as TeaProduct[])
+  const teas = (teaProducts as TeaProduct[])
     // @ts-expect-error: dynamic
     .filter(filteringFunctions[filtering])
     .sort(sortingFunctions[sorting]);
