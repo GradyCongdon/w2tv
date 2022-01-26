@@ -1,4 +1,5 @@
-import { Form, ImageFull } from "./FullTea.ts";
+// import { Form, ImageFull } from "./FullTea.ts";
+import { Form, ImageFull } from "./FullTea";
 
 export type ImageType =
   | "wrapper"
