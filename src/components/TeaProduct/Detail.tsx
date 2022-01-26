@@ -88,8 +88,8 @@ type OfferProps = {
 
 export const Offer = ({ offer }: OfferProps) => {
   const { title, price, in_stock } = offer;
-  const mass = parseInt(title.replace(/\D/g, ""), 10);
-  const ppg = price / mass;
+  let mass = parseInt(title.replace(/\D/g, ""), 10);
+  if (mass === 1) mass = 1000;
   const tilde = title.startsWith("~") ? "~" : "";
 
   const style = {
@@ -97,14 +97,16 @@ export const Offer = ({ offer }: OfferProps) => {
     color: in_stock ? "inherit" : "var(--grey-medium)",
   };
 
+  const nan = Number.isNaN(mass);
+  const $size = nan ? "?" : `${tilde} ${mass}`;
+  const $price = price.toFixed(2);
+  const $ppg = nan ? "?" : (price / mass).toFixed(2);
+
   return (
     <div style={style} className="Offer table">
-      <h2>
-        {tilde}
-        {mass}g
-      </h2>
-      <h3>${price.toFixed(2)}</h3>
-      <h4>${ppg.toFixed(2)}</h4>
+      <h2>{$size}g</h2>
+      <h3>${$price}</h3>
+      <h4>${$ppg}</h4>
     </div>
   );
 };

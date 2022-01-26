@@ -1,8 +1,15 @@
 import { atom } from "recoil";
 import { TeaProduct } from "types/TeaProduct";
 
-export type Sorting = "-year" | "+year" | "+name" | "-name";
-export const sortings: Sorting[] = ["-year", "+year", "+name", "-name"];
+export type Sorting = "-year" | "+year" | "+name" | "-name" | "+cost" | "-cost";
+export const sortings: Sorting[] = [
+  "-year",
+  "+year",
+  "+name",
+  "-name",
+  "-cost",
+  "+cost",
+];
 
 export const sortingState = atom({
   key: "sorting",
@@ -21,6 +28,14 @@ const yearDesc = (a: TeaProduct, b: TeaProduct) =>
 const yearAsc = (a: TeaProduct, b: TeaProduct) =>
   a.year - b.year || nameAsc(a, b);
 
+const maxDPG = (x: TeaProduct): number =>
+  Math.max(...x.forms.map((x) => x.dpg));
+
+const costDesc = (a: TeaProduct, b: TeaProduct) =>
+  maxDPG(b) - maxDPG(a) || nameAsc(a, b);
+const costAsc = (a: TeaProduct, b: TeaProduct) =>
+  maxDPG(a) - maxDPG(b) || nameAsc(a, b);
+
 type SortingFunctionMap = {
   [key in Sorting]: (a: TeaProduct, b: TeaProduct) => number;
 };
@@ -30,4 +45,6 @@ export const sortingFunctions: SortingFunctionMap = {
   "+year": yearAsc,
   "+name": nameAsc,
   "-name": nameDesc,
+  "-cost": costDesc,
+  "+cost": costAsc,
 };
