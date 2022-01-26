@@ -1,4 +1,4 @@
-// import { Form, ImageFull } from "./FullTea.ts";
+import { Form, ImageFull } from "./FullTea.ts";
 import { Form, ImageFull } from "./FullTea";
 
 export type ImageType =
@@ -18,24 +18,22 @@ export interface TeaImage {
   height: number;
 }
 
-const defaultImage = (subject: string) => ({
+const defaultImage = {
   url: "",
-  subject,
-});
+};
 
 export function getImageSubject(
   view: string,
   size: number,
   tea: TeaProduct
 ): TeaImage {
-  const image =
-    tea.images.find((i) => i.subject === view) || defaultImage(view);
+  const image = tea.images.find((i) => i.subject === view) || defaultImage;
   return {
     alt: tea.name,
     src: image.url.replace("SIZE", size.toString()),
     width: size,
     height: size,
-    type: image.subject,
+    type: image.subject || view,
     srcWhiteBalanced: image.url,
   };
 }
