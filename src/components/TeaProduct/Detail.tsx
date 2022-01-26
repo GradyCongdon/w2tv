@@ -4,6 +4,7 @@ import { OfferOembed, TeaOembed } from "types/Oembed";
 import { selectedSlugState } from "states/selectedSlug";
 
 import "./Detail.scss";
+import { scrollToId } from "utils/scrollTo";
 
 const WIDTH = 800;
 const HEIGHT = 800;
@@ -187,7 +188,10 @@ export const Detail = () => {
   const [selectedSlug, setSelectedSlug] = useRecoilState(selectedSlugState);
   const classes = `drawer ${selectedSlug ? "open" : "closed"}`;
 
-  const resetSelected = () => setSelectedSlug("");
+  const resetSelected = () => {
+    scrollToId(selectedSlug);
+    setSelectedSlug("");
+  };
 
   return (
     <aside className={classes}>

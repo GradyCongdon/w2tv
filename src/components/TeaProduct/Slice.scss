@@ -37,7 +37,7 @@
       height: 75px;
       width: 100%;
       object-position: 0 55%;
-      @media screen and (min-width: 768px) {
+      @media screen and (min-width: 1024px) {
         height: 500px;
         width: 150px;
         object-position: 40% 0;
@@ -45,7 +45,7 @@
     }
     .TeaSliceInfo {
       margin-top: 50%;
-      @media screen and (min-width: 768px) {
+      @media screen and (min-width: 1024px) {
         margin-top: 85%;
       }
     }
@@ -78,7 +78,7 @@
     padding: 0.75rem;
     text-align: center;
     width: 95%;
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 1024px) {
       width: calc(150% - 0.5rem);
     }
   }
@@ -105,7 +105,7 @@
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 2rem;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1024px) {
     margin-bottom: 0.5rem;
   }
 }
