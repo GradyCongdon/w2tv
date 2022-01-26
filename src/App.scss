@@ -29,6 +29,9 @@ body {
   width: 100vw;
   overflow-x: hidden;
 }
+iframe {
+  display: none !important;
+}
 
 button,
 body {

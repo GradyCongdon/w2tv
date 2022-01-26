@@ -46,9 +46,10 @@ const defaultImage = makeImage("wrapper", "xxx", 300, "w");
 
 const getImage = (t: FullTea, type: PredictedType): Image => {
   const match =
-    t.images.find(
-      (i) => i.predictedType === type || i.predictedType === "bamboo"
-    ) || t.images[0];
+    t.images
+      .sort((a, b) => b.probability - a.probability)
+      .find((i) => i.predictedType === type || i.predictedType === "bamboo") ||
+    t.images[0];
   if (!match) defaultImage;
   const src = match.url.replace("_SIZEx", "_400x");
   return {

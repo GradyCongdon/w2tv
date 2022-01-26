@@ -7,10 +7,6 @@ import { TeaProduct } from "types/TeaProduct";
 import { Image } from "./Image";
 import "./Card.scss";
 
-export const ViewSelectorLocal = ({ view, setView }: any) => (
-  <nav className={`view-selector fade`}></nav>
-);
-
 interface TeasProps {
   teas: TeaProduct[];
 }
@@ -34,7 +30,8 @@ export const Card = ({ tea }: Props) => {
   }, [viewGlobal]);
 
   const { year, name, oSlug } = tea;
-  const image = tea[view];
+  const { src: _src, srcWhiteBalanced, width, height } = tea[view];
+  const src = whiteBalanced ? srcWhiteBalanced : _src;
   const isSelected = selectedSlug === oSlug;
   const onClick = () => setSelectedSlug(oSlug);
   const classes = `TeaCard ${isSelected ? "selected" : ""}`;
@@ -45,8 +42,7 @@ export const Card = ({ tea }: Props) => {
         <div className="icon"></div>
         <h3 className="year glow">{year}</h3>
         <h2 className="name">{name}</h2>
-        <Image image={image} whiteBalanced={whiteBalanced} />
-        <ViewSelectorLocal view={view} setView={setView} />
+        <Image src={src} alt={name} width={width} height={height} />
       </div>
     </figure>
   );

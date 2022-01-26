@@ -51,17 +51,30 @@ export interface ImageFull {
   key: string;
   url: string;
   predictedType: PredictedType;
+  subject?: ImageSubject;
   probability: number;
 }
 
 export type PredictedType =
-  | "bamboo"
   | "leaf"
   | "soup"
   | "tea"
   | "tong"
-  | "underside"
-  | "wrapper";
+  | "wrapper"
+  | "underside";
+
+export type ImageSubject =
+  | "leaf"
+  | "soup"
+  | "tea-bottom"
+  | "tea-detail"
+  | "tea-top"
+  | "tong"
+  | "chabu"
+  | "shirt"
+  | "wrapper-bottom"
+  | "wrapper-detail"
+  | "wrapper-top";
 
 export enum Type {
   BlackTea = "Black Tea",

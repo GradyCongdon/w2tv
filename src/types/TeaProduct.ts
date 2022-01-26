@@ -1,3 +1,5 @@
+import { Form, ImageFull } from "./FullTea.ts";
+
 export type ImageType =
   | "wrapper"
   | "tea"
@@ -6,7 +8,7 @@ export type ImageType =
   | "tong"
   | "underside";
 
-export interface Image {
+export interface TeaImage {
   type: ImageType;
   src: string;
   srcWhiteBalanced: string;
@@ -43,10 +45,12 @@ export interface TeaProduct {
   style: TeaStyle;
   name: string;
   size: TeaSize;
-  wrapper: Image;
-  bing: Image;
-  soup: Image;
+  wrapper: TeaImage;
+  bing: TeaImage;
+  soup: TeaImage;
   description: string;
+  images: ImageFull[];
+  forms: Form[];
 }
 
 export interface EntryProps {
