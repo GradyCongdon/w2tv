@@ -3,7 +3,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { selectedSlugState } from "states/selectedSlug";
 import { viewState } from "states/view";
 import { whiteBalancedState } from "states/whiteBalanced";
-import { TeaProduct } from "types/TeaProduct";
+import { getImageSubject, TeaProduct } from "types/TeaProduct";
 import "./Slice.scss";
 
 interface TeaSliceProps {
@@ -16,9 +16,8 @@ const Slice = ({ tea }: TeaSliceProps) => {
   const [selectedSlug, setSelectedSlug] = useRecoilState(selectedSlugState);
 
   const { year, name, size, oSlug } = tea;
-  const { type, src: srcRaw, srcWhiteBalanced, alt, width, height } = tea[view];
-
-  const src = type === "soup" && whiteBalanced ? srcWhiteBalanced : srcRaw;
+  const image = getImageSubject(view, 400, tea);
+  if (!image.src) return null;
 
   const onClick = () => setSelectedSlug(oSlug);
   const isSelected = selectedSlug === oSlug;
@@ -28,13 +27,15 @@ const Slice = ({ tea }: TeaSliceProps) => {
 
   return (
     <span className={classes} onClick={onClick} id={oSlug}>
-      <img
-        src={src}
-        alt={alt}
-        width={width}
-        height={height}
-        className="TeaSlice"
-      />
+      {image && (
+        <img
+          src={image.src}
+          alt={image.alt}
+          width={image.width}
+          height={image.height}
+          className="TeaSlice"
+        />
+      )}
       <div className="TeaSliceInfoWrapper">
         <div className="TeaSliceInfo glow">
           <span>{year}</span>

@@ -17,6 +17,28 @@ export interface TeaImage {
   height: number;
 }
 
+const defaultImage = (subject: string) => ({
+  url: "",
+  subject,
+});
+
+export function getImageSubject(
+  view: string,
+  size: number,
+  tea: TeaProduct
+): TeaImage {
+  const image =
+    tea.images.find((i) => i.subject === view) || defaultImage(view);
+  return {
+    alt: tea.name,
+    src: image.url.replace("SIZE", size.toString()),
+    width: size,
+    height: size,
+    type: image.subject,
+    srcWhiteBalanced: image.url,
+  };
+}
+
 export type TeaStyle =
   | "white"
   | "green"

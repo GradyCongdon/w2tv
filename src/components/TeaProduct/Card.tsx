@@ -3,7 +3,7 @@ import { useRecoilState } from "recoil";
 import { selectedSlugState } from "states/selectedSlug";
 import { viewState } from "states/view";
 import { whiteBalancedState } from "states/whiteBalanced";
-import { TeaProduct } from "types/TeaProduct";
+import { TeaProduct, getImageSubject } from "types/TeaProduct";
 import { Image } from "./Image";
 import "./Card.scss";
 
@@ -30,8 +30,8 @@ export const Card = ({ tea }: Props) => {
   }, [viewGlobal]);
 
   const { year, name, oSlug } = tea;
-  const { src: _src, srcWhiteBalanced, width, height } = tea[view];
-  const src = whiteBalanced ? srcWhiteBalanced : _src;
+  const image = getImageSubject(view, 400, tea);
+
   const isSelected = selectedSlug === oSlug;
   const onClick = () => setSelectedSlug(oSlug);
   const classes = `TeaCard ${isSelected ? "selected" : ""}`;
@@ -42,7 +42,14 @@ export const Card = ({ tea }: Props) => {
         <div className="icon"></div>
         <h3 className="year glow">{year}</h3>
         <h2 className="name">{name}</h2>
-        <Image src={src} alt={name} width={width} height={height} />
+        {image && (
+          <Image
+            src={image.src}
+            alt={image.alt}
+            width={image.width}
+            height={image.height}
+          />
+        )}
       </div>
     </figure>
   );

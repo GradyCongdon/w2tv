@@ -37,8 +37,8 @@ export const ViewSelector = () => {
   const [currentView] = useRecoilState(viewState);
   return (
     <nav className={`view-selector global`}>
-      <Button view="wrapper" />
-      <Button view="bing" />
+      <Button view="wrapper-top" />
+      <Button view="tea-top" />
       <div className={`view--white-balanced ${currentView}`}>
         <WhiteBalance />
         <Button view="soup" />

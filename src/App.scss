@@ -54,10 +54,12 @@ main {
     margin-right: var(--detail-width);
     overflow-y: hidden;
     max-height: 100vh;
+    opacity: 0;
   }
   @media screen and (min-width: 1024px) {
     padding: 1.5rem 2rem;
     &.detail--open {
+      opacity: 1;
       overflow-y: unset;
       max-height: unset;
     }
