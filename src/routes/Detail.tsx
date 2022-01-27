@@ -1,11 +1,12 @@
-import { useRecoilState } from "recoil";
+import { Detail } from "components/Detail/Detail";
+import { useSearchParams } from "react-router-dom";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { selectedSlugState } from "states/selectedSlug";
+import { teasState } from "states/teas";
 import { TeaOembed } from "types/Oembed";
 import { scrollToId } from "utils/scrollTo";
 
 import "./Detail.scss";
-import { OembedDetailContent, useOembed } from "./TeaOembed";
-
 
 // const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
@@ -19,35 +20,23 @@ export const Error = ({ slug }: any) => {
 };
 
 export const Skeleton = () => {
-  return (
-    <div className="skeleton">
-    </div>
-  );
-};
-
-export const DetailDrawerContent = ({ slug }: any) => {
-  const [detail, status] = useOembed(slug);
-
-  switch (status) {
-    case "start":
-      return <Skeleton />;
-    case "loading":
-      return <Skeleton />;
-    // case 'resolved': return <Skeleton />;
-    case "resolved":
-      return <OembedDetailContent oembed={detail as TeaOembed} />;
-    default:
-      return <Error slug={slug} />;
-  }
+  return <div className="skeleton"></div>;
 };
 
 export const DetailDrawer = () => {
-  const [selectedSlug, setSelectedSlug] = useRecoilState(selectedSlugState);
-  const classes = `drawer ${selectedSlug ? "open" : "closed"}`;
+  const teas = useRecoilValue(teasState);
+  const [params, setParams] = useSearchParams();
+  const detailSlug = params.get("detail");
+
+  if (!detailSlug) return null;
+  const tea = teas.find((t) => t.slug === detailSlug);
+  if (!tea) return null;
+
+  const classes = `drawer ${detailSlug ? "open" : "closed"}`;
 
   const resetSelected = () => {
-    scrollToId(selectedSlug);
-    setSelectedSlug("");
+    scrollToId(detailSlug);
+    setParams({});
   };
 
   return (
@@ -55,7 +44,7 @@ export const DetailDrawer = () => {
       <button className="DetailButton Close" onClick={resetSelected}>
         <span className="value">&times;</span>
       </button>
-      {selectedSlug && <DetailDrawerContent slug={selectedSlug} />}
+      <Detail tea={tea} />
     </aside>
   );
 };

@@ -1,45 +1,41 @@
-import { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
-import { selectedSlugState } from "states/selectedSlug";
-import { viewState } from "states/view";
-import { whiteBalancedState } from "states/whiteBalanced";
-import { TeaProduct, getImageSubject } from "types/TeaProduct";
+import { getImageUrl, ImageSubject, TeaProduct } from "types/TeaProduct";
 import { Image } from "./Image";
 import "./Card.scss";
+import { useSearchParams } from "react-router-dom";
 
 export type Props = {
   tea: TeaProduct;
+  subject: ImageSubject;
 };
 
-export const Card = ({ tea }: Props) => {
-  const [viewGlobal] = useRecoilState(viewState);
-  const [selectedSlug, setSelectedSlug] = useRecoilState(selectedSlugState);
-  const [whiteBalanced] = useRecoilState(whiteBalancedState);
-  const [view, setView] = useState(viewGlobal);
+export const Card = ({ tea, subject }: Props) => {
+  const [params, setParams] = useSearchParams();
+  const detailSlug = params.get("detail");
 
-  useEffect(() => {
-    setView(viewGlobal);
-  }, [viewGlobal]);
+  const { year, name, slug } = tea;
+  const setSelected = () =>
+    setParams({
+      detail: slug,
+    });
 
-  const { year, name, oSlug } = tea;
-  const image = getImageSubject(view, 400, tea);
+  const imageUrl = tea.images[subject];
+  const size = 400;
 
-  const isSelected = selectedSlug === oSlug;
-  const onClick = () => setSelectedSlug(oSlug);
+  const isSelected = detailSlug === slug;
   const classes = `TeaCard ${isSelected ? "selected" : ""}`;
 
   return (
-    <figure className={classes} onClick={onClick} id={oSlug}>
+    <figure className={classes} onClick={setSelected} id={slug}>
       <div className="content">
         <div className="icon"></div>
         <h3 className="year glow">{year}</h3>
         <h2 className="name">{name}</h2>
-        {image && (
+        {imageUrl && (
           <Image
-            src={image.src}
-            alt={image.alt}
-            width={image.width}
-            height={image.height}
+            src={getImageUrl(imageUrl, size)}
+            alt={name}
+            width={size}
+            height={size}
           />
         )}
       </div>

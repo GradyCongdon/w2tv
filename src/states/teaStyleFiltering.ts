@@ -1,7 +1,7 @@
 import { atom } from "recoil";
-import { TeaProduct, TeaStyle } from "types/TeaProduct";
+import { TeaProduct, Style } from "types/TeaProduct";
 
-export type TeaStyleFiltering = "all" | TeaStyle;
+export type TeaStyleFiltering = "all" | Style;
 
 export const teaStyleFilteringState = atom({
   key: "teaStyleFilter",

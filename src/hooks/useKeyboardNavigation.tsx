@@ -5,23 +5,23 @@ import { useHotkeys } from "react-hotkeys-hook";
 
 export const getDirection = (
   direction: string,
-  oSlug: string,
+  slug: string,
   teas: TeaProduct[]
 ): string => {
-  if (!oSlug) return teas[0].oSlug;
-  const i = teas.findIndex((t) => t.oSlug === oSlug);
+  if (!slug) return teas[0].slug;
+  const i = teas.findIndex((t) => t.slug === slug);
   const col = 3;
   switch (direction) {
     case "left":
-      return teas[i - 1]?.oSlug || teas[teas.length - 1].oSlug;
+      return teas[i - 1]?.slug || teas[teas.length - 1].slug;
     case "right":
-      return teas[i + 1]?.oSlug || teas[0].oSlug;
+      return teas[i + 1]?.slug || teas[0].slug;
     case "up":
-      return teas[i - col]?.oSlug || teas[teas.length - 1].oSlug;
+      return teas[i - col]?.slug || teas[teas.length - 1].slug;
     case "down":
-      return teas[i + col]?.oSlug || teas[0].oSlug;
+      return teas[i + col]?.slug || teas[0].slug;
     default:
-      return oSlug;
+      return slug;
   }
 };
 

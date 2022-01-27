@@ -28,8 +28,8 @@ export const Main = () => {
     <main className={selectedSlug ? "detail--open" : ""}>
       <Routes>
         <Route index element={<Cards />} />
-        <Route path="cards" element={<Cards />} />
-        <Route path="slices" element={<Slices />} />
+        <Route path="cards/:subject" element={<Cards />} />
+        <Route path="slices/:subject" element={<Slices />} />
         <Route path="list" element={<List />} />
       </Routes>
     </main>

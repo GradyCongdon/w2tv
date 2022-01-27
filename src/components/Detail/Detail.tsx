@@ -1,30 +1,28 @@
-import { useParams } from "react-router-dom";
-import { useRecoilValue } from "recoil";
-import { teasState } from "states/teas";
-import { TeaProduct } from "types/TeaProduct";
+import { getImageUrl, TeaProduct } from "types/TeaProduct";
+import { Image } from "components/TeaProduct/Image";
+import { Description } from "./Description";
+import { LinkButton } from "./LinkButton";
+import { OfferHeading } from "./Offer";
 import "./Detail.scss";
+import { Form } from "./Form";
 
-const useDetail = (): TeaProduct | undefined => {
-  const teas = useRecoilValue(teasState);
-  const { detailSlug } = useParams();
-  return teas.find((t) => t.slug === detailSlug);
-};
 type Props = {
-  tea: TeaProduct
-}
+  tea: TeaProduct;
+};
 
-export const OembedDetail = ({tea}: Props) => {
-  const {name, forms, description, } = tea;
-
+export const Detail = ({ tea }: Props) => {
+  const { name, description, url, forms } = tea;
+  const size = 400;
+  const imageUrl = getImageUrl(tea.images.wrapperTop || tea.thumbnailUrl, size);
   return (
     <article className="TeaDetail">
-      <h1 className="title glow">{title}</h1>
-      <Image src={thumbnail_url} alt={title} width={WIDTH} height={HEIGHT} />
+      <h1 className="title glow">{name}</h1>
+      <Image src={imageUrl} alt={name} width={size} height={size} />
       <OfferHeading />
-      {offers.map((o) => (
-        <Offer key={o.sku} offer={o} />
+      {forms.map((f) => (
+        <Form key={f.name} form={f} />
       ))}
-      <Description glowText={title} description={description} />
+      <Description glowText={name} description={description} />
       <LinkButton url={url} />
     </article>
   );

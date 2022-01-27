@@ -1,37 +1,39 @@
+import { useSearchParams } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { selectedSlugState } from "states/selectedSlug";
-import { viewState } from "states/view";
-import { whiteBalancedState } from "states/whiteBalanced";
-import { getImageSubject, TeaProduct } from "types/TeaProduct";
+import { getImageUrl, ImageSubject, TeaProduct } from "types/TeaProduct";
 import "./Slice.scss";
 
 interface TeaSliceProps {
   tea: TeaProduct;
+  subject: ImageSubject;
 }
 
-export const Slice = ({ tea }: TeaSliceProps) => {
-  const view = useRecoilValue(viewState);
-  const whiteBalanced = useRecoilValue(whiteBalancedState);
-  const [selectedSlug, setSelectedSlug] = useRecoilState(selectedSlugState);
+export const Slice = ({ tea, subject }: TeaSliceProps) => {
+  const [params, setParams] = useSearchParams();
+  const detailSlug = params.get("detail");
 
-  const { year, name, size, oSlug } = tea;
-  const image = getImageSubject(view, 400, tea);
-  if (!image.src) return null;
+  const { year, name, slug } = tea;
+  const setSelected = () =>
+    setParams({
+      detail: slug,
+    });
 
-  const onClick = () => setSelectedSlug(oSlug);
-  const isSelected = selectedSlug === oSlug;
+  const imageUrl = tea.images[subject];
+  const size = 400;
+
+  const isSelected = detailSlug === slug;
   const classes = `TeaSliceWrapper ${
     isSelected ? "selected" : ""
-  } ${view} ${size}`;
+  } ${subject} ${size}`;
 
   return (
-    <span className={classes} onClick={onClick} id={oSlug}>
-      {image && (
+    <span className={classes} onClick={setSelected} id={slug}>
+      {imageUrl && (
         <img
-          src={image.src}
-          alt={image.alt}
-          width={image.width}
-          height={image.height}
+          src={getImageUrl(imageUrl, size)}
+          alt={name}
+          width={size}
+          height={size}
           className="TeaSlice"
         />
       )}

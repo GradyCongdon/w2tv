@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { teasState } from "states/teas";
-import { viewState } from "states/view";
-import { getDefaultFilters, Slice } from "../components/TeaProduct/Slice";
+import { ImageSubject } from "types/TeaProduct";
+import { getDefaultFilters, Slice } from "components/TeaProduct/Slice";
 
 export const Slices = () => {
   const teas = useRecoilValue(teasState);
-  const view = useRecoilValue(viewState);
-  const defaultFilters = getDefaultFilters(view);
+  const params = useParams();
+  const subject = params.subject as ImageSubject;
+
+  const defaultFilters = getDefaultFilters(subject);
   const [filteredSizes, setFilteredSizes] = useState(defaultFilters);
 
   useEffect(() => {
-    setFilteredSizes(getDefaultFilters(view));
-  }, [view]);
+    setFilteredSizes(getDefaultFilters(subject));
+  }, [subject]);
 
   const toggle = (size: any) => ({
     ...filteredSizes,
@@ -31,7 +34,7 @@ export const Slices = () => {
 
   const TeaSlices = teas
     .filter((t) => filteredSizes[t.size])
-    .map((t) => <Slice key={t.slug} tea={t} />);
+    .map((t) => <Slice key={t.slug} tea={t} subject={subject} />);
 
   return (
     <>

@@ -1,6 +1,6 @@
-import { Main } from "components/Main";
+import { Main } from "routes/Main";
 import { Nav } from "components/Nav";
-import { Detail } from "components/TeaProduct/Detail";
+import { DetailDrawer } from "routes/Detail";
 import { useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import { layoutState } from "states/layout";
@@ -39,7 +39,7 @@ function App() {
     <div className="app">
       <Nav />
       <Main />
-      <Detail />
+      <DetailDrawer />
     </div>
   );
 }
