@@ -1,16 +1,16 @@
-.view-selector {
+.subject-selector {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 }
 
-.view-selector.global {
+.subject-selector.global {
   margin-bottom: 2rem;
 }
 
 
-.button.button--view {
+.button.button--subject {
   --size: .6rem;
   --ratio: 1.75;
   font-size: var(--size);
@@ -49,7 +49,7 @@
   border: 1px solid rgb(147, 147, 147);
   background-color: rgb(239, 239, 239);
 }
-.view-selector.global .button--view {
+.subject-selector.global .button--subject {
   width: 3rem;
   height: 3rem;
   font-size: 1.05rem;
@@ -57,8 +57,7 @@
   margin-bottom: .75rem;
 }
 
-
-.view--white-balanced {
+.subject--white-balanced {
   --size: 22px;
   position: relative;
   padding: 0;

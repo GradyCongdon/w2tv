@@ -118,6 +118,7 @@ button {
   margin: 0.5rem;
   outline: none;
   transition: background-color 120ms ease;
+  text-decoration: none;
   &:hover {
     background-color: rgb(239, 250, 255);
   }
