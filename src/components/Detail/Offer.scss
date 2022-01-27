@@ -1,0 +1,19 @@
+.table {
+  display: grid;
+  align-items: baseline;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  justify-items: center;
+}
+
+.OfferHeading {
+  border-bottom: var(--border);
+}
+
+.Offer {
+  border-bottom: var(--border);
+
+  &:first-of-type {
+    border-top: var(--border);
+  }
+}

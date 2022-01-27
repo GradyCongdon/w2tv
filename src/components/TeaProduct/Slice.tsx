@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { selectedSlugState } from "states/selectedSlug";
 import { viewState } from "states/view";
@@ -10,7 +9,7 @@ interface TeaSliceProps {
   tea: TeaProduct;
 }
 
-const Slice = ({ tea }: TeaSliceProps) => {
+export const Slice = ({ tea }: TeaSliceProps) => {
   const view = useRecoilValue(viewState);
   const whiteBalanced = useRecoilValue(whiteBalancedState);
   const [selectedSlug, setSelectedSlug] = useRecoilState(selectedSlugState);
@@ -46,11 +45,11 @@ const Slice = ({ tea }: TeaSliceProps) => {
   );
 };
 
-interface SlicesProps {
+export interface SlicesProps {
   teas: TeaProduct[];
 }
 
-const getDefaultFilters = (view: string) =>
+export const getDefaultFilters = (view: string) =>
   ({
     cake: true,
     brick: view === "wrapper" ? false : true,
@@ -59,34 +58,3 @@ const getDefaultFilters = (view: string) =>
     ball: view === "wrapper" ? false : true,
     bamboo: view !== "soup" ? false : true,
   } as any);
-
-export const Slices = ({ teas }: SlicesProps) => {
-  const view = useRecoilValue(viewState);
-  const defaultFilters = getDefaultFilters(view);
-  const [filteredSizes, setFilteredSizes] = useState(defaultFilters);
-  useEffect(() => {
-    setFilteredSizes(getDefaultFilters(view));
-  }, [view]);
-  const TeaSlices = teas
-    .filter((t) => filteredSizes[t.size])
-    .map((t) => <Slice key={t.slug} tea={t} />);
-  const toggle = (size: any) => ({
-    ...filteredSizes,
-    [size]: !filteredSizes[size] as boolean,
-  });
-  const Filters = Object.keys(defaultFilters).map((size) => (
-    <button
-      key={size}
-      className={`button toggle ${filteredSizes[size] ? "checked" : ""}`}
-      onClick={() => setFilteredSizes(toggle(size))}
-    >
-      {size}
-    </button>
-  ));
-  return (
-    <>
-      <nav className="TeaSliceFilters">{Filters}</nav>
-      <div className="TeaSlices">{TeaSlices}</div>
-    </>
-  );
-};

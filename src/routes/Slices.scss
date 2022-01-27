@@ -1,0 +1,15 @@
+.TeaSlices {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.TeaSliceFilters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2rem;
+  @media screen and (min-width: 1024px) {
+    margin-bottom: 0.5rem;
+  }
+}

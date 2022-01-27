@@ -1,86 +1,86 @@
-import { FullTea, Type, PredictedType } from "../src/types/FullTea.ts";
+import { TeaIn, Image as ImageIn, Style as StyleIn } from "./TeaIn.ts";
 import {
-  TeaStyle,
-  ImageType,
-  Image,
+  Style,
+  Images,
   TeaProduct,
+  ImageSubject,
 } from "../src/types/TeaProduct.ts";
+import type { TeaFull } from "./TeaFull.ts";
 
-function fmtJSON(obj: object) {
+function fmtJSON(obj: unknown) {
   return JSON.stringify(obj, null, 2);
 }
 
-const getStyle = (t: FullTea): TeaStyle => {
-  switch (t.type) {
-    case Type.BlackTea:
+const getStyle = (t: TeaIn): Style => {
+  switch (t.style) {
+    case StyleIn.Black:
       return "black";
-    case Type.Heicha:
-      return "black";
-    case Type.Oolong:
+    case StyleIn.Oolong:
       return "oolong";
-    case Type.RawPuerTea:
+    case StyleIn.Raw:
       return "raw";
-    case Type.RipePuerTea:
+    case StyleIn.Ripe:
       return "ripe";
     default:
-      return "unknown";
+      console.log("white style defaulting", t.name);
+      return "white";
   }
 };
 
-const makeImage = (
-  type: ImageType,
-  slug: string,
-  size: number,
-  view: string
-): Image => {
-  return {
-    type,
-    src: `${slug}${view}_${size}x.jpg`,
-    srcWhiteBalanced: `${slug}${view}w_${size}x.jpg`,
-    alt: type,
-    width: size,
-    height: size,
-  };
-};
-const defaultImage = makeImage("wrapper", "xxx", 300, "w");
+const getSubject = (i: ImageIn): ImageSubject => {
+  const match = i.subject.match(
+    /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g
+  );
+  if (!match) {
+    console.error("no subject match", i.subject, i);
+    return "chabu";
+  }
 
-const getImage = (t: FullTea, type: PredictedType): Image => {
-  const match =
-    t.images
-      .sort((a, b) => b.probability - a.probability)
-      .find((i) => i.predictedType === type || i.predictedType === "bamboo") ||
-    t.images[0];
-  if (!match) defaultImage;
-  const src = match.url.replace("_SIZEx", "_400x");
-  return {
-    type: type === "bamboo" ? "tea" : type,
-    src,
-    srcWhiteBalanced: src,
-    alt: t.name,
-    width: 400,
-    height: 400,
-  };
+  const s = match
+    .map((x) => x.slice(0, 1).toUpperCase() + x.slice(1).toLowerCase())
+    .join("");
+  const camel = s.slice(0, 1).toLowerCase() + s.slice(1);
+  return camel as ImageSubject;
 };
 
-const data = await Deno.readTextFile("fullTeas.json");
-const fullTeas: FullTea[] = JSON.parse(data);
-const validTeas = fullTeas.filter((t) => t.images.length);
+const getImages = (t: TeaIn): Images => {
+  const images = {} as Images;
+  t.images
+    .sort((a, b) => a.probability - b.probability)
+    .forEach((i) => {
+      const subject = getSubject(i);
+      images[subject] = i.url;
+    });
+  return images;
+};
 
-const teaProducts: TeaProduct[] = validTeas.map((t) => {
-  return {
-    slug: t.key,
-    oSlug: t.key,
-    year: t.year,
-    style: getStyle(t),
-    name: t.name.replace(t.year.toString(), "").trim(),
-    size: t.forms[0]?.size || "unknown",
-    wrapper: getImage(t, "wrapper"),
-    bing: getImage(t, "tea"),
-    soup: getImage(t, "soup"),
-    description: t.description?.replace(/<\/?[^>]+(>|$)/g, "") || "",
-    images: t.images,
-    forms: t.forms,
-  };
-});
+async function main() {
+  const dataFull = await Deno.readTextFile("fullTeas.json");
+  const fullTeas: TeaFull[] = JSON.parse(dataFull);
+  const dataIn = await Deno.readTextFile("teaIn.json");
+  const teasIn: TeaIn[] = JSON.parse(dataIn);
 
-await Deno.writeTextFile("../src/teaProducts.json", fmtJSON(teaProducts));
+  const teaProducts: TeaProduct[] = teasIn.map((t: TeaIn) => {
+    const full = fullTeas.find((f) => f.key === t.slug) as TeaFull;
+
+    return {
+      slug: t.slug,
+      year: t.year,
+      style: getStyle(t),
+      name: t.name.replace(t.year.toString(), "").trim(),
+      size: t.forms[0]?.size || "unknown",
+      description: t.description?.replace(/<\/?[^>]+(>|$)/g, "") || "",
+      images: getImages(t),
+      forms: t.forms,
+      url: full.url || "",
+      tags: full.tags,
+      quantity: full.quantity,
+      thumbnailUrl: full.thumbnail_url || "",
+      version: full.version || "",
+    };
+  });
+
+  await Deno.writeTextFile("../src/teaProducts.json", fmtJSON(teaProducts));
+}
+
+await main();

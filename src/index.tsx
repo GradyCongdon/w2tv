@@ -1,14 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.scss";
-import App from "./App";
-import reportWebVitals from "./utils/reportWebVitals";
+import { BrowserRouter } from "react-router-dom";
 import { RecoilRoot } from "recoil";
+import App from "./App";
+import "./index.scss";
+import reportWebVitals from "./utils/reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
     <RecoilRoot>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </RecoilRoot>
   </React.StrictMode>,
   document.getElementById("root")

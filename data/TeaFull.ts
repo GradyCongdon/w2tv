@@ -1,4 +1,4 @@
-export interface FullTea {
+export interface TeaFull {
   name: string;
   year: number;
   quantity: number;
@@ -11,14 +11,32 @@ export interface FullTea {
   inStock: boolean;
   forms: Form[];
   description?: string;
-  thumbnailURL?: string;
+  thumbnail_url?: string;
   url?: string;
   version?: string;
-  images: ImageFull[];
+  images: Image[];
 }
 
 export enum Brand {
   White2Tea = "white2tea",
+}
+
+export interface Form {
+  name: string;
+  price: number;
+  inStock: boolean;
+  grams: number;
+  dpg: number;
+  size: Size;
+  percentiles: Percentiles;
+}
+
+export interface Percentiles {
+  size: number;
+  type: number;
+  typeSize: number;
+  all: number;
+  dpg: number;
 }
 
 export enum Size {
@@ -29,34 +47,22 @@ export enum Size {
   Unknown = "unknown",
 }
 
-export interface ImageFull {
+export interface Image {
   key: string;
   url: string;
   predictedType: PredictedType;
-  subject?: ImageSubject;
   probability: number;
 }
 
-export type PredictedType =
-  | "leaf"
-  | "soup"
-  | "tea"
-  | "tong"
-  | "wrapper"
-  | "underside";
-
-export type ImageSubject =
-  | "leaf"
-  | "soup"
-  | "tea-bottom"
-  | "tea-detail"
-  | "tea-top"
-  | "tong"
-  | "chabu"
-  | "shirt"
-  | "wrapper-bottom"
-  | "wrapper-detail"
-  | "wrapper-top";
+export enum PredictedType {
+  Bamboo = "bamboo",
+  Leaf = "leaf",
+  Soup = "soup",
+  Tea = "tea",
+  Tong = "tong",
+  Underside = "underside",
+  Wrapper = "wrapper",
+}
 
 export enum Type {
   BlackTea = "Black Tea",

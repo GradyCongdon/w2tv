@@ -1,0 +1,38 @@
+.TeaDetail {
+  .title {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 48px;
+    border-radius: 2px;
+    font-size: 1.5rem;
+    position: sticky;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    width: fit-content;
+    padding: 0 4px;
+    @media screen and (min-width: 1024px) {
+      margin-left: 8px;
+      margin-right: 0;
+    }
+  }
+
+  .description {
+    margin-top: 2rem;
+  }
+  .placeholder {
+    --image-size: 415px;
+    width: var(--image-size);
+    height: var(--image-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .circle {
+      --size: 340px;
+      border-radius: 100%;
+      background-color: rgb(242, 242, 242);
+      width: var(--size);
+      height: var(--size);
+      filter: blur(3px);
+    }
+  }
+}

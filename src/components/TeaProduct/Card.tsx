@@ -7,14 +7,6 @@ import { TeaProduct, getImageSubject } from "types/TeaProduct";
 import { Image } from "./Image";
 import "./Card.scss";
 
-interface TeasProps {
-  teas: TeaProduct[];
-}
-export const Cards = ({ teas }: TeasProps) => {
-  const $Teas = teas.map((tea) => <Card key={tea.slug} tea={tea} />);
-  return <section className="TeaCards">{$Teas}</section>;
-};
-
 export type Props = {
   tea: TeaProduct;
 };

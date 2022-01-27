@@ -1,38 +1,4 @@
-// import { Form, ImageFull } from "./FullTea.ts";
-import { Form, ImageFull, ImageSubject } from "./FullTea";
-
-export interface TeaImage {
-  type: ImageSubject;
-  src: string;
-  srcWhiteBalanced: string;
-  alt: string;
-  width: number;
-  height: number;
-}
-
-const defaultImage = (subject: ImageSubject) => ({
-  url: "",
-  subject,
-});
-
-export function getImageSubject(
-  view: ImageSubject,
-  size: number,
-  tea: TeaProduct
-): TeaImage {
-  const image =
-    tea.images.find((i) => i.subject === view) || defaultImage(view);
-  return {
-    alt: tea.name,
-    src: image.url.replace("SIZE", size.toString()),
-    width: size,
-    height: size,
-    type: image.subject || view,
-    srcWhiteBalanced: image.url,
-  };
-}
-
-export type TeaStyle =
+export type Style =
   | "white"
   | "green"
   | "black"
@@ -43,7 +9,7 @@ export type TeaStyle =
   | "huangpian"
   | "unknown";
 
-export type TeaSize =
+export type Size =
   | "cake"
   | "mini"
   | "bamboo"
@@ -53,25 +19,76 @@ export type TeaSize =
   | "sample"
   | "unknown";
 
+export type ImageSubject =
+  | "leaf"
+  | "soup"
+  | "teaBottom"
+  | "teaDetail"
+  | "teaTop"
+  | "tong"
+  | "chabu"
+  | "shirt"
+  | "wrapperBottom"
+  | "wrapperDetail"
+  | "wrapperTop";
+
+export const getImageUrl = (url: string, size: number): string =>
+  url.replace("SIZEx", `${size}x`);
+
+export type Images = Partial<Record<ImageSubject, string>>;
+
+export interface Percentile {
+  size: number;
+  type: number;
+  typeSize: number;
+  all: number;
+  dpg: number;
+}
+
+export interface Form {
+  name: string;
+  price: number;
+  inStock: boolean;
+  grams: number;
+  dpg: number;
+  size: Size;
+  percentiles: Percentile;
+}
+
+// export enum FormName {
+//   Name7G = "7g",
+//   The100G = "100g",
+//   The10G = "10g",
+//   The120G = "120g",
+//   The1Kg = "1kg",
+//   The200G = "200g",
+//   The250G = "250g",
+//   The250GBrickTuoCake = "250g Brick/Tuo/Cake",
+//   The25G = "25g",
+//   The25GSample = "25g Sample",
+//   The357G = "357g",
+//   The357GCake = "357g Cake",
+//   The360G = "360g",
+//   The49G = "~49g",
+//   The49GStack = "49g Stack",
+//   The50G = "~50g",
+//   The7G = "~7g",
+//   The7GMini = "7g Mini",
+//   The80G = "80g",
+// }
+
 export interface TeaProduct {
   slug: string;
-  oSlug: string;
-  year: number;
-  style: TeaStyle;
   name: string;
-  size: TeaSize;
-  wrapper: TeaImage;
-  bing: TeaImage;
-  soup: TeaImage;
+  year: number;
+  quantity: number;
   description: string;
-  images: ImageFull[];
+  url: string;
+  thumbnailUrl: string;
+  version: string;
+  style: Style;
+  size: Size;
+  images: Images;
   forms: Form[];
-}
-
-export interface EntryProps {
-  tea: TeaProduct;
-}
-
-export interface ArrayProps {
-  teas: TeaProduct[];
+  tags: string[];
 }
