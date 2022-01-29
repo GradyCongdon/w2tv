@@ -1,10 +1,4 @@
-import {
-  Link,
-  NavLink,
-  useLocation,
-  useParams,
-  useResolvedPath,
-} from "react-router-dom";
+import { NavLink, useLocation, useParams } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { Toggle } from "components/Toggle";
 import { whiteBalancedState } from "states/whiteBalanced";

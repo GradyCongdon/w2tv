@@ -6,14 +6,21 @@
   justify-items: center;
 }
 
-.OfferHeading {
+.table--fit {
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+}
+.TableHeading {
   border-bottom: var(--border);
 }
 
-.Offer {
+.TableRow {
   border-bottom: var(--border);
 
   &:first-of-type {
     border-top: var(--border);
   }
+}
+
+sup {
+  font-size: 0.75rem;
 }

@@ -1,5 +1,4 @@
 import { useSearchParams } from "react-router-dom";
-import { useRecoilState, useRecoilValue } from "recoil";
 import { getImageUrl, ImageSubject, TeaProduct } from "types/TeaProduct";
 import "./Slice.scss";
 
@@ -35,6 +34,7 @@ export const Slice = ({ tea, subject }: TeaSliceProps) => {
           width={size}
           height={size}
           className="TeaSlice"
+          loading="lazy"
         />
       )}
       <div className="TeaSliceInfoWrapper">
@@ -47,16 +47,3 @@ export const Slice = ({ tea, subject }: TeaSliceProps) => {
   );
 };
 
-export interface SlicesProps {
-  teas: TeaProduct[];
-}
-
-export const getDefaultFilters = (view: string) =>
-  ({
-    cake: true,
-    brick: view === "wrapper" ? false : true,
-    square: view === "wrapper" ? false : true,
-    mini: view === "wrapper" ? false : true,
-    ball: view === "wrapper" ? false : true,
-    bamboo: view !== "soup" ? false : true,
-  } as any);

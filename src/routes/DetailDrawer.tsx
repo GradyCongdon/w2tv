@@ -1,11 +1,8 @@
 import { Detail } from "components/Detail/Detail";
 import { useSearchParams } from "react-router-dom";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { selectedSlugState } from "states/selectedSlug";
-import { allTeasState, teasState } from "states/teas";
-import { TeaOembed } from "types/Oembed";
+import { useRecoilValue } from "recoil";
+import { allTeasState } from "states/teas";
 import { scrollToId } from "utils/scrollTo";
-
 import "./Detail.scss";
 
 // const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
@@ -40,7 +37,7 @@ export const DetailDrawer = () => {
   };
 
   return (
-    <aside className={classes}>
+    <aside className={classes} id="drawer">
       <button className="DetailButton Close" onClick={resetSelected}>
         <span className="value">&times;</span>
       </button>

@@ -20,6 +20,7 @@ import { List } from "routes/List";
 import { Slices } from "routes/Slices";
 import { teasState } from "states/teas";
 import { scrollToId } from "utils/scrollTo";
+import { scrollTop } from "utils/scrollTop";
 
 console.log(`msg: ${process.env.REACT_APP_GIT_MSG}`);
 
@@ -42,7 +43,12 @@ function App() {
   }, [sorting, filtering]);
 
   useEffect(() => {
-    scrollToId(detail || "app", 80);
+    scrollTop("drawer");
+    if (detail) {
+      scrollToId(detail, 80);
+    } else {
+      scrollTop("main");
+    }
   }, [sorting, filtering, detail, location.pathname]);
 
   useKeyboardNavigation(teas);
@@ -54,6 +60,7 @@ function App() {
           <Route path="cards/:subject" element={<Cards />} />
           <Route path="slices/:subject" element={<Slices />} />
           <Route path="list/:subject" element={<List />} />
+          <Route index element={<Navigate to="/cards/wrapperTop" />} />
           <Route path="*" element={<Navigate to="cards/wrapperTop" />} />
         </Route>
       </Routes>
@@ -69,7 +76,7 @@ const Main = () => {
   return (
     <>
       <Nav />
-      <main className={detail ? "detail--open" : ""}>
+      <main id="main" className={detail ? "detail--open" : ""}>
         <Outlet />
       </main>
       <DetailDrawer />

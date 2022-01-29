@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { teasState } from "states/teas";
 import { ImageSubject } from "types/TeaProduct";
-import { getDefaultFilters, Slice } from "components/TeaProduct/Slice";
+import { Slice } from "components/TeaProduct/Slice";
 import "./Slices.scss";
 
 export const Slices = () => {
@@ -44,3 +44,14 @@ export const Slices = () => {
     </>
   );
 };
+
+export const getDefaultFilters = (subject: ImageSubject) =>
+  ({
+    cake: true,
+    brick: true,
+    mini: subject === "wrapperTop" ? false : true,
+    bamboo: subject === "wrapperTop" ? false : true,
+    unknown: subject === "soup" ? true : false,
+    // brick: subject === "wrapperTop" ? false : true,
+    // mini: subject === "wrapperTop" ? false : true,
+  } as any);
