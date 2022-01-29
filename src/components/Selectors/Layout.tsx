@@ -1,9 +1,10 @@
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useLocation, useParams } from "react-router-dom";
 import { Layout, layouts } from "states/layout";
 import { capitalize } from "utils/capitalize";
 
 export const Selector = ({ layout }: { layout: Layout }) => {
   const { subject } = useParams();
+  const location = useLocation();
 
   const newLocation = {
     pathname: `${layout}/${subject}`,
