@@ -5,8 +5,8 @@ export type Sorting = "-year" | "+year" | "+name" | "-name" | "+cost" | "-cost";
 export const sortings: Sorting[] = [
   "-year",
   "+year",
-  "+name",
   "-name",
+  "+name",
   "-cost",
   "+cost",
 ];
@@ -43,8 +43,8 @@ type SortingFunctionMap = {
 export const sortingFunctions: SortingFunctionMap = {
   "-year": yearDesc,
   "+year": yearAsc,
-  "+name": nameAsc,
   "-name": nameDesc,
+  "+name": nameAsc,
   "-cost": costDesc,
   "+cost": costAsc,
 };

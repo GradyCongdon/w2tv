@@ -30,14 +30,12 @@ export const Card = ({ tea, subject }: Props) => {
         <div className="icon"></div>
         <h3 className="year glow">{year}</h3>
         <h2 className="name">{name}</h2>
-        {imageUrl && (
-          <Image
-            src={getImageUrl(imageUrl, size)}
-            alt={name}
-            width={size}
-            height={size}
-          />
-        )}
+        <Image
+          src={getImageUrl(imageUrl || "", size)}
+          alt={name}
+          width={size}
+          height={size}
+        />
       </div>
     </figure>
   );

@@ -1,5 +1,5 @@
 import { Nav } from "components/Nav";
-import { DetailDrawer } from "routes/Detail";
+import { DetailDrawer } from "routes/DetailDrawer";
 import { useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import { sortingState } from "states/sorting";
@@ -13,6 +13,7 @@ import {
   Navigate,
   useSearchParams,
   Outlet,
+  useLocation,
 } from "react-router-dom";
 import { Cards } from "routes/Cards";
 import { List } from "routes/List";
@@ -23,32 +24,11 @@ import { scrollToId } from "utils/scrollTo";
 console.log(`msg: ${process.env.REACT_APP_GIT_MSG}`);
 
 function App() {
-  // const localStoreState = localStorage.getItem("state");
-  // const state: AppState = localStoreState
-  //   ? JSON.parse(localStoreState)
-  //   : stateDefaults;
-
-  return (
-    <div className="app">
-      <Routes>
-        <Route path="/" element={<Main />}>
-          <Route path="cards/:subject" element={<Cards />} />
-          <Route path="slices/:subject" element={<Slices />} />
-          <Route path="list" element={<List />} />
-          {/* <Route path="*" element={<Navigate to="cards/wrapperTop" />} /> */}
-        </Route>
-      </Routes>
-    </div>
-  );
-}
-
-export default App;
-
-const Main = () => {
   const sorting = useRecoilValue(sortingState);
   const filtering = useRecoilValue(teaStyleFilteringState);
   const teas = useRecoilValue(teasState);
   const [params] = useSearchParams();
+  const location = useLocation();
 
   const detail = params.get("detail") || "";
 
@@ -62,11 +42,30 @@ const Main = () => {
   }, [sorting, filtering]);
 
   useEffect(() => {
-    scrollToId(detail || "app", 200);
-  }, [sorting, filtering, detail]);
+    scrollToId(detail || "app", 80);
+  }, [sorting, filtering, detail, location.pathname]);
 
   useKeyboardNavigation(teas);
 
+  return (
+    <div className="app">
+      <Routes>
+        <Route path="/" element={<Main />}>
+          <Route path="cards/:subject" element={<Cards />} />
+          <Route path="slices/:subject" element={<Slices />} />
+          <Route path="list/:subject" element={<List />} />
+          <Route path="*" element={<Navigate to="cards/wrapperTop" />} />
+        </Route>
+      </Routes>
+    </div>
+  );
+}
+
+export default App;
+
+const Main = () => {
+  const [params] = useSearchParams();
+  const detail = params.get("detail") || "";
   return (
     <>
       <Nav />

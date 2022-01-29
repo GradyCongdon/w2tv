@@ -1,10 +1,10 @@
 import { atom } from "recoil";
 
-export type Layout = "card" | "list" | "slice";
+export type Layout = "cards" | "list" | "slices";
 
-export const layouts: Layout[] = ["card", "slice", "list"];
+export const layouts: Layout[] = ["cards", "slices", "list"];
 
 export const layoutState = atom({
   key: "layout",
-  default: "card" as Layout,
+  default: "cards" as Layout,
 });

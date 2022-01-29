@@ -1,4 +1,10 @@
-import { Link, useParams } from "react-router-dom";
+import {
+  Link,
+  NavLink,
+  useLocation,
+  useParams,
+  useResolvedPath,
+} from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { Toggle } from "components/Toggle";
 import { whiteBalancedState } from "states/whiteBalanced";
@@ -22,16 +28,23 @@ const WhiteBalance = () => {
 const label = (subject: ImageSubject) => capitalize(subject[0]);
 
 const Button = ({ subject }: { subject: ImageSubject }) => {
-  // const { subject: currentSubject} = useParams();
+  const { subject: currentSubject } = useParams();
+  const location = useLocation();
 
+  const newSubjectLocation = currentSubject
+    ? {
+        pathname: location.pathname.replace(currentSubject, subject),
+        search: location.search,
+      }
+    : "/";
   return (
-    <Link
-      className={`button radio button--subject`}
-      to={subject}
+    <NavLink
+      className={`button radio button--subject `}
+      to={newSubjectLocation}
       // disabled={currentSubject === subject}
     >
       {label(subject)}
-    </Link>
+    </NavLink>
   );
 };
 

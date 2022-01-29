@@ -4,6 +4,7 @@ import { useRecoilValue } from "recoil";
 import { teasState } from "states/teas";
 import { ImageSubject } from "types/TeaProduct";
 import { getDefaultFilters, Slice } from "components/TeaProduct/Slice";
+import "./Slices.scss";
 
 export const Slices = () => {
   const teas = useRecoilValue(teasState);

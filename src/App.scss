@@ -34,6 +34,7 @@ iframe {
 }
 
 button,
+.button,
 body {
   font-family: "IBM Plex Mono", monospace;
 }
@@ -103,7 +104,7 @@ main {
   display: none;
 }
 
-.controls--global button {
+.controls--global .button {
   width: 100%;
 }
 
@@ -119,6 +120,9 @@ button {
   outline: none;
   transition: background-color 120ms ease;
   text-decoration: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   &:hover {
     background-color: rgb(239, 250, 255);
   }
@@ -128,6 +132,7 @@ button {
   }
 }
 
+.radio.active,
 .radio:disabled {
   border-color: rgb(173, 82, 238);
   background-color: rgb(248, 239, 255);

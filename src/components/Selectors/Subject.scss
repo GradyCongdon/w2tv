@@ -9,9 +9,8 @@
   margin-bottom: 2rem;
 }
 
-
 .button.button--subject {
-  --size: .6rem;
+  --size: 0.6rem;
   --ratio: 1.75;
   font-size: var(--size);
   min-width: calc(var(--ratio) * var(--size));
@@ -24,10 +23,8 @@
   line-height: var(--ratio);
 }
 
-
-
 .fade {
-  opacity: .15;
+  opacity: 0.15;
   transition: opacity 200ms ease-out, color 100ms ease-out;
 }
 .fade button {
@@ -53,8 +50,8 @@
   width: 3rem;
   height: 3rem;
   font-size: 1.05rem;
-  margin-top: .75rem;
-  margin-bottom: .75rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
 .subject--white-balanced {
@@ -63,12 +60,13 @@
   padding: 0;
   margin-bottom: 4px;
   .WhiteBalance {
+    display: none;
     position: absolute;
     bottom: calc(-1 * var(--size) / 4);
     right: calc(-1 * var(--size) / 4);
     padding: 0;
     min-width: var(--size);
-    width: var(--size);
+    width: var(--size) !important;
     min-height: var(--size);
     height: var(--size);
     &.toggle {
@@ -80,5 +78,4 @@
     background-color: #f8efff;
     border-color: #ad52ee;
   }
-
 }

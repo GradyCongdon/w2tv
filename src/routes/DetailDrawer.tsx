@@ -2,7 +2,7 @@ import { Detail } from "components/Detail/Detail";
 import { useSearchParams } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { selectedSlugState } from "states/selectedSlug";
-import { teasState } from "states/teas";
+import { allTeasState, teasState } from "states/teas";
 import { TeaOembed } from "types/Oembed";
 import { scrollToId } from "utils/scrollTo";
 
@@ -24,12 +24,12 @@ export const Skeleton = () => {
 };
 
 export const DetailDrawer = () => {
-  const teas = useRecoilValue(teasState);
+  const allTeas = useRecoilValue(allTeasState);
   const [params, setParams] = useSearchParams();
   const detailSlug = params.get("detail");
 
   if (!detailSlug) return null;
-  const tea = teas.find((t) => t.slug === detailSlug);
+  const tea = allTeas.find((t) => t.slug === detailSlug);
   if (!tea) return null;
 
   const classes = `drawer ${detailSlug ? "open" : "closed"}`;

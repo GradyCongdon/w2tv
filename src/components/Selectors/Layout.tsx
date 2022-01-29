@@ -1,17 +1,18 @@
-import { useRecoilState } from "recoil";
-import { Layout, layoutState, layouts } from "states/layout";
+import { NavLink, useParams } from "react-router-dom";
+import { Layout, layouts } from "states/layout";
 import { capitalize } from "utils/capitalize";
 
 export const Selector = ({ layout }: { layout: Layout }) => {
-  const [currentLayout, setLayout] = useRecoilState(layoutState);
+  const { subject } = useParams();
+
+  const newLocation = {
+    pathname: `${layout}/${subject}`,
+    search: location.search,
+  };
   return (
-    <button
-      className="button radio button--layout"
-      disabled={currentLayout === layout}
-      onClick={() => setLayout(layout)}
-    >
-      {capitalize(layout)}
-    </button>
+    <NavLink className="button radio button--layout" to={newLocation}>
+      <span className="label">{capitalize(layout)}</span>
+    </NavLink>
   );
 };
 

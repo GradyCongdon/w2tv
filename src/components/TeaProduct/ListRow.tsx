@@ -14,7 +14,7 @@ export const ListRow = ({ tea }: { tea: TeaProduct }) => {
     });
 
   const isSelected = detailSlug === slug;
-  const classes = `ListText ${isSelected ? "selected" : ""}`;
+  const classes = `ListText ${isSelected ? "selected glow" : ""}`;
 
   return (
     <tr className={classes} onClick={setSelected} id={slug}>
