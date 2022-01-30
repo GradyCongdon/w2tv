@@ -16,7 +16,6 @@
   bottom: 0;
   top: 0;
   background-color: white;
-  padding: var(--main-padding-plus);
   border-left: 1px solid rgb(225, 225, 225);
   color: var(--text-color);
   overflow-y: auto;
@@ -25,12 +24,14 @@
   width: 100vw;
   z-index: 100;
   opacity: 1;
+  padding: 2rem 0.75rem;
   &.closed {
     display: none;
     opacity: 0;
   }
 
   @media screen and (min-width: 1024px) {
+    padding: var(--main-padding-plus);
     width: var(--detail-width);
     transition: transform 150ms ease, opacity 150ms ease;
     &.closed {
@@ -52,7 +53,7 @@
   width: var(--size);
   height: var(--size);
   position: fixed;
-  right: 18px;
+  right: 24px;
   margin: 0;
   &:hover {
     background-color: #effaff;
@@ -71,10 +72,16 @@
   }
 }
 .Close {
-  top: 18px;
+  top: 28px;
+  @media screen and (min-width: 1024px) {
+    top: 18px;
+  }
 }
 .Link {
-  top: 80px;
+  top: 96px;
+  @media screen and (min-width: 1024px) {
+    top: 80px;
+  }
   .value {
     font-size: 1rem;
     bottom: -6px;

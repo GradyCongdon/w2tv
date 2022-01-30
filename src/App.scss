@@ -8,9 +8,12 @@
   --main-padding-side: 0.6rem;
   --main-grid-gap: 1rem;
 
-  // --detail-width: calc(var(--main-grid-gap) + var(--card-width));
-  --detail-width: calc(430px + 14px);
-  --detail-button-offset: calc(426px);
+  --detail-width: 100vw;
+
+  @media screen and (min-width: 450px) {
+    --detail-width: calc(430px + 14px);
+    --detail-button-offset: calc(426px);
+  }
 
   --text-color: #464646;
   --pink: rgb(208, 89, 255);

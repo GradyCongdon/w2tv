@@ -11,6 +11,7 @@
   height: 14px;
   position: relative;
   grid-column: 2 / span 2;
+
   &:before,
   &:after {
     position: absolute;
@@ -41,6 +42,10 @@
 }
 .Percentile {
   margin: 1rem 0 2rem;
+  transform: translateX(-12px);
+  @media screen and (min-width: 450px) {
+    transform: translateX(0);
+  }
   h3,
   h5 {
     margin: 0rem;

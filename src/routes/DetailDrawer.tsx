@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { allTeasState } from "states/teas";
 import { scrollToId } from "utils/scrollTo";
-import "./Detail.scss";
+import "./DetailDrawer.scss";
 
 // const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
