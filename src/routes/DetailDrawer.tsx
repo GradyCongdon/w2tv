@@ -19,17 +19,21 @@ export const Error = ({ slug }: any) => {
 export const Skeleton = () => {
   return <div className="skeleton"></div>;
 };
+export const Drawer = ({ classes, children }: any) => (
+  <aside className={classes} id="drawer">
+    {children}
+  </aside>
+);
 
 export const DetailDrawer = () => {
   const allTeas = useRecoilValue(allTeasState);
   const [params, setParams] = useSearchParams();
   const detailSlug = params.get("detail");
+  const classes = `drawer ${detailSlug ? "open" : "closed"}`;
 
-  if (!detailSlug) return null;
+  if (!detailSlug) return <Drawer classes={classes} />;
   const tea = allTeas.find((t) => t.slug === detailSlug);
   if (!tea) return null;
-
-  const classes = `drawer ${detailSlug ? "open" : "closed"}`;
 
   const resetSelected = () => {
     scrollToId(detailSlug);
@@ -37,11 +41,11 @@ export const DetailDrawer = () => {
   };
 
   return (
-    <aside className={classes} id="drawer">
+    <Drawer classes={classes}>
       <button className="DetailButton Close" onClick={resetSelected}>
         <span className="value">&times;</span>
       </button>
       <Detail tea={tea} />
-    </aside>
+    </Drawer>
   );
 };

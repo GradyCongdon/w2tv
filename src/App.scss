@@ -1,5 +1,5 @@
 :root {
-  --card-width: 350px;
+  --card-width: 342px;
   --sidebar-width: 100px;
 
   --main-padding: 1.5rem 0.6rem;
@@ -9,7 +9,8 @@
   --main-grid-gap: 1rem;
 
   // --detail-width: calc(var(--main-grid-gap) + var(--card-width));
-  --detail-width: calc(435px + 14px);
+  --detail-width: calc(430px + 14px);
+  --detail-button-offset: calc(426px);
 
   --text-color: #464646;
   --pink: rgb(208, 89, 255);

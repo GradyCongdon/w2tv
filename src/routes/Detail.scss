@@ -55,7 +55,7 @@
   right: 18px;
   margin: 0;
   @media screen and (min-width: 1024px) {
-    right: 425px;
+    right: var(--detail-button-offset);
   }
   .value {
     display: inline-block;

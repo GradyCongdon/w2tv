@@ -1,8 +1,8 @@
 .Lines {
-  margin: 1rem 0;
   border-top: solid 1px #eee;
   border-bottom: solid 1px #eee;
-  padding: 0.5rem 0;
+  padding: 0.5rem 0 0.9rem;
+  position: relative;
 }
 .Line {
   --color: rgb(216, 216, 216);
@@ -49,5 +49,24 @@
   h5 {
     position: relative;
     top: 5px;
+  }
+}
+
+.LabelWrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.8rem;
+  display: flex;
+  justify-content: center;
+  .LinesLabel {
+    border: 1px solid rgb(242, 211, 201);
+    border-radius: 100px;
+    background-color: white;
+    padding: 0.2rem 1rem;
+    display: block;
+    font-size: 0.8rem;
+    color: #9d9794;
+    font-weight: bold;
   }
 }

@@ -2,7 +2,6 @@ import { Form, Style } from "types/TeaProduct";
 import "./Lines.scss";
 
 const scale = [
-  // "#ffffe0",
   "#ffe6cb",
   "#ffe3af",
   "#ffc58a",
@@ -21,9 +20,7 @@ export const Line = ({ percentile }: { percentile: number }) => {
   const style = {
     left: `${number * 2}px`,
     border: `2px solid ${scale[scaleIndex]}`,
-    // color: number <= 30 ? "#777" : scale[scaleIndex],
     color: number <= 30 ? "rgb(197, 134, 42)" : scale[scaleIndex],
-    // color: number >= 60 ? "white" : "black",
   };
   return (
     <div className="Line">
@@ -34,12 +31,16 @@ export const Line = ({ percentile }: { percentile: number }) => {
   );
 };
 
-export const LineTable = ({ first, second, percentile }: any) => {
+export const LineTable = ({
+  label,
+  percentile,
+}: {
+  label: string;
+  percentile: number;
+}) => {
   return (
     <div className="Percentile table ">
-      {/* <h5>{first}</h5> */}
-      {/* <h5 style={{ justifySelf: "flex-end" }}>{second}</h5> */}
-      <h5>{second}</h5>
+      <h5>{label}</h5>
       <Line percentile={percentile} />
     </div>
   );
@@ -57,8 +58,11 @@ export const Lines = ({
   const { dpg, typeSize } = percentiles;
   return (
     <div className="Lines">
-      <LineTable first={""} second={"overall"} percentile={dpg} />
-      <LineTable first={""} second={`${teaStyle}`} percentile={typeSize} />
+      <LineTable label={"overall"} percentile={dpg} />
+      <LineTable label={`${teaStyle}`} percentile={typeSize} />
+      <div className="LabelWrapper">
+        <span className="LinesLabel">cost percentile</span>
+      </div>
     </div>
   );
 };

@@ -22,7 +22,9 @@ export const Detail = ({ tea }: Props) => {
     <article className="TeaDetail">
       <h1 className="title glow">{fullName}</h1>
       <Image src={imageUrl} alt={name} width={size} height={size} />
-      <TableHeading headings={["Size", "Price", "$ / g"]} />
+      {!forms.length ? null : (
+        <TableHeading headings={["Size", "Price", "$ / g"]} />
+      )}
       {forms.map((f, i) => (
         <FormPricesTable key={f.name} index={i} form={f} style={style} />
       ))}
