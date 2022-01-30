@@ -8,13 +8,14 @@ import { IMAGE_SIZE } from "types/const";
 import { TableHeading } from "./Table";
 import { Lines } from "./Lines";
 import { formatNumber } from "utils/formatNumber";
+import { OwnedButton } from "./OwnedButton";
 
 type Props = {
   tea: TeaProduct;
 };
 
 export const Detail = ({ tea }: Props) => {
-  const { year, name, description, url, forms, style, quantity } = tea;
+  const { year, name, description, url, forms, style, quantity, slug } = tea;
   const size = IMAGE_SIZE;
   const imageUrl = getImageUrl(tea.images.wrapperTop || tea.thumbnailUrl, size);
   const fullName = `${year} ${name}`;
@@ -33,6 +34,7 @@ export const Detail = ({ tea }: Props) => {
       <Lines forms={forms} teaStyle={style} />
       <Description glowText={fullName} description={description} />
       <LinkButton url={url} />
+      <OwnedButton slug={slug} />
     </article>
   );
 };

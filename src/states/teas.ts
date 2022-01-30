@@ -22,17 +22,22 @@ export const teasState = selector({
     const selectedFiltering = get(teaStyleFilteringState);
     const selectedSorting = get(sortingState);
     const personalFilter = get(personalFilterState);
+    const owned = get(ownedState);
 
     return all
+      .map((t) => {
+        const isOwned = owned[t.slug];
+        return {
+          ...t,
+          owned: isOwned,
+        };
+      })
       .filter((t) => {
         switch (personalFilter) {
           case "owned": {
-            const owned = get(ownedState);
-            const isOwned = owned[t.slug];
-            if (!isOwned) return false;
+            if (!t.owned) return false;
             break;
           }
-          case "wish list":
           case "all":
           default: {
             break;

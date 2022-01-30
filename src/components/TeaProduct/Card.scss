@@ -10,8 +10,19 @@
     cursor: pointer;
   }
 
+  &.owned {
+    --color: #38ed35;
+    --shadow-color: #80de46;
+    // .name,
+    .glow {
+      color: var(--color);
+      text-shadow: 1px 1px 4px var(--shadow-color);
+      font-weight: normal;
+    }
+  }
+
   &.selected {
-    box-shadow: 2px 4px 8px 4px rgb(248, 239, 255);
+    box-shadow: 2px 4px 8px 4px rgb(248, 239, 255) !important;
   }
 
   .content {

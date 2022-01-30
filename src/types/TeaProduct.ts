@@ -91,4 +91,5 @@ export interface TeaProduct {
   images: Images;
   forms: Form[];
   tags: string[];
+  owned?: boolean;
 }

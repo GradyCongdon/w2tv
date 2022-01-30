@@ -13,7 +13,7 @@ export const Card = ({ tea, subject }: Props) => {
   const [params, setParams] = useSearchParams();
   const detailSlug = params.get("detail");
 
-  const { year, name, slug } = tea;
+  const { year, name, slug, owned } = tea;
   const setSelected = () =>
     setParams({
       detail: slug,
@@ -23,7 +23,9 @@ export const Card = ({ tea, subject }: Props) => {
   const size = IMAGE_SIZE;
 
   const isSelected = detailSlug === slug;
-  const classes = `TeaCard ${isSelected ? "selected" : ""}`;
+  const classes = `TeaCard ${isSelected ? "selected" : ""} ${
+    owned ? "owned" : ""
+  }`;
 
   return (
     <figure className={classes} onClick={setSelected} id={slug}>
