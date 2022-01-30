@@ -37,4 +37,26 @@
   }
 }
 
-
+.quantity {
+  font-style: italic;
+  color: rgb(182, 219, 232);
+  background-color: white;
+  position: absolute;
+  font-size: 0.75rem;
+  top: 96px;
+  // top: 111px;
+  right: 36px;
+  border: 1px solid rgb(174, 219, 234);
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0.333rem;
+  min-width: 30px;
+  &:after {
+    padding-bottom: 100%;
+    content: "";
+    display: block;
+  }
+}

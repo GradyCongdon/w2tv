@@ -22,7 +22,7 @@ import { teasState } from "states/teas";
 import { scrollToId } from "utils/scrollTo";
 import { scrollTop } from "utils/scrollTop";
 
-console.log(`msg: ${process.env.REACT_APP_GIT_MSG}`);
+process && console.log(`msg: ${process.env.REACT_APP_GIT_MSG || "dev"}`);
 
 function App() {
   const sorting = useRecoilValue(sortingState);
@@ -44,11 +44,7 @@ function App() {
 
   useEffect(() => {
     scrollTop("drawer");
-    if (detail) {
-      scrollToId(detail, 80);
-    } else {
-      scrollTop("main");
-    }
+    scrollToId(detail, 80);
   }, [sorting, filtering, detail, location.pathname]);
 
   useKeyboardNavigation(teas);

@@ -50,15 +50,8 @@ body {
   font-family: "IBM Plex Mono", monospace;
 }
 
-.appxxx {
-  display: grid;
-  grid-template-columns: var(--sidebar-width) 1fr;
-  &.detail--open {
-    grid-template-columns: var(--sidebar-width) 1fr var(--detail-width);
-  }
-}
-
 main {
+  margin-top: 1rem;
   padding: 1rem;
   margin-left: var(--sidebar-width);
   // transition: margin-right 16ms ease;
@@ -168,6 +161,13 @@ button {
   padding: 0 15px;
   border-radius: 90px;
 }
+.button--filter:disabled {
+  border-color: #eea152;
+  background-color: #fff6ef;
+  box-shadow: 1px 1px 5px 5px #eea05245;
+  position: sticky;
+  bottom: -14px;
+}
 
 @keyframes shadow {
   0% {
@@ -197,6 +197,9 @@ button {
   animation-fill-mode: forwards;
   animation-direction: alternate-reverse;
   animation-iteration-count: 1;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .label {

@@ -54,6 +54,9 @@
   position: fixed;
   right: 18px;
   margin: 0;
+  &:hover {
+    background-color: #effaff;
+  }
   @media screen and (min-width: 1024px) {
     right: var(--detail-button-offset);
   }
@@ -76,6 +79,7 @@
     font-size: 1rem;
     bottom: -6px;
     filter: grayscale(1);
+    opacity: 0.6;
   }
   text-decoration: none;
 }

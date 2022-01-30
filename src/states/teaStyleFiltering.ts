@@ -1,7 +1,20 @@
 import { atom } from "recoil";
 import { TeaProduct, Style } from "types/TeaProduct";
 
-export type TeaStyleFiltering = "all" | Style;
+export type TeaStyleFiltering =
+  | "all"
+  | Style
+  | "bamboo"
+  | "heicha"
+  | "sun dried"
+  | "shade dried"
+  | "smokey"
+  | "huigan"
+  | "blend"
+  | "yiwu"
+  | "menghai"
+  | "low stock"
+  | "rle low stock";
 
 export const teaStyleFilteringState = atom({
   key: "teaStyleFilter",
@@ -23,6 +36,17 @@ export const filteringFunctions: TeaStyleFilteringMap = {
   white: isStyle("white"),
   black: isStyle("black"),
   oolong: isStyle("oolong"),
+  bamboo: (t: TeaProduct) => t.size === "bamboo",
+  heicha: (t: TeaProduct) => t.description.includes("heicha"),
+  "sun dried": (t: TeaProduct) => t.description.includes("sun dried"),
+  "shade dried": (t: TeaProduct) => t.description.includes("shade dried"),
+  huigan: (t: TeaProduct) => t.description.includes("huigan"),
+  smokey: (t: TeaProduct) => t.description.includes("smoke"),
+  blend: (t: TeaProduct) => t.description.includes("blend"),
+  yiwu: (t: TeaProduct) => t.description.includes("Yiwu"),
+  menghai: (t: TeaProduct) => t.description.includes("Menghai"),
+  "low stock": (t: TeaProduct) => t.quantity < 100 && t.quantity > 0,
+  "rle low stock": (t: TeaProduct) => t.quantity < 20 && t.quantity > 0,
   // TODO add data, then re-enable
   // 'green': isStyle(TeaStyle.Green),
   // 'unknown': isStyle(TeaStyle.Unknown),

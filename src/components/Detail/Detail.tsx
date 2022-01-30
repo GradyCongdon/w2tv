@@ -7,13 +7,14 @@ import { FormPricesTable } from "./Form";
 import { IMAGE_SIZE } from "types/const";
 import { TableHeading } from "./Table";
 import { Lines } from "./Lines";
+import { formatNumber } from "utils/formatNumber";
 
 type Props = {
   tea: TeaProduct;
 };
 
 export const Detail = ({ tea }: Props) => {
-  const { year, name, description, url, forms, style } = tea;
+  const { year, name, description, url, forms, style, quantity } = tea;
   const size = IMAGE_SIZE;
   const imageUrl = getImageUrl(tea.images.wrapperTop || tea.thumbnailUrl, size);
   const fullName = `${year} ${name}`;
@@ -22,6 +23,7 @@ export const Detail = ({ tea }: Props) => {
     <article className="TeaDetail">
       <h1 className="title glow">{fullName}</h1>
       <Image src={imageUrl} alt={name} width={size} height={size} />
+      <p className="quantity">{formatNumber(quantity)}</p>
       {!forms.length ? null : (
         <TableHeading headings={["Size", "Price", "$ / g"]} />
       )}
