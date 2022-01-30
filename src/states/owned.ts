@@ -1,6 +1,7 @@
 import { atom } from "recoil";
 
-const stored = JSON.parse(localStorage.getItem("owned") || "") || {};
+const stored = localStorage.getItem("owned");
+const owned = stored ? JSON.parse(stored) : {};
 
 type OwnedMap = {
   [key: string]: boolean;
@@ -8,5 +9,5 @@ type OwnedMap = {
 
 export const ownedState = atom({
   key: "owned",
-  default: stored as OwnedMap,
+  default: owned as OwnedMap,
 });

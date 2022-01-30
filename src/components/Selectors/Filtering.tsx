@@ -6,11 +6,11 @@ import {
 } from "states/teaStyleFiltering";
 
 export const Button = ({ filtering }: { filtering: TeaStyleFiltering }) => {
-  const [currentFitlering, set] = useRecoilState(teaStyleFilteringState);
+  const [currentFiltering, set] = useRecoilState(teaStyleFilteringState);
   return (
     <button
       className="button radio button--filter"
-      disabled={filtering === currentFitlering}
+      disabled={filtering === currentFiltering}
       onClick={() => set(filtering)}
     >
       {filtering}

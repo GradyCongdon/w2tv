@@ -1,5 +1,6 @@
 import { LayoutSelector } from "components/Selectors/Layout";
 import { FilteringSelector } from "components/Selectors/Filtering";
+import { PersonalSelector } from "components/Selectors/Personal";
 import { SortingSelector } from "components/Selectors/Sorting";
 import { SubjectSelector } from "components/Selectors/Subject";
 import { Divider } from "components/Divider";
@@ -12,6 +13,8 @@ export const Nav = () => (
     <LayoutSelector />
     <Divider />
     <SortingSelector />
+    <Divider />
+    <PersonalSelector />
     <Divider />
     <FilteringSelector />
     <Divider />

@@ -19,8 +19,8 @@ export const teasState = selector({
   key: "teas",
   get: ({ get }) => {
     const all = get(allTeasState);
-    const filtering = get(teaStyleFilteringState);
-    const sorting = get(sortingState);
+    const selectedFiltering = get(teaStyleFilteringState);
+    const selectedSorting = get(sortingState);
     const personalFilter = get(personalFilterState);
 
     return all
@@ -38,8 +38,9 @@ export const teasState = selector({
             break;
           }
         }
-        return filteringFunctions[filtering];
+        const filter = filteringFunctions[selectedFiltering];
+        return filter(t);
       })
-      .sort(sortingFunctions[sorting]);
+      .sort(sortingFunctions[selectedSorting]);
   },
 });

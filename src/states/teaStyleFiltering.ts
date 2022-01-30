@@ -3,7 +3,11 @@ import { TeaProduct, Style } from "types/TeaProduct";
 
 export type TeaStyleFiltering =
   | "all"
-  | Style
+  | "raw"
+  | "ripe"
+  | "white"
+  | "black"
+  | "oolong"
   | "bamboo"
   | "heicha"
   | "sun dried"
@@ -25,8 +29,7 @@ const isStyle = (s: TeaStyleFiltering) => (x: TeaProduct) => x.style === s;
 const identity = (x: TeaProduct) => true;
 
 type TeaStyleFilteringMap = {
-  // TODO make non-optional
-  [key in TeaStyleFiltering]?: (a: TeaProduct) => boolean;
+  [key in TeaStyleFiltering]: (a: TeaProduct) => boolean;
 };
 
 export const filteringFunctions: TeaStyleFilteringMap = {

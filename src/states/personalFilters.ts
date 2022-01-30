@@ -1,7 +1,7 @@
 import { atom } from "recoil";
 
-const personalFilters = ["all", "owned", "wish list"] as const;
-type PersonalFilter = typeof personalFilters[number];
+export const personalFilters = ["all", "owned", "wish list"] as const;
+export type PersonalFilter = typeof personalFilters[number];
 
 export const personalFilterState = atom({
   key: "personalFilter",
