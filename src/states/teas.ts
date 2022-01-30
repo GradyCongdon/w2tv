@@ -7,7 +7,8 @@ import {
   teaStyleFilteringState,
 } from "./teaStyleFiltering";
 import { sortingFunctions, sortingState } from "./sorting";
-// const stored = JSON.parse(localStorage.getItem("subjects") || "");
+import { ownedState } from "./owned";
+import { personalFilterState } from "./personalFilters";
 
 export const allTeasState = atom({
   key: "allTeas",
@@ -20,12 +21,25 @@ export const teasState = selector({
     const all = get(allTeasState);
     const filtering = get(teaStyleFilteringState);
     const sorting = get(sortingState);
+    const personalFilter = get(personalFilterState);
 
-    return (
-      all
-        // @ts-expect-error: dynamic
-        .filter(filteringFunctions[filtering])
-        .sort(sortingFunctions[sorting])
-    );
+    return all
+      .filter((t) => {
+        switch (personalFilter) {
+          case "owned": {
+            const owned = get(ownedState);
+            const isOwned = owned[t.slug];
+            if (!isOwned) return false;
+            break;
+          }
+          case "wish list":
+          case "all":
+          default: {
+            break;
+          }
+        }
+        return filteringFunctions[filtering];
+      })
+      .sort(sortingFunctions[sorting]);
   },
 });
