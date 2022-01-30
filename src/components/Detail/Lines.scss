@@ -1,0 +1,53 @@
+.Lines {
+  margin: 1rem 0;
+  border-top: solid 1px #eee;
+  border-bottom: solid 1px #eee;
+  padding: 0.5rem 0;
+}
+.Line {
+  --color: rgb(216, 216, 216);
+  width: 200px;
+  border-bottom: solid 1px var(--color);
+  height: 14px;
+  position: relative;
+  grid-column: 2 / span 2;
+  &:before,
+  &:after {
+    position: absolute;
+    border-left: solid 1px var(--color);
+    content: "";
+    bottom: -5px;
+    height: 10px;
+  }
+  &:before {
+    left: 0;
+  }
+  &:after {
+    right: 0;
+  }
+  .Label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    width: 26px;
+    height: 26px;
+    margin-left: -13px;
+    // border: 1px solid rgb(53, 53, 53);
+    background-color: white;
+    position: absolute;
+    z-index: 100;
+  }
+}
+.Percentile {
+  margin: 1rem 0 2rem;
+  h3,
+  h5 {
+    margin: 0rem;
+    color: rgb(152, 152, 152);
+  }
+  h5 {
+    position: relative;
+    top: 5px;
+  }
+}

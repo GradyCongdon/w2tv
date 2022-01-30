@@ -2,6 +2,7 @@ import { getImageUrl, ImageSubject, TeaProduct } from "types/TeaProduct";
 import { Image } from "./Image";
 import "./Card.scss";
 import { useSearchParams } from "react-router-dom";
+import { IMAGE_SIZE } from "types/const";
 
 export type Props = {
   tea: TeaProduct;
@@ -19,7 +20,7 @@ export const Card = ({ tea, subject }: Props) => {
     });
 
   const imageUrl = tea.images[subject];
-  const size = 400;
+  const size = IMAGE_SIZE;
 
   const isSelected = detailSlug === slug;
   const classes = `TeaCard ${isSelected ? "selected" : ""}`;

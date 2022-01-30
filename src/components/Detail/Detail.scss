@@ -17,7 +17,7 @@
   }
 
   .description {
-    margin-top: 2rem;
+    margin-top: 3rem;
   }
   .placeholder {
     --image-size: 415px;
@@ -35,4 +35,9 @@
       filter: blur(3px);
     }
   }
+}
+
+.Lines {
+  // margin-top: -0.5rem;
+  // margin-bottom: 3rem;
 }

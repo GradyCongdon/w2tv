@@ -1,4 +1,5 @@
 import { useSearchParams } from "react-router-dom";
+import { IMAGE_SIZE } from "types/const";
 import { getImageUrl, ImageSubject, TeaProduct } from "types/TeaProduct";
 import "./Slice.scss";
 
@@ -18,7 +19,7 @@ export const Slice = ({ tea, subject }: TeaSliceProps) => {
     });
 
   const imageUrl = tea.images[subject];
-  const size = 400;
+  const size = IMAGE_SIZE;
 
   const isSelected = detailSlug === slug;
   const classes = `TeaSliceWrapper ${
@@ -46,4 +47,3 @@ export const Slice = ({ tea, subject }: TeaSliceProps) => {
     </span>
   );
 };
-
