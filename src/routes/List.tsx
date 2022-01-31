@@ -7,12 +7,10 @@ export const List = () => {
   const teas = useRecoilValue(teasState);
 
   return (
-    <table className="List">
-      <tbody>
-        {teas.map((t) => (
-          <ListRow key={t.slug} tea={t} />
-        ))}
-      </tbody>
-    </table>
+    <div className="List">
+      {teas.map((t) => (
+        <ListRow key={t.slug} tea={t} />
+      ))}
+    </div>
   );
 };

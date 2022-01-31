@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import { TeaProduct, Style } from "types/TeaProduct";
+import { TeaProduct } from "types/TeaProduct";
 
 export type TeaStyleFiltering =
   | "all"

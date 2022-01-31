@@ -1,27 +1,47 @@
 .ListText {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  background-image: linear-gradient(
+    to right,
+    black 16%,
+    rgba(255, 255, 255, 0) 0%
+  );
+  background-repeat: repeat-x;
+  background-size: 6px 1px;
+  background-position: bottom;
+
   &:hover {
     cursor: pointer;
+    background-color: rgb(255, 234, 238);
+    img {
+      display: block;
+    }
   }
-  .name,
-  .style {
-    background-image: linear-gradient(
-      to right,
-      black 16%,
-      rgba(255, 255, 255, 0) 0%
-    );
-    background-repeat: repeat-x;
-    background-size: 6px 1px;
-    background-position: bottom;
+  img {
+    display: none;
+    position: fixed;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
   }
+  // .name,
+  // .style {
+  // }
 
   .year {
     font-weight: 200;
     text-align: center;
-    width: 50px;
+    margin-right: 10px;
   }
 
   .style {
     font-weight: 200;
     text-align: end;
+    margin-left: auto;
+    display: inline-block;
   }
 }
