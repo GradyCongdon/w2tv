@@ -1,0 +1,38 @@
+.Stats {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
+  .Stat {
+    padding: 1rem 1.5rem;
+    font-size: 1.5rem;
+    margin: 0 1px;
+    border-radius: 8px;
+    color: #333333dd;
+
+    --pink: #ff99c888;
+    --yellow: #fbf4b4cd;
+    --green: #d0f4de88;
+    --blue: #a9def988;
+    --purple: #d7a6f488;
+    &.raw {
+      background-color: var(--purple);
+    }
+    &.ripe {
+      background-color: var(--pink);
+    }
+    &.white {
+      background-color: var(--yellow);
+    }
+    &.black {
+      background-color: var(--blue);
+    }
+    &.oolong {
+      background-color: var(--green);
+    }
+  }
+}

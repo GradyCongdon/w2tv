@@ -1,3 +1,4 @@
+import { Stats } from "components/Stats";
 import { Card } from "components/TeaProduct/Card";
 import { useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
@@ -16,5 +17,10 @@ export const Cards = () => {
       subject={(subject as ImageSubject) || "wrapperTop"}
     />
   ));
-  return <section className="TeaCards">{$Teas}</section>;
+  return (
+    <>
+      <Stats />
+      <section className="TeaCards">{$Teas}</section>
+    </>
+  );
 };
