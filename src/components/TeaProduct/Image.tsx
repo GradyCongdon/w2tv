@@ -6,6 +6,7 @@ interface Props {
   alt: string;
   width: number | string;
   height: number | string;
+  loading?: "eager" | "lazy" | undefined;
 }
 export const ImagePreLoader = ({ src, alt, width, height }: Props) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -36,7 +37,7 @@ export const ImagePreLoader = ({ src, alt, width, height }: Props) => {
     </>
   );
 };
-export const Image = ({ src, alt, width, height }: Props) => {
+export const Image = ({ src, alt, width, height, loading }: Props) => {
   const [isLoaded, setIsLoaded] = useState(false);
   if (!src) {
     return (
@@ -53,6 +54,7 @@ export const Image = ({ src, alt, width, height }: Props) => {
       height={height}
       className={`TeaImage responsive ${isLoaded ? "loaded" : "loading"} `}
       onLoad={() => setIsLoaded(true)}
+      loading={loading}
     />
   );
 };
