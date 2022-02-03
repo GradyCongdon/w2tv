@@ -21,6 +21,7 @@ import { Slices } from "routes/Slices";
 import { teasState } from "states/teas";
 import { scrollToId } from "utils/scrollTo";
 import { Empty } from "Empty";
+import { personalFilterState } from "states/personalFilters";
 
 process && console.log(`msg: ${process.env.REACT_APP_GIT_MSG || "dev"}`);
 
@@ -28,6 +29,7 @@ function App() {
   const sorting = useRecoilValue(sortingState);
   const filtering = useRecoilValue(teaStyleFilteringState);
   const teas = useRecoilValue(teasState);
+  const personal = useRecoilValue(personalFilterState);
   const [params] = useSearchParams();
   const location = useLocation();
 
@@ -44,7 +46,7 @@ function App() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [sorting, filtering, location.pathname]);
+  }, [sorting, filtering, personal, location.pathname]);
 
   useEffect(() => {
     if (detail) scrollToId(detail, 80);
