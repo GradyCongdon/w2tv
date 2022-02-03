@@ -1,8 +1,10 @@
 import { Detail } from "components/Detail/Detail";
+import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { allTeasState } from "states/teas";
 import { scrollToId } from "utils/scrollTo";
+import { scrollTop } from "utils/scrollTop";
 import "./DetailDrawer.scss";
 
 // const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
@@ -29,6 +31,10 @@ export const DetailDrawer = () => {
   const allTeas = useRecoilValue(allTeasState);
   const [params, setParams] = useSearchParams();
   const detailSlug = params.get("detail");
+  useEffect(() => {
+    scrollTop("drawer");
+  }, [detailSlug]);
+
   const classes = `drawer ${detailSlug ? "open" : "closed"}`;
 
   if (!detailSlug) return <Drawer classes={classes} />;

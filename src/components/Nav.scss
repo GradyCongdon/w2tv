@@ -1,0 +1,87 @@
+.controls--global_button {
+  position: fixed;
+  bottom: 1rem;
+  right: 0.5rem;
+  appearance: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 100%;
+  z-index: 100;
+  user-select: none;
+  box-shadow: 3.4px 4.9px 8.2px rgba(0, 0, 0, 0.047),
+    8.7px 12.5px 20.8px rgba(0, 0, 0, 0.067),
+    17.7px 25.5px 42.5px rgba(0, 0, 0, 0.083),
+    36.5px 52.6px 87.6px rgba(0, 0, 0, 0.103),
+    100px 144px 240px rgba(0, 0, 0, 0.15);
+  pointer-events: initial;
+  border-color: #ad52ee;
+  background-color: #f8efff !important;
+
+  @media screen and (min-width: 768px) {
+    display: none !important;
+  }
+  svg {
+    width: 22px;
+    height: 22px;
+    color: #ad52ee;
+  }
+}
+.NavShadow {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #46464687;
+  z-index: 50;
+  transition: background-color 100ms ease;
+  @media screen and (min-width: 768px) {
+    background-color: transparent;
+    pointer-events: none;
+  }
+  &.closed {
+    background-color: transparent;
+    pointer-events: none;
+  }
+}
+
+.controls--global {
+  transition: transform 200ms ease;
+  transform: translateX(-100%);
+  & + main {
+    margin-left: 0;
+  }
+  &.open {
+    transform: translateX(0);
+  }
+  @media screen and (min-width: 768px) {
+    & + main {
+      margin-left: var(--sidebar-width);
+    }
+    transform: translateX(0);
+  }
+  position: fixed;
+  width: var(--sidebar-width);
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: white;
+  border-right: 1px solid rgb(225, 225, 225);
+  padding: 1.5rem 0.6rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  z-index: 100;
+  overflow-x: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+  user-select: none;
+
+  @media screen and (min-width: 500px) {
+    box-shadow: var(--main-shadow);
+  }
+}

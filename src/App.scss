@@ -1,6 +1,6 @@
 :root {
   --card-width: 342px;
-  --sidebar-width: 100px;
+  --sidebar-width: 120px;
 
   --main-padding: 1.5rem 0.6rem;
   --main-padding-plus: 1.5rem 1rem;
@@ -58,46 +58,11 @@ main {
   padding: 1rem;
   margin-left: var(--sidebar-width);
   // transition: margin-right 16ms ease;
-  &.detail--open {
-    margin-right: var(--detail-width);
-    overflow-y: hidden;
-    max-height: 100vh;
-    opacity: 0;
-  }
   @media screen and (min-width: 1024px) {
     padding: 1.5rem 2rem;
     &.detail--open {
-      opacity: 1;
-      overflow-y: unset;
-      max-height: unset;
+      margin-right: var(--detail-width);
     }
-  }
-}
-
-.controls--global {
-  position: fixed;
-  width: var(--sidebar-width);
-  height: 100%;
-  left: 0;
-  top: 0;
-  background-color: white;
-  border-right: 1px solid rgb(225, 225, 225);
-  padding: 1.5rem 0.6rem;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-
-  z-index: 100;
-  overflow-x: scroll;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-
-  user-select: none;
-
-  @media screen and (min-width: 500px) {
-    box-shadow: var(--main-shadow);
   }
 }
 
@@ -188,7 +153,7 @@ button {
 .heading {
   width: 100%;
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 100;
   text-shadow: -3px 1px 5px #d400ba;
   color: indigo;

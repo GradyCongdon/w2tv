@@ -20,7 +20,7 @@ import { List } from "routes/List";
 import { Slices } from "routes/Slices";
 import { teasState } from "states/teas";
 import { scrollToId } from "utils/scrollTo";
-import { scrollTop } from "utils/scrollTop";
+import { Empty } from "Empty";
 
 process && console.log(`msg: ${process.env.REACT_APP_GIT_MSG || "dev"}`);
 
@@ -43,9 +43,12 @@ function App() {
   }, [sorting, filtering]);
 
   useEffect(() => {
-    scrollTop("drawer");
-    scrollToId(detail, 80);
-  }, [sorting, filtering, detail, location.pathname]);
+    window.scrollTo(0, 0);
+  }, [sorting, filtering, location.pathname]);
+
+  useEffect(() => {
+    if (detail) scrollToId(detail, 80);
+  }, [detail]);
 
   useKeyboardNavigation(teas);
 
@@ -69,11 +72,12 @@ export default App;
 const Main = () => {
   const [params] = useSearchParams();
   const detail = params.get("detail") || "";
+  const teas = useRecoilValue(teasState);
   return (
     <>
       <Nav />
       <main id="main" className={detail ? "detail--open" : ""}>
-        <Outlet />
+        {teas.length ? <Outlet /> : <Empty />}
       </main>
       <DetailDrawer />
     </>

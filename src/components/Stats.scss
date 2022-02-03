@@ -1,17 +1,33 @@
 .Stats {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 100%;
   margin-bottom: 2rem;
+  .StatText {
+    display: none;
+  }
   @media screen and (min-width: 768px) {
-    flex-direction: row;
+    .StatText {
+      display: inline-block;
+    }
   }
   .Stat {
     padding: 1rem 1.5rem;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+
     margin: 0 1px;
     border-radius: 8px;
     color: #333333dd;
+    text-decoration: none;
+    font-variant: none;
+    &.small {
+      .StatText {
+        display: none;
+      }
+    }
+    &:hover {
+      cursor: pointer;
+    }
 
     --pink: #ff99c888;
     --yellow: #fbf4b4cd;

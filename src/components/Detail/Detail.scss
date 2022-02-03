@@ -2,7 +2,7 @@
   .title {
     margin-top: 0;
     margin-bottom: 0;
-    margin-right: 48px;
+    margin-right: 52px;
     border-radius: 2px;
     font-size: 1.5rem;
     position: sticky;
@@ -44,7 +44,7 @@
   background-color: white;
   position: absolute;
   font-size: 0.75rem;
-  top: 96px;
+  top: 72px;
   left: 36px;
   border: 1px solid rgb(174, 219, 234);
   border-radius: 100%;
@@ -55,6 +55,7 @@
   padding: 0.333rem;
   min-width: 30px;
   @media screen and (min-width: 1024px) {
+    top: 96px;
     left: unset;
     right: 36px;
   }

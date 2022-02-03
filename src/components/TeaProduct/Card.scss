@@ -5,6 +5,10 @@
   padding-left: 12px;
   padding-top: 16px;
   margin: 0;
+  margin-left: -12px;
+  @media screen and (min-width: 1024px) {
+    margin-left: 0;
+  }
   transition: box-shadow 150ms ease;
   :hover {
     cursor: pointer;

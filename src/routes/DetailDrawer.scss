@@ -25,9 +25,9 @@
   z-index: 100;
   opacity: 1;
   padding: 2rem 0.75rem;
+  transition: transform 250ms cubic-bezier(0.215, 0.61, 0.355, 1);
   &.closed {
-    display: none;
-    opacity: 0;
+    transform: translateX(100%);
   }
 
   @media screen and (min-width: 1024px) {
@@ -72,7 +72,6 @@
   }
 }
 .Close {
-  top: 28px;
   @media screen and (min-width: 1024px) {
     top: 20px;
   }
