@@ -26,16 +26,8 @@
   &:after {
     right: 0;
   }
-  .Label {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100%;
-    width: 26px;
-    height: 26px;
+  .PercentileCircle {
     margin-left: -13px;
-    // border: 1px solid rgb(53, 53, 53);
-    background-color: white;
     position: absolute;
     z-index: 100;
   }

@@ -15,6 +15,7 @@
     --detail-button-offset: calc(426px);
   }
 
+  --bg: white;
   --text-color: #464646;
   --pink: rgb(208, 89, 255);
   --border: 1px solid rgb(225, 225, 225);
@@ -204,4 +205,28 @@ button {
 .responsive {
   width: 100%;
   height: auto;
+}
+
+body {
+  --scrollbar-foreground: rgb(255, 202, 210);
+  --scrollbar-background: rgb(252, 252, 252);
+  scrollbar-color: var(--scrollbar-foreground) var(--scrollbar-background);
+}
+.drawer {
+  --scrollbar-foreground: #a9def96b;
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-background);
+  padding: 1px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-foreground);
+  background-clip: content-box;
+  border-radius: 100px;
+  border: 1px solid transparent;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 6px;
 }

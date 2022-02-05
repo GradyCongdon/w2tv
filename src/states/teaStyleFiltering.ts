@@ -10,8 +10,8 @@ export type TeaStyleFiltering =
   | "oolong"
   | "bamboo"
   | "heicha"
-  | "sun dried"
-  | "shade dried"
+  | "sun-dried"
+  | "shade-dried"
   | "smokey"
   | "huigan"
   | "blend"
@@ -41,8 +41,8 @@ export const filteringFunctions: TeaStyleFilteringMap = {
   oolong: isStyle("oolong"),
   bamboo: (t: TeaProduct) => t.size === "bamboo",
   heicha: (t: TeaProduct) => t.description.includes("heicha"),
-  "sun dried": (t: TeaProduct) => t.description.includes("sun dried"),
-  "shade dried": (t: TeaProduct) => t.description.includes("shade dried"),
+  "sun-dried": (t: TeaProduct) => t.description.includes("sun dried"),
+  "shade-dried": (t: TeaProduct) => t.description.includes("shade dried"),
   huigan: (t: TeaProduct) => t.description.includes("huigan"),
   smokey: (t: TeaProduct) => t.description.includes("smoke"),
   blend: (t: TeaProduct) => t.description.includes("blend"),

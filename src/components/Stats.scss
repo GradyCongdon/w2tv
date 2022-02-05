@@ -1,8 +1,14 @@
 .Stats {
+  margin-bottom: 2rem;
+  .StyleBars {
+    margin-bottom: 1rem;
+  }
+}
+.StyleBars {
   display: flex;
   flex-direction: row;
   width: 100%;
-  margin-bottom: 2rem;
+
   .StatText {
     display: none;
   }
@@ -14,8 +20,10 @@
   .Stat {
     padding: 1rem 1.5rem;
     font-size: 1.25rem;
+    display: flex;
+    align-items: center;
 
-    margin: 0 1px;
+    margin: 1px;
     border-radius: 8px;
     color: #333333dd;
     text-decoration: none;
@@ -48,6 +56,43 @@
     }
     &.oolong {
       background-color: var(--green);
+    }
+  }
+}
+.PercentileList {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0.5rem 1rem;
+  @media screen and (min-width: 768px) {
+    justify-content: space-evenly;
+    padding: 0;
+  }
+  align-items: center;
+  max-width: 100%;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  abbr {
+    margin: 0 0.5rem;
+    @media screen and (min-width: 768px) {
+      margin: 0;
+    }
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: gold;
+    .count {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 4px;
+      font-size: 1.4rem;
+      line-height: 1;
+      &::before {
+        content: "x";
+        margin-right: 4px;
+        font-size: 1rem;
+      }
     }
   }
 }
