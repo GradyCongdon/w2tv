@@ -1,7 +1,10 @@
 .Stats {
   margin-bottom: 2rem;
   .StyleBars {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    @media screen and (min-width: 768px) {
+      margin-bottom: 1rem;
+    }
   }
 }
 .StyleBars {
@@ -18,10 +21,17 @@
     }
   }
   .Stat {
-    padding: 1rem 1.5rem;
+    height: 24px;
+    padding: 0 8px;
+    @media screen and (min-width: 768px) {
+      height: 42px;
+      justify-content: flex-start;
+      padding: 0 1.5rem;
+    }
     font-size: 1.25rem;
     display: flex;
     align-items: center;
+    justify-content: center;
 
     margin: 1px;
     border-radius: 8px;
@@ -29,6 +39,10 @@
     text-decoration: none;
     font-variant: none;
     &.small {
+      padding: 0;
+      justify-content: center;
+    }
+    &.really-small.showPercent {
       .StatText {
         display: none;
       }
@@ -42,19 +56,19 @@
     --green: #d0f4de88;
     --blue: #a9def988;
     --purple: #d7a6f488;
-    &.raw {
+    &.Stat--raw {
       background-color: var(--purple);
     }
-    &.ripe {
+    &.Stat--ripe {
       background-color: var(--pink);
     }
-    &.white {
+    &.Stat--white {
       background-color: var(--yellow);
     }
-    &.black {
+    &.Stat--black {
       background-color: var(--blue);
     }
-    &.oolong {
+    &.Stat--oolong {
       background-color: var(--green);
     }
   }
@@ -62,7 +76,7 @@
 .PercentileList {
   display: flex;
   justify-content: flex-start;
-  padding: 0.5rem 1rem;
+  // padding: 0.5rem 1rem;
   @media screen and (min-width: 768px) {
     justify-content: space-evenly;
     padding: 0;
@@ -71,7 +85,7 @@
   max-width: 100%;
   overflow-x: auto;
   flex-wrap: nowrap;
-  abbr {
+  .PercentileCircle {
     margin: 0 0.5rem;
     @media screen and (min-width: 768px) {
       margin: 0;
@@ -80,7 +94,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: gold;
     .count {
       display: flex;
       align-items: center;

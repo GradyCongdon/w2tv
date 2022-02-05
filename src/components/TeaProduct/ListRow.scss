@@ -41,6 +41,12 @@
   .style {
     font-weight: 200;
     text-align: end;
+    display: inline-block;
+    width: 60px;
+  }
+  .dpg {
+    text-align: end;
+    margin: 4px;
     margin-left: auto;
     display: inline-block;
   }

@@ -1,3 +1,4 @@
+import { PercentileCircle } from "components/Detail/PercentileCircle";
 import { useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import { getImageUrl, TeaProduct } from "types/TeaProduct";
@@ -15,7 +16,8 @@ export const ListRow = ({ tea }: { tea: TeaProduct }) => {
   const [params, setParams] = useSearchParams();
   const { size, top, left } = useMemo(getRandomStyle, [tea.slug]);
 
-  const { year, name, slug, style, thumbnailUrl } = tea;
+  const { year, name, slug, style, thumbnailUrl, forms } = tea;
+  const dpg = forms[0].percentiles.dpg;
   const detailSlug = params.get("detail");
 
   const setSelected = () =>
@@ -37,6 +39,10 @@ export const ListRow = ({ tea }: { tea: TeaProduct }) => {
     <div className={classes} onClick={setSelected} id={slug}>
       <span className="year">{year} </span>
       <span className="name">{name} </span>
+      <span className="dpg">
+        {" "}
+        <PercentileCircle percentile={dpg} />
+      </span>
       <span className="style"> {style}</span>
       <img src={url} width={size} height={size} alt={name} style={imageStyle} />
     </div>
