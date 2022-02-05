@@ -17,7 +17,7 @@ export const ListRow = ({ tea }: { tea: TeaProduct }) => {
   const { size, top, left } = useMemo(getRandomStyle, [tea.slug]);
 
   const { year, name, slug, style, thumbnailUrl, forms } = tea;
-  const dpg = forms[0].percentiles.dpg;
+  const dpg = forms[0]?.percentiles?.dpg || 0;
   const detailSlug = params.get("detail");
 
   const setSelected = () =>
