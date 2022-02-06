@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/w2tv/static/css/main.955e2e83.chunk.css",
-    "main.js": "/w2tv/static/js/main.5ab33b6d.chunk.js",
-    "main.js.map": "/w2tv/static/js/main.5ab33b6d.chunk.js.map",
-    "runtime-main.js": "/w2tv/static/js/runtime-main.6146b47d.js",
-    "runtime-main.js.map": "/w2tv/static/js/runtime-main.6146b47d.js.map",
+    "main.css": "/w2tv/static/css/main.6908038c.chunk.css",
+    "main.js": "/w2tv/static/js/main.1296cf81.chunk.js",
+    "main.js.map": "/w2tv/static/js/main.1296cf81.chunk.js.map",
+    "runtime-main.js": "/w2tv/static/js/runtime-main.7661af41.js",
+    "runtime-main.js.map": "/w2tv/static/js/runtime-main.7661af41.js.map",
     "static/js/2.0389723c.chunk.js": "/w2tv/static/js/2.0389723c.chunk.js",
     "static/js/2.0389723c.chunk.js.map": "/w2tv/static/js/2.0389723c.chunk.js.map",
     "static/js/3.b9b4a161.chunk.js": "/w2tv/static/js/3.b9b4a161.chunk.js",
@@ -12,7 +12,7 @@
     "static/css/4.dd375bf0.chunk.css": "/w2tv/static/css/4.dd375bf0.chunk.css",
     "static/js/4.8724ef06.chunk.js": "/w2tv/static/js/4.8724ef06.chunk.js",
     "static/js/4.8724ef06.chunk.js.map": "/w2tv/static/js/4.8724ef06.chunk.js.map",
-    "static/css/5.84e513c7.chunk.css": "/w2tv/static/css/5.84e513c7.chunk.css",
+    "static/css/5.02659163.chunk.css": "/w2tv/static/css/5.02659163.chunk.css",
     "static/js/5.cbd69862.chunk.js": "/w2tv/static/js/5.cbd69862.chunk.js",
     "static/js/5.cbd69862.chunk.js.map": "/w2tv/static/js/5.cbd69862.chunk.js.map",
     "static/css/6.3ed52d6d.chunk.css": "/w2tv/static/css/6.3ed52d6d.chunk.css",
@@ -22,16 +22,16 @@
     "static/js/7.536bb44c.chunk.js.map": "/w2tv/static/js/7.536bb44c.chunk.js.map",
     "index.html": "/w2tv/index.html",
     "static/css/4.dd375bf0.chunk.css.map": "/w2tv/static/css/4.dd375bf0.chunk.css.map",
-    "static/css/5.84e513c7.chunk.css.map": "/w2tv/static/css/5.84e513c7.chunk.css.map",
+    "static/css/5.02659163.chunk.css.map": "/w2tv/static/css/5.02659163.chunk.css.map",
     "static/css/6.3ed52d6d.chunk.css.map": "/w2tv/static/css/6.3ed52d6d.chunk.css.map",
-    "static/css/main.955e2e83.chunk.css.map": "/w2tv/static/css/main.955e2e83.chunk.css.map",
+    "static/css/main.6908038c.chunk.css.map": "/w2tv/static/css/main.6908038c.chunk.css.map",
     "static/js/3.b9b4a161.chunk.js.LICENSE.txt": "/w2tv/static/js/3.b9b4a161.chunk.js.LICENSE.txt",
     "static/media/Empty.scss": "/w2tv/static/media/grave-man.8cc62c06.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.6146b47d.js",
+    "static/js/runtime-main.7661af41.js",
     "static/js/3.b9b4a161.chunk.js",
-    "static/css/main.955e2e83.chunk.css",
-    "static/js/main.5ab33b6d.chunk.js"
+    "static/css/main.6908038c.chunk.css",
+    "static/js/main.1296cf81.chunk.js"
   ]
 }
