@@ -91,8 +91,8 @@ const Main = () => {
   const [params] = useSearchParams();
   const detail = params.get("detail") || "";
   const teas = useRecoilValue(teasState);
-  const loading = false;
-  if (loading) return <Loading />;
+  // const loading = false;
+  // if (loading) return <Loading />;
   return (
     <>
       <Nav />
