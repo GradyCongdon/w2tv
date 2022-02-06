@@ -15,8 +15,10 @@
   &:hover {
     cursor: pointer;
     background-color: rgb(255, 234, 238);
-    img {
-      display: block;
+    @media screen and (min-width: 1024px) {
+      img {
+        display: block;
+      }
     }
   }
   img {
