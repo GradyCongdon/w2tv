@@ -24,3 +24,5 @@ export const Cards = () => {
     </>
   );
 };
+
+export default Cards;

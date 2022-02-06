@@ -55,3 +55,5 @@ export const DetailDrawer = () => {
     </Drawer>
   );
 };
+
+export default DetailDrawer;

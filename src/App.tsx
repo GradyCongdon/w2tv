@@ -1,29 +1,43 @@
 import { Nav } from "components/Nav";
-import { DetailDrawer } from "routes/DetailDrawer";
-import { useEffect } from "react";
-import { useRecoilValue } from "recoil";
-import { sortingState } from "states/sorting";
-import { teaStyleFilteringState } from "states/teaStyleFiltering";
-
-import "./App.scss";
-import { useKeyboardNavigation } from "hooks/useKeyboardNavigation";
-import {
-  Routes,
-  Route,
-  Navigate,
-  useSearchParams,
-  Outlet,
-  useLocation,
-} from "react-router-dom";
-import { Cards } from "routes/Cards";
-import { List } from "routes/List";
-import { Slices } from "routes/Slices";
-import { teasState } from "states/teas";
-import { scrollToId } from "utils/scrollTo";
 import { Empty } from "Empty";
-import { personalFilterState } from "states/personalFilters";
+import { useKeyboardNavigation } from "hooks/useKeyboardNavigation";
+import { lazy, Suspense, useEffect } from "react";
+import {
+  Navigate,
+  Outlet,
+  Route,
+  Routes,
+  useLocation,
+  useSearchParams,
+} from "react-router-dom";
+import { useRecoilValue } from "recoil";
 
-process && console.log(`msg: ${process.env.REACT_APP_GIT_MSG || "dev"}`);
+import { personalFilterState } from "states/personalFilters";
+import { sortingState } from "states/sorting";
+import { teasState } from "states/teas";
+import { teaStyleFilteringState } from "states/teaStyleFiltering";
+import { scrollToId } from "utils/scrollTo";
+import "./App.scss";
+import { DetailDrawer } from "routes/DetailDrawer";
+import { Placeholder } from "components/Placeholder";
+
+const Cards = lazy(() => import("routes/Cards"));
+const List = lazy(() => import("routes/List"));
+const Slices = lazy(() => import("routes/Slices"));
+
+process && console.log(`msg: ${process?.env?.REACT_APP_GIT_MSG || "dev"}`);
+
+const Loading = () => {
+  return (
+    <>
+      <Nav />
+      <main className="main Loading">
+        <Placeholder />
+      </main>
+      <DetailDrawer />
+    </>
+  );
+};
 
 function App() {
   const sorting = useRecoilValue(sortingState);
@@ -56,15 +70,17 @@ function App() {
 
   return (
     <div className="app">
-      <Routes>
-        <Route path="/" element={<Main />}>
-          <Route path="cards/:subject" element={<Cards />} />
-          <Route path="slices/:subject" element={<Slices />} />
-          <Route path="list/:subject" element={<List />} />
-          <Route index element={<Navigate to="/cards/wrapperTop" />} />
-          <Route path="*" element={<Navigate to="cards/wrapperTop" />} />
-        </Route>
-      </Routes>
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          <Route path="/" element={<Main />}>
+            <Route path="cards/:subject" element={<Cards />} />
+            <Route path="slices/:subject" element={<Slices />} />
+            <Route path="list/:subject" element={<List />} />
+            <Route index element={<Navigate to="/cards/wrapperTop" />} />
+            <Route path="*" element={<Navigate to="cards/wrapperTop" />} />
+          </Route>
+        </Routes>
+      </Suspense>
     </div>
   );
 }
@@ -75,6 +91,8 @@ const Main = () => {
   const [params] = useSearchParams();
   const detail = params.get("detail") || "";
   const teas = useRecoilValue(teasState);
+  const loading = false;
+  if (loading) return <Loading />;
   return (
     <>
       <Nav />

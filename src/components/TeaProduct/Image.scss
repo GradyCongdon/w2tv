@@ -3,44 +3,8 @@
   height: auto;
   object-fit: cover;
   transition: opacity 150ms ease;
-
-  &.placeholder {
-    // --image-size: 415px;
-    --image-size: 100%;
-    min-width: var(--image-size);
-    min-height: var(--image-size);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    &.loaded {
-      display: none;
-    }
-
-    .circle {
-      --size: 80%;
-      border-radius: 100%;
-      background-color: rgb(243, 243, 251);
-      width: var(--size);
-      height: var(--size);
-      aspect-ratio: 1 / 1;
-      margin-top: 10%;
-      filter: blur(3px);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      &::after {
-        content: "2";
-        font-size: 24vw;
-        color: rgb(242, 224, 246);
-        position: relative;
-        bottom: 1vw;
-        transform: rotate(0deg);
-        @media screen and (min-width: 1024px) {
-          font-size: 12rem;
-          bottom: 0.75rem;
-        }
-      }
-    }
+  &.placeholder.loaded {
+    display: none;
   }
 }
 

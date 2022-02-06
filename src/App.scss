@@ -230,3 +230,17 @@ body {
   width: 8px;
   height: 6px;
 }
+
+.Loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .placeholder {
+    --size: 80vw;
+    width: var(--size);
+    height: var(--size);
+    @media screen and (min-width: 425px) {
+      --size: 420px;
+    }
+  }
+}

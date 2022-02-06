@@ -55,3 +55,5 @@ export const getDefaultFilters = (subject: ImageSubject) =>
     // brick: subject === "wrapperTop" ? false : true,
     // mini: subject === "wrapperTop" ? false : true,
   } as any);
+
+export default Slices;

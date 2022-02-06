@@ -80,6 +80,7 @@ export const Stats = () => {
           //   <PercentileCount percentile={tenX(k)} count={xs.length} />
           // </abbr>
           <Stat
+            key={k}
             style={{
               border: `2px solid ${getScaleColor(tenX(k))}`,
               color: getScaleTextColor(tenX(k)),
