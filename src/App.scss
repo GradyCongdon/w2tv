@@ -18,6 +18,9 @@
   --bg: white;
   --text-color: #464646;
   --pink: rgb(208, 89, 255);
+  --pink-light: rgb(236, 189, 255);
+  --pink-dark: rgb(185, 7, 255);
+  --green: #86f93e;
   --border: 1px solid rgb(225, 225, 225);
   --light: rgb(225, 225, 225);
   --grey-medium: rgb(218, 218, 218);
@@ -62,7 +65,7 @@ main {
   // transition: margin-right 16ms ease;
   @media screen and (min-width: 1024px) {
     padding: 1.5rem 2rem;
-    &.detail--open {
+    .detail--open & {
       margin-right: var(--detail-width);
     }
   }

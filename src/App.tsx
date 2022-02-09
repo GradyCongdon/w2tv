@@ -20,6 +20,7 @@ import { scrollToId } from "utils/scrollTo";
 import "./App.scss";
 import { DetailDrawer } from "routes/DetailDrawer";
 import { Placeholder } from "components/Placeholder";
+import { Search } from "components/Search";
 
 const Cards = lazy(() => import("routes/Cards"));
 const List = lazy(() => import("routes/List"));
@@ -68,8 +69,10 @@ function App() {
 
   useKeyboardNavigation(teas);
 
+  const classes = `app ${detail ? "detail--open" : ""}`;
+
   return (
-    <div className="app">
+    <div className={classes}>
       <Suspense fallback={<Loading />}>
         <Routes>
           <Route path="/" element={<Main />}>
@@ -88,17 +91,14 @@ function App() {
 export default App;
 
 const Main = () => {
-  const [params] = useSearchParams();
-  const detail = params.get("detail") || "";
   const teas = useRecoilValue(teasState);
   // const loading = false;
   // if (loading) return <Loading />;
   return (
     <>
       <Nav />
-      <main id="main" className={detail ? "detail--open" : ""}>
-        {teas.length ? <Outlet /> : <Empty />}
-      </main>
+      <main id="main">{teas.length ? <Outlet /> : <Empty />}</main>
+      <Search />
       <DetailDrawer />
     </>
   );

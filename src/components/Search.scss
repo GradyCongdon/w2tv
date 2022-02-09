@@ -1,0 +1,68 @@
+.Search {
+  position: fixed;
+  bottom: 2.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media screen and (min-width: 768px) {
+    padding-left: var(--sidebar-width);
+  }
+  @media screen and (min-width: 1024px) {
+    .detail--open & {
+      padding-left: var(--sidebar-width);
+      padding-right: var(--detail-width);
+    }
+  }
+
+  .Results {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    bottom: 4rem;
+    .Result {
+      display: block;
+      width: calc(100vw - 3rem);
+      @media screen and (min-width: 475px) {
+        width: 100%;
+      }
+      margin: 0.5rem 0;
+      border-radius: 4px;
+      font-size: 1.2rem;
+      padding: 0.5rem 1rem;
+      border-color: green;
+      min-width: 270px;
+      background-color: rgba(255, 255, 255, 0.92);
+    }
+  }
+  .SearchInput {
+    border-radius: 100px;
+    font: inherit;
+    border: 1px solid var(--pink);
+    padding: 0 1.2rem;
+    font-size: 1.4rem;
+    outline: none;
+    height: 42px;
+    width: calc(100vw - 48px - 1rem - 1rem - 12px);
+    margin-left: calc(-12px - 2rem);
+    @media screen and (min-width: 475px) {
+      width: 300px;
+      margin-left: 0;
+    }
+    box-shadow: 3.4px 4.9px 8.2px rgba(0, 0, 0, 0.047),
+      8.7px 12.5px 20.8px rgba(0, 0, 0, 0.067),
+      17.7px 25.5px 42.5px rgba(0, 0, 0, 0.083),
+      36.5px 52.6px 87.6px rgba(0, 0, 0, 0.103),
+      100px 144px 240px rgba(0, 0, 0, 0.15);
+    color: var(--pink);
+    background-color: rgba(255, 255, 255, 0.85);
+    &:focus {
+      border-color: var(--pink-dark);
+    }
+    &::placeholder {
+      color: var(--pink-light);
+    }
+  }
+}
