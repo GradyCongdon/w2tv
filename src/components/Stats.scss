@@ -25,7 +25,6 @@
     padding: 0 8px;
     @media screen and (min-width: 768px) {
       height: 42px;
-      justify-content: flex-start;
       padding: 0 1.5rem;
     }
     font-size: 1.25rem;
@@ -40,7 +39,6 @@
     font-variant: none;
     &.small {
       padding: 0;
-      justify-content: center;
     }
     &.really-small.showPercent {
       .StatText {
@@ -48,7 +46,7 @@
       }
     }
     &:hover {
-      cursor: pointer;
+      cursor: help;
     }
 
     --pink: #ff99c888;
