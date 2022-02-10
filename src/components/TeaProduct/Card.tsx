@@ -38,6 +38,7 @@ export const Card = ({ tea, subject }: Props) => {
           alt={name}
           width={size}
           height={size}
+          loading="lazy"
         />
       </div>
     </figure>

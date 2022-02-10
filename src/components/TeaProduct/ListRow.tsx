@@ -44,7 +44,14 @@ export const ListRow = ({ tea }: { tea: TeaProduct }) => {
         <PercentileCircle percentile={dpg} />
       </span>
       <span className="style"> {style}</span>
-      <img src={url} width={size} height={size} alt={name} style={imageStyle} />
+      <img
+        src={url}
+        width={size}
+        height={size}
+        alt={name}
+        style={imageStyle}
+        loading="lazy"
+      />
     </div>
   );
 };
