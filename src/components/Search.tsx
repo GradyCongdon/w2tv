@@ -46,7 +46,9 @@ export const Search = () => {
     .sort(
       (a, b) =>
         (a.score || 1) - (b.score || 1) ||
-        b.item.name.length - a.item.name.length
+        a.item.year - b.item.year ||
+        b.item.name.length - a.item.name.length ||
+        a.item.name.localeCompare(b.item.name)
     )
     .slice(0, 10);
 
