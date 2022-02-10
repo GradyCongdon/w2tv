@@ -1,0 +1,7 @@
+.Link {
+  top: 98px;
+  text-decoration: none;
+  @media screen and (min-width: 1024px) {
+    top: 80px;
+  }
+}

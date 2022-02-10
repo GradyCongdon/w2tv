@@ -1,4 +1,6 @@
+import { BookmarkFilled, Bookmark } from "components/Icons";
 import { useOwnedToggle } from "hooks/useOwnedToggle";
+import "./OwnedButton.scss";
 
 export const OwnedButton = ({ slug }: { slug: string }) => {
   const [isOwned, toggleOwned] = useOwnedToggle(slug);
@@ -8,7 +10,9 @@ export const OwnedButton = ({ slug }: { slug: string }) => {
       className={`DetailButton Owned ${isOwned ? "isOwned" : ""}`}
       onClick={toggleOwned}
     >
-      <span className="value">💸</span>
+      <span className="value">
+        {isOwned ? <BookmarkFilled /> : <Bookmark />}
+      </span>
     </button>
   );
 };

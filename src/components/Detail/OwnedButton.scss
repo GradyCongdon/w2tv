@@ -1,0 +1,14 @@
+.Owned {
+  top: 168px;
+  text-decoration: none;
+
+  &.isOwned {
+    border-color: var(--green);
+    background-color: var(--green-light);
+    box-shadow: 1px 1px 5px 5px var(--green-shadow);
+  }
+
+  @media screen and (min-width: 1024px) {
+    top: 140px;
+  }
+}

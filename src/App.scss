@@ -21,6 +21,8 @@
   --pink-light: rgb(236, 189, 255);
   --pink-dark: rgb(185, 7, 255);
   --green: #86f93e;
+  --green-light: #e5ffdf;
+  --green-shadow: #52ee5e45;
   --purple: #ad52ee;
   --purple-light: #f8efff;
   --border: 1px solid rgb(225, 225, 225);
@@ -248,4 +250,8 @@ body {
       --size: 420px;
     }
   }
+}
+img {
+  user-select: none;
+  pointer-events: none;
 }
